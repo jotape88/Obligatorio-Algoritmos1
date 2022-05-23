@@ -8,18 +8,19 @@ import java.util.Date;
  */
 public class Obligatorio implements IObligatorio {
 
-    public ListaMensajes listMensajes = null;
+    static ListaMensajes SistemaMensajes = null;
 
     @Override
     public Retorno crearSistemaMensajes(int MAX_CANT_PALABRAS_X_LINEA) {
         Retorno ret = new Retorno(Retorno.Resultado.OK);
-        listMensajes = new ListaMensajes(MAX_CANT_PALABRAS_X_LINEA);
+        Obligatorio.SistemaMensajes = new ListaMensajes(MAX_CANT_PALABRAS_X_LINEA);
         return ret;
     }
 
     @Override
     public Retorno destruirSistemaMensajes() {
-        Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        Retorno ret = new Retorno(Retorno.Resultado.OK);
+        Obligatorio.SistemaMensajes = null;
         return ret;
     }
 

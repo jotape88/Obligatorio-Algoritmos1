@@ -1,21 +1,22 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package trabajarconobligatorio;
 
 /**
  *
- * @author Francisco
+ * @author mauro
  */
-public class ListaMensajes implements ILista<NodoMensaje> {
+public class ListaLineas implements ILista<NodoLinea> {
 
-    //cada mensaje de la lista
-    private NodoMensaje Inicio;
-    final int topeLinea;
+    private int topeCantidadPalabras;
+    final NodoLinea Inicio = null;
+    final NodoLinea Final = null;
 
-    public ListaMensajes(int tope) {
-        this.topeLinea = tope;
+    public ListaLineas(int topeCantidadPalabras) {
+        this.topeCantidadPalabras = topeCantidadPalabras;
 
     }
 
@@ -25,12 +26,12 @@ public class ListaMensajes implements ILista<NodoMensaje> {
     }
 
     @Override
-    public void agregarInicio(NodoMensaje n) {
-        
+    public void agregarInicio(NodoLinea n) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void agregarFinal(NodoMensaje n) {
+    public void agregarFinal(NodoLinea n) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -55,24 +56,23 @@ public class ListaMensajes implements ILista<NodoMensaje> {
     }
 
     @Override
-    public void agregarOrd(NodoMensaje n) {
+    public void agregarOrd(NodoLinea n) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void borrarElemento(NodoMensaje n) {
+    public void borrarElemento(NodoLinea n) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Nodo obtenerElemento(NodoMensaje n) {
+    public Nodo obtenerElemento(NodoLinea n) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void mostrarREC(NodoMensaje l) {
+    public void mostrarREC(NodoLinea l) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 
 }

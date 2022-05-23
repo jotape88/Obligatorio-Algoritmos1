@@ -1,23 +1,15 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package trabajarconobligatorio;
 
 /**
  *
- * @author Francisco
+ * @author mauro
  */
-public class ListaMensajes implements ILista<NodoMensaje> {
-
-    //cada mensaje de la lista
-    private NodoMensaje Inicio;
-    final int topeLinea;
-
-    public ListaMensajes(int tope) {
-        this.topeLinea = tope;
-
-    }
+public class ListaPalabras implements ILista<NodoPalabra>{
 
     @Override
     public boolean esVacia() {
@@ -25,12 +17,12 @@ public class ListaMensajes implements ILista<NodoMensaje> {
     }
 
     @Override
-    public void agregarInicio(NodoMensaje n) {
-        
+    public void agregarInicio(NodoPalabra n) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void agregarFinal(NodoMensaje n) {
+    public void agregarFinal(NodoPalabra n) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -55,24 +47,23 @@ public class ListaMensajes implements ILista<NodoMensaje> {
     }
 
     @Override
-    public void agregarOrd(NodoMensaje n) {
+    public void agregarOrd(NodoPalabra n) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void borrarElemento(NodoMensaje n) {
+    public void borrarElemento(NodoPalabra n) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Nodo obtenerElemento(NodoMensaje n) {
+    public Nodo obtenerElemento(NodoPalabra n) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void mostrarREC(NodoMensaje l) {
+    public void mostrarREC(NodoPalabra l) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-
+    
 }

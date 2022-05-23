@@ -8,16 +8,17 @@ package trabajarconobligatorio;
  *
  * @author Francisco
  */
-public class NodoMensaje {
+public class NodoLinea {
 
     private Nodo dato;
     private Nodo siguiente;
     private ListaLineas listaLineas;
-    private int topeLineas;
+    private int topeLienas;
     
-    public NodoMensaje(Nodo elDato, int tope) {
+    public NodoLinea(Nodo elDato, int tope) {
         this.dato = elDato;
-        this.topeLineas = tope;        
+        this.topeLienas = tope;
+        
     }
 
     /**
