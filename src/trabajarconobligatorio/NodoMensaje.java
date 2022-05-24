@@ -10,27 +10,46 @@ package trabajarconobligatorio;
  */
 public class NodoMensaje {
 
-    private Nodo dato;
-    private Nodo siguiente;
+    private NodoMensaje dato;
+    private NodoMensaje siguiente;
     private ListaLineas listaLineas;
     private int topeLineas;
-    
-    public NodoMensaje(Nodo elDato, int tope) {
+
+    public NodoMensaje(NodoMensaje elDato, int tope) {
         this.dato = elDato;
-        this.topeLineas = tope;        
+        this.topeLineas = tope;
+        listaLineas = new ListaLineas(tope);
     }
 
-    /**
-     * @return the dato
-     */
-    public Nodo getDato() {
+    public NodoMensaje getSiguiente() {
+        return siguiente;
+    }
+
+    public void setSiguiente(NodoMensaje siguiente) {
+        this.siguiente = siguiente;
+    }
+
+    public ListaLineas getListaLineas() {
+        return listaLineas;
+    }
+
+    public void setListaLineas(ListaLineas listaLineas) {
+        this.listaLineas = listaLineas;
+    }
+
+    public int getTopeLineas() {
+        return topeLineas;
+    }
+
+    public void setTopeLineas(int topeLineas) {
+        this.topeLineas = topeLineas;
+    }
+
+    public NodoMensaje getDato() {
         return dato;
     }
 
-    /**
-     * @param dato the dato to set
-     */
-    public void setDato(Nodo dato) {
+    public void setDato(NodoMensaje dato) {
         this.dato = dato;
     }
 

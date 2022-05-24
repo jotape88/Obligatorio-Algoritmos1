@@ -16,7 +16,6 @@ public class ListaMensajes implements ILista<NodoMensaje> {
 
     public ListaMensajes(int tope) {
         this.topeLinea = tope;
-
     }
 
     @Override
