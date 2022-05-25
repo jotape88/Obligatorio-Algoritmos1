@@ -11,21 +11,31 @@ package trabajarconobligatorio;
 public class ListaMensajes implements ILista<NodoMensaje> {
 
     //cada mensaje de la lista
-    private NodoMensaje Inicio;
+    private Nodo<NodoMensaje> inicio; //Tuve que cambiar <Mensaje> a nodomensaje
     final int topeLinea;
+    private int cantidadMensajes;//Agregue la cantidad (JP)
 
     public ListaMensajes(int tope) {
         this.topeLinea = tope;
+        this.cantidadMensajes = 0;
     }
 
     @Override
     public boolean esVacia() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return cantidadMensajes == 0; //Si no usamos esVacia, podemos eliminar la cantidadMensajes
     }
 
     @Override
     public void agregarInicio(NodoMensaje n) {
-        
+        Nodo<NodoMensaje> nuevo = new Nodo<NodoMensaje>(n);
+        if (esVacia()) {
+            inicio = nuevo;
+            cantidadMensajes++;
+        } else {
+            nuevo.setSiguiente(inicio);
+            inicio = nuevo;
+            cantidadMensajes++;
+        }
     }
 
     @Override
@@ -64,8 +74,24 @@ public class ListaMensajes implements ILista<NodoMensaje> {
     }
 
     @Override
-    public Nodo obtenerElemento(NodoMensaje n) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Nodo<Mensaje> obtenerElemento(NodoMensaje n) {
+        Nodo ret = null;
+ 
+        if(!this.esVacia()) {
+            if(inicio.getDato() == n) {
+                ret = inicio;
+            } else {
+                    Nodo<NodoMensaje> aux = inicio;
+                    ret = null;
+                        while( aux.getSiguiente() != null && ret == null ) {           
+                            if(aux.getDato() == n) {
+                                ret = aux;
+                            }
+                        }
+                aux = aux.getSiguiente();             
+                }
+            }
+        return ret;
     }
 
     @Override
@@ -73,5 +99,19 @@ public class ListaMensajes implements ILista<NodoMensaje> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
+    /**
+     * @return the cantidadMensajes
+     */
+    public int getCantidadMensajes() {
+        return cantidadMensajes;
+    }
+
+    /**
+     * @param cantidadMensajes the cantidadMensajes to set
+     */
+    public void setCantidadMensajes(int cantidadMensajes) {
+        this.cantidadMensajes = cantidadMensajes;
+    }
 
 }

@@ -9,6 +9,7 @@ import java.util.Date;
 public class Obligatorio implements IObligatorio {
 
     static ListaMensajes SistemaMensajes = null;
+    static ListaContactos SistemaContactos = null; //Creado (J.P)
 
     @Override
     public Retorno crearSistemaMensajes(int MAX_CANT_PALABRAS_X_LINEA) {
@@ -38,7 +39,15 @@ public class Obligatorio implements IObligatorio {
 
     @Override
     public Retorno agregarMensaje(int numContactoOrigen, int numContactoDestino, Date fecha) {
-        Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        Retorno ret = new Retorno(Retorno.Resultado.OK);
+        Contacto cOrigenBuscar = SistemaContactos.obtenerElemento(numContactoOrigen); //MAL (J.P)
+        Contacto cDestinoBuscar = SistemaContactos.obtenerElemento(numContactoDestino);
+        
+        if(SistemaContactos.obtenerElemento()) {
+            SistemaMensajes.agregarInicio(???);
+        } else {
+            ret.resultado = Retorno.Resultado.ERROR;
+        }
         return ret;
     }
 
