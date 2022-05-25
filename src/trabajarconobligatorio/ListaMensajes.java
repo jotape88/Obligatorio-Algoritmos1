@@ -8,110 +8,110 @@ package trabajarconobligatorio;
  *
  * @author Francisco
  */
-public class ListaMensajes implements ILista<NodoMensaje> {
+public class ListaMensajes implements ILista {
 
     //cada mensaje de la lista
-    private Nodo<NodoMensaje> inicio; //Tuve que cambiar <Mensaje> a nodomensaje
-    final int topeLinea;
-    private int cantidadMensajes;//Agregue la cantidad (JP)
+    private NodoMensaje Inicio;
 
-    public ListaMensajes(int tope) {
-        this.topeLinea = tope;
-        this.cantidadMensajes = 0;
-    }
-
+//    public ListaMensajes(int tope) {
+//        this.topeLinea = tope;
+//    }
     @Override
     public boolean esVacia() {
-        return cantidadMensajes == 0; //Si no usamos esVacia, podemos eliminar la cantidadMensajes
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    @Override
-    public void agregarInicio(NodoMensaje n) {
-        Nodo<NodoMensaje> nuevo = new Nodo<NodoMensaje>(n);
-        if (esVacia()) {
-            inicio = nuevo;
-            cantidadMensajes++;
-        } else {
-            nuevo.setSiguiente(inicio);
-            inicio = nuevo;
-            cantidadMensajes++;
-        }
-    }
-
-    @Override
-    public void agregarFinal(NodoMensaje n) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+//    @Override
+//    public void agregarInicio(NodoMensaje n) {
+//
+//       throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+//
+//    @Override
+//    public void agregarFinal(NodoMensaje n) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
     @Override
     public void borrarInicio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void borrarFin() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void vaciar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void mostrar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    @Override
-    public void agregarOrd(NodoMensaje n) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void borrarElemento(NodoMensaje n) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Nodo<Mensaje> obtenerElemento(NodoMensaje n) {
-        Nodo ret = null;
- 
-        if(!this.esVacia()) {
-            if(inicio.getDato() == n) {
-                ret = inicio;
-            } else {
-                    Nodo<NodoMensaje> aux = inicio;
-                    ret = null;
-                        while( aux.getSiguiente() != null && ret == null ) {           
-                            if(aux.getDato() == n) {
-                                ret = aux;
-                            }
-                        }
-                aux = aux.getSiguiente();             
-                }
-            }
-        return ret;
-    }
-
-    @Override
-    public void mostrarREC(NodoMensaje l) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
+//    @Override
+//    public void agregarOrd(NodoMensaje n) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+//
+//    @Override
+//    public void borrarElemento(NodoMensaje n) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+//
+//    @Override
+//    public Nodo<Mensaje> obtenerElemento(NodoMensaje n) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+//
+//    @Override
+//    public void mostrarREC(NodoMensaje l) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
     /**
-     * @return the cantidadMensajes
+     * @return the Inicio
      */
-    public int getCantidadMensajes() {
-        return cantidadMensajes;
+    public NodoMensaje getInicio() {
+        return Inicio;
     }
 
     /**
-     * @param cantidadMensajes the cantidadMensajes to set
+     * @param Inicio the Inicio to set
      */
-    public void setCantidadMensajes(int cantidadMensajes) {
-        this.cantidadMensajes = cantidadMensajes;
+    public void setInicio(NodoMensaje Inicio) {
+        this.Inicio = Inicio;
+    }
+
+    @Override
+    public void agregarInicio(Comparable n) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void agregarFinal(Comparable n) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void agregarOrd(Comparable n) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Nodo obtenerElemento(Comparable n) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void borrarElemento(Comparable n) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mostrarREC(Comparable l) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
