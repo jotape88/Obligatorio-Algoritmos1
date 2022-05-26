@@ -18,12 +18,11 @@ public class Mensaje {
     private Date fecha; //Sera necesario un formato date?
     private NodoMensaje inicio;
 
-    public Mensaje(int nroMensaje, Contacto contOrigen, Contacto contDestino, Date fecha, NodoMensaje inicio) {  //Cree el constructor (J.P)
+    public Mensaje(int nroMensaje, Contacto contOrigen, Contacto contDestino, Date fecha) {  //Cree el constructor (J.P)
         this.nroMensaje = nroMensaje;
         this.contOrigen = contOrigen;
         this.contDestino = contDestino;
-        this.fecha = fecha;
-        this.inicio = inicio;
+        this.fecha = fecha;;
     }
 
     /**

@@ -9,7 +9,9 @@ import java.util.Date;
 public class Obligatorio implements IObligatorio {
 
     static ListaMensajes SistemaMensajes = null;
-    static ListaContactos SistemaContactos = null; //Creado (J.P)
+    //static ListaContactos SistemaContactos = null; //Creado (J.P)
+    //public ListaMensajes listMensajes = new ListaMensajes(); //Creado (Francisco)
+    public Lista<Contacto> contactos = new Lista<Contacto>();
 
     @Override
     public Retorno crearSistemaMensajes(int MAX_CANT_PALABRAS_X_LINEA) {
@@ -28,26 +30,50 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno agregarContacto(int numContacto, String nomContacto) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+
+        Contacto newContacto = new Contacto(numContacto, nomContacto);
+
+        if (contactos.obtenerElemento(newContacto) == null) {
+
+            contactos.agregarInicio(newContacto);
+
+        } else {
+            ret.resultado = Retorno.Resultado.ERROR;
+        }
+
         return ret;
     }
 
     @Override
     public Retorno eliminarContacto(int numContacto) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+
+        Contacto newContacto = contactos.obtenerPorNumero(numContacto);
+        System.out.println(newContacto.toString());
+
+        if (contactos.obtenerElemento(newContacto) != null) {
+            System.out.println("No es null");
+            contactos.borrarElemento(newContacto);
+
+        } else {
+            System.out.println("Entra borrar elemento");
+            ret.resultado = Retorno.Resultado.ERROR;
+        }
+
         return ret;
     }
 
     @Override
     public Retorno agregarMensaje(int numContactoOrigen, int numContactoDestino, Date fecha) {
         Retorno ret = new Retorno(Retorno.Resultado.OK);
-        Contacto cOrigenBuscar = SistemaContactos.obtenerElemento(numContactoOrigen); //MAL (J.P)
-        Contacto cDestinoBuscar = SistemaContactos.obtenerElemento(numContactoDestino);
-        
-        if(SistemaContactos.obtenerElemento()) {
-            SistemaMensajes.agregarInicio(???);
-        } else {
-            ret.resultado = Retorno.Resultado.ERROR;
-        }
+//        Contacto cOrigenBuscar = SistemaContactos.obtenerElemento(numContactoOrigen); //MAL (J.P)
+//        Contacto cDestinoBuscar = SistemaContactos.obtenerElemento(numContactoDestino);
+//        
+//        if(SistemaContactos.obtenerElemento()) {
+//            SistemaMensajes.agregarInicio(???);
+//        } else {
+//            ret.resultado = Retorno.Resultado.ERROR;
+//        }
         return ret;
     }
 

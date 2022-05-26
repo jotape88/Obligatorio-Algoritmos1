@@ -8,7 +8,7 @@ package trabajarconobligatorio;
  *
  * @author Francisco
  */
-public interface ILista<T> {
+public interface ILista<T extends Comparable<T>> {
 
     //metodos de la interfaz
     //post: Retorna un boolean indicado si la lista es vacía

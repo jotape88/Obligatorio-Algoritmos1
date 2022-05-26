@@ -8,16 +8,52 @@ package trabajarconobligatorio;
  *
  * @author Francisco
  */
-public class Contacto {
+public class Contacto implements Comparable<Contacto> {
 
-    int ultimoId = 1;
-    int numContacto;
-    String nombre;
+    public int numeroContacto;
+    private String nombre;
 
-    public Contacto(String nombreContacto) {
-        this.numContacto = ultimoId;
+    public Contacto(int numContacto, String nombreContacto) {
+        this.numeroContacto = numContacto;
         this.nombre = nombreContacto;
-        ultimoId++;
+
+    }
+
+    @Override
+    public int compareTo(Contacto o) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public String toString() {
+        return "Nombre:" + this.getNombre();
+    }
+
+    /**
+     * @return the numeroContacto
+     */
+    public int getNumeroContacto() {
+        return numeroContacto;
+    }
+
+    /**
+     * @param numeroContacto the numeroContacto to set
+     */
+    public void setNumeroContacto(int numeroContacto) {
+        this.numeroContacto = numeroContacto;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
 }
