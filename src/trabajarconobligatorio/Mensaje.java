@@ -4,7 +4,7 @@
  */
 package trabajarconobligatorio;
 
-import java.util.Date; //Revisar
+import java.util.Date;
 
 /**
  *
@@ -15,7 +15,7 @@ public class Mensaje implements Comparable<Mensaje>{
     private int nroMensaje;
     private Contacto contOrigen; //Agregado (JP)
     private Contacto contDestino; //Agregado (JP)
-    private Date fecha; //Sera necesario un formato date?
+    private Date fecha; 
 
     public Mensaje(int nroMensaje, Contacto contOrigen, Contacto contDestino, Date fecha) {
         this.nroMensaje = nroMensaje;
