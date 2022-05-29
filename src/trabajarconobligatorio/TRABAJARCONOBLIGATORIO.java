@@ -15,29 +15,24 @@ public class TRABAJARCONOBLIGATORIO {
         // TODO code application logic here
         Obligatorio obl = new Obligatorio();
         Prueba p = new Prueba();
-        juegodeprueba1(obl, p); // juego de prueba ejemplo
+        juegodepruebaContactos(obl, p); // juego de prueba ejemplo
+        juegodepruebaMensajesYSistema(obl, p); // juego de prueba ejemplo
 
-        obl.agregarContacto(1, "Contacto1");
-        obl.agregarContacto(2, "Contacto2");
-        obl.agregarContacto(3, "Contacto3");
-        obl.agregarContacto(4, "Contacto4");
-        obl.contactos.mostrar();
-//        System.out.println(obl.contactos.obtenerPorNumero(2).toString());
-//        obl.contactos.mostrar();
-        obl.eliminarContacto(2);
-        obl.contactos.mostrar();
-
-//        obl.contactos.mostrar();
-//        contactos.mostrar();
     }
 
-    public static void juegodeprueba1(Obligatorio obl, Prueba p) {
-        // escriba su juego de prueba aqui
+    public static void juegodepruebaMensajesYSistema(Obligatorio obl, Prueba p) {
         p.ver(obl.crearSistemaMensajes(3).resultado, Retorno.Resultado.OK, "Se creara sistma para 3 palabras por linea");
-//        p.ver(obl.agregarContacto(1, "Juan Perez").resultado, Retorno.Resultado.OK, "se agrega contacto Juan Perez al sistema");
-//        p.ver(obl.agregarContacto(1, "Juan Perez").resultado, Retorno.Resultado.ERROR, "se intenta agregar contacto Juan Perez que ya existe");
-//        p.ver(obl.eliminarContacto(1).resultado, Retorno.Resultado.OK, "se elimina contacto Juan Perez del sistema");
+        Obligatorio.SistemaMensajes.mostrar();
         p.ver(obl.destruirSistemaMensajes().resultado, Retorno.Resultado.OK, " sistema eliminado");
+        p.imprimirResultadosPrueba();
+    }
+
+    public static void juegodepruebaContactos(Obligatorio obl, Prueba p) {
+        p.ver(obl.agregarContacto(1, "Contacto1").resultado, Retorno.Resultado.OK, " sistema eliminado");
+        p.ver(obl.agregarContacto(2, "Contacto2").resultado, Retorno.Resultado.OK, " sistema eliminado");
+        p.ver(obl.agregarContacto(3, "Contacto3").resultado, Retorno.Resultado.OK, " sistema eliminado");
+        p.ver(obl.agregarContacto(4, "Contacto4").resultado, Retorno.Resultado.OK, " sistema eliminado");
+        obl.contactos.mostrar();
         p.imprimirResultadosPrueba();
     }
 }

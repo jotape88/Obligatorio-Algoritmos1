@@ -10,55 +10,52 @@ import java.util.Date;
  *
  * @author Francisco
  */
-public class Mensaje implements Comparable<Mensaje>{
-
-    private int nroMensaje;
+public class Mensaje implements Comparable<Mensaje> {
+    
+    static int nroMensajes = 1;
+    private final int numeroDeMensaje;
     private Contacto contOrigen; //Agregado (JP)
     private Contacto contDestino; //Agregado (JP)
-    private Date fecha; 
-
-    public Mensaje(int nroMensaje, Contacto contOrigen, Contacto contDestino, Date fecha) {
-        this.nroMensaje = nroMensaje;
+    private Date fecha;
+    private final Lista<Linea> listaLineas;
+    
+    public Mensaje(int nroMensaje, Contacto contOrigen, Contacto contDestino, Date fecha, int topePalabras) {
+        this.numeroDeMensaje = Mensaje.nroMensajes;
         this.contOrigen = contOrigen;
         this.contDestino = contDestino;
         this.fecha = fecha;
+        Mensaje.nroMensajes++;
+        this.listaLineas = new Lista<>();
+        this.listaLineas.setTope(topePalabras);        
     }
-
-    public int getNroMensaje() {
-        return nroMensaje;
-    }
-
+    
     public Contacto getContOrigen() {
         return contOrigen;
     }
-
+    
     public Contacto getContDestino() {
         return contDestino;
     }
-
+    
     public Date getFecha() {
         return fecha;
     }
-
-    public void setNroMensaje(int nroMensaje) {
-        this.nroMensaje = nroMensaje;
-    }
-
+    
     public void setContOrigen(Contacto contOrigen) {
         this.contOrigen = contOrigen;
     }
-
+    
     public void setContDestino(Contacto contDestino) {
         this.contDestino = contDestino;
     }
-
+    
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
+    
     @Override
     public int compareTo(Mensaje o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
 }

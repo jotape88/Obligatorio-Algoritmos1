@@ -31,11 +31,8 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno agregarContacto(int numContacto, String nomContacto) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
-
         Contacto newContacto = new Contacto(numContacto, nomContacto);
-
         if (contactos.obtenerElemento(newContacto) == null) {
-
             contactos.agregarInicio(newContacto);
 
         } else {
@@ -71,9 +68,9 @@ public class Obligatorio implements IObligatorio {
         Retorno ret = new Retorno(Retorno.Resultado.ERROR);
         Contacto cOrigen = new Contacto(numContactoOrigen, "Contacto1"); //???
         Contacto cDestino = new Contacto(numContactoDestino, "Contacto2");
-        
-        if(SistemaContactos.obtenerElemento(cOrigen) != null && SistemaContactos.obtenerElemento(cDestino) != null) {
-            Mensaje m = new Mensaje(1, cOrigen, cDestino, fecha);
+
+        if (SistemaContactos.obtenerElemento(cOrigen) != null && SistemaContactos.obtenerElemento(cDestino) != null) {
+            Mensaje m = new Mensaje(1, cOrigen, cDestino, fecha, SistemaMensajes.getTope());
             SistemaMensajes.agregarInicio(m);
         } else {
             ret.resultado = Retorno.Resultado.ERROR;

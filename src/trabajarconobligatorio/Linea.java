@@ -11,7 +11,12 @@ package trabajarconobligatorio;
 public class Linea implements Comparable<Linea> {
 
     /*  private Lista<Palabra> listaPalabras;*/
-    private String[] palabras;
+    private int topePalabras;
+    private String[] palabras = new String[this.topePalabras];
+
+    public Linea(int topePalabras) {
+        this.topePalabras = topePalabras;
+    }
 
     public String[] getPalabras() {
         return palabras;
