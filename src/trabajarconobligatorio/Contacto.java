@@ -16,12 +16,17 @@ public class Contacto implements Comparable<Contacto> {
     public Contacto(int numContacto, String nombreContacto) {
         this.numeroContacto = numContacto;
         this.nombre = nombreContacto;
-
     }
 
     @Override
     public int compareTo(Contacto o) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        Contacto c = (Contacto)o;
+        return getNumeroContacto() == c.getNumeroContacto(); //J.P
     }
 
     public String toString() {
