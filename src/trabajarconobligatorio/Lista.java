@@ -35,7 +35,6 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
             }
             Nodo<T> aux = inicio;
             inicio = getInicio().getSiguiente();
-            //inicio.setAnterior(null);
             aux.setSiguiente(null);
             cantidad--;
         } else {
@@ -64,7 +63,7 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
     public void mostrar() {
         Nodo<T> mostrar = getInicio();
         while (mostrar != null) {
-            System.out.print(mostrar.getDato() + " - ");
+            System.out.print(mostrar.getDato().toString() + " - ");
             mostrar = mostrar.getSiguiente();
         }
 
@@ -79,18 +78,18 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
     }
 
     public Nodo<T> getInicio() {
-        return inicio;
+        return this.inicio;
     }
 
     @Override
     public void agregarInicio(T n) {
         Nodo<T> nuevo = new Nodo(n);
         if (esVacia()) {
-            inicio = nuevo;
-            fin = inicio;
+            this.inicio = nuevo;
+            this.fin = inicio;
         } else {
             nuevo.setSiguiente(getInicio());
-            inicio = nuevo;
+            this.inicio = nuevo;
         }
 
         cantidad++;
@@ -103,8 +102,8 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
             agregarInicio(n);
         } else {
 
-            fin.setSiguiente(nuevo);
-            fin = nuevo;
+            this.fin.setSiguiente(nuevo);
+            this.fin = nuevo;
         }
         cantidad++;
     }
@@ -112,10 +111,10 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
     @Override
     public void borrarElemento(T n) {
         if (!this.esVacia()) {
-            if ( n.equals(inicio.getDato()) ) {
+            if (n.equals(inicio.getDato())) {
                 borrarInicio();
             } else {
-                if ( n.equals(fin.getDato()) ) {
+                if (n.equals(fin.getDato())) {
                     borrarFin();
                 } else {
                     Nodo<T> aux = inicio;
@@ -175,7 +174,7 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
 
                 while (aux.getSiguiente() != null && aux.getSiguiente().getDato().compareTo(n) < 0) {
                     aux = aux.getSiguiente();
-                }           
+                }
                 Nodo nuevo = new Nodo(n);
                 nuevo.setSiguiente(aux.getSiguiente());
                 aux.setSiguiente(nuevo);

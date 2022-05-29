@@ -10,18 +10,18 @@ package trabajarconobligatorio;
  */
 public class Palabra {
 
-    private String listadato;
+    private String dato;
 
-    public Palabra(String listadato) {
-        this.listadato = listadato;
+    public Palabra(String dato) {
+        this.dato = dato;
     }
 
     public String getListadato() {
-        return listadato;
+        return dato;
     }
 
     public void setListadato(String listadato) {
-        this.listadato = listadato;
+        this.dato = listadato;
     }
 
 }

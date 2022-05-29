@@ -8,20 +8,22 @@ package trabajarconobligatorio;
  *
  * @author Francisco
  */
-public class Linea {
+public class Linea implements Comparable<Linea> {
 
-    private Lista<Palabra> listaPalabras;
+    /*  private Lista<Palabra> listaPalabras;*/
+    private String[] palabras;
 
-    public Linea(Lista<Palabra> listaPalabras) {
-        this.listaPalabras = listaPalabras;
+    public String[] getPalabras() {
+        return palabras;
     }
 
-    public Lista<Palabra> getListaPalabras() {
-        return listaPalabras;
+    public void setPalabras(String[] palabras) {
+        this.palabras = palabras;
     }
 
-    public void setListaPalabras(Lista<Palabra> listaPalabras) {
-        this.listaPalabras = listaPalabras;
+    @Override
+    public int compareTo(Linea o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
