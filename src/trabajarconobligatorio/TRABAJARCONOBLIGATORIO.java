@@ -22,7 +22,7 @@ public class TRABAJARCONOBLIGATORIO {
         obl.agregarContacto(3, "Contacto3");
         obl.agregarContacto(4, "Contacto4");
         obl.contactos.mostrar();
-//        System.out.println(obl.contactos.obtenerPorNumero(2).getDato().toString());
+//        System.out.println(obl.contactos.obtenerPorNumero(2).toString());
 //        obl.contactos.mostrar();
         obl.eliminarContacto(2);
         obl.contactos.mostrar();

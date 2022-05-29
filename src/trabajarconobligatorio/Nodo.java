@@ -2,14 +2,12 @@ package trabajarconobligatorio;
 
 public class Nodo<T> {
 
-    //Atributos
     private T dato;
-    private Nodo siguiente;
+    private Nodo<T> siguiente;
 
-    //Constructor
-    public Nodo(T elDato) {
-        this.setDato(elDato);
-        this.setSiguiente(null);
+    public Nodo(T dato) {
+        this.dato = dato;
+        this.siguiente = null;
     }
 
     public T getDato() {
@@ -20,12 +18,17 @@ public class Nodo<T> {
         this.dato = dato;
     }
 
-    public Nodo getSiguiente() {
+    public Nodo<T> getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(Nodo siguiente) {
+    public void setSiguiente(Nodo<T> siguiente) {
         this.siguiente = siguiente;
+    }
+
+    @Override
+    public String toString() {
+        return "Nodo{" + "dato=" + dato.toString() + ", siguiente=" + siguiente + '}';
     }
 
 }

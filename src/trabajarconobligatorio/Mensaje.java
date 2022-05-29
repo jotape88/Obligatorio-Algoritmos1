@@ -4,42 +4,61 @@
  */
 package trabajarconobligatorio;
 
+import java.util.Date; //Revisar
+
 /**
  *
  * @author Francisco
  */
-public class Mensaje {
+public class Mensaje implements Comparable<Mensaje>{
 
     private int nroMensaje;
+    private Contacto contOrigen; //Agregado (JP)
+    private Contacto contDestino; //Agregado (JP)
+    private Date fecha; //Sera necesario un formato date?
 
-    private NodoMensaje inicio;
+    public Mensaje(int nroMensaje, Contacto contOrigen, Contacto contDestino, Date fecha) {
+        this.nroMensaje = nroMensaje;
+        this.contOrigen = contOrigen;
+        this.contDestino = contDestino;
+        this.fecha = fecha;
+    }
 
-    /**
-     * @return the nroMensaje
-     */
     public int getNroMensaje() {
         return nroMensaje;
     }
 
-    /**
-     * @param nroMensaje the nroMensaje to set
-     */
+    public Contacto getContOrigen() {
+        return contOrigen;
+    }
+
+    public Contacto getContDestino() {
+        return contDestino;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
     public void setNroMensaje(int nroMensaje) {
         this.nroMensaje = nroMensaje;
     }
 
-    /**
-     * @return the Inicio
-     */
-    public NodoMensaje getInicio() {
-        return inicio;
+    public void setContOrigen(Contacto contOrigen) {
+        this.contOrigen = contOrigen;
     }
 
-    /**
-     * @param Inicio the Inicio to set
-     */
-    public void setInicio(NodoMensaje Inicio) {
-        this.inicio = Inicio;
+    public void setContDestino(Contacto contDestino) {
+        this.contDestino = contDestino;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    @Override
+    public int compareTo(Mensaje o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
