@@ -136,29 +136,23 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
 
     @Override
     public Nodo<T> obtenerElemento(T n) {
-//        Nodo<T> ret = new Nodo<>(n);
-//        return ret;
         Nodo<T> ret = null;
-        if (!this.esVacia()) {
-            if (n.equals(inicio.getDato())) {
-                ret = inicio;
-            } else {
-                if (n.equals(fin.getDato())) {
-                    ret = fin;
-                } else {
 
-                    Nodo actual = getInicio();
-                    //boolean encontre = false;
-                    while (actual != null && actual.getDato() != n) {
-                        actual = actual.getSiguiente();
-                    }
-                    if (actual != null) {
-                        ret = actual;
-                    }
+        if (!this.esVacia()) {
+            if (inicio.getDato().equals(n)) {
+                ret = inicio;
+            }
+            if (fin.getDato().equals(n)) {
+                ret = fin;
+            }
+            Nodo actual = inicio;
+            while (actual != null) {
+                if (actual.getDato().equals(n)) {
+                    ret = actual;
                 }
+                actual = actual.getSiguiente();
             }
         }
-
         return ret;
     }
 

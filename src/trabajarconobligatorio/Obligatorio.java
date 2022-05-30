@@ -9,7 +9,6 @@ import java.util.Date;
 public class Obligatorio implements IObligatorio {
 
     static Lista<Mensaje> SistemaMensajes = null;
-    static Lista<Contacto> SistemaContactos = null; //Creado (J.P)
     //public ListaMensajes listMensajes = new ListaMensajes(); //Creado (Francisco)
     public Lista<Contacto> contactos = new Lista<Contacto>();
 
@@ -66,11 +65,12 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno agregarMensaje(int numContactoOrigen, int numContactoDestino, Date fecha) {
         Retorno ret = new Retorno(Retorno.Resultado.ERROR);
-        Contacto cOrigen = new Contacto(numContactoOrigen, "Contacto1"); //???
-        Contacto cDestino = new Contacto(numContactoDestino, "Contacto2");
+        Contacto cOrigen = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
+        Contacto cDestino = contactos.obtenerElemento(new Contacto(numContactoDestino)).getDato();
+        this.contactos.obtenerElemento(cOrigen);
 
-        if (SistemaContactos.obtenerElemento(cOrigen) != null && SistemaContactos.obtenerElemento(cDestino) != null) {
-            Mensaje m = new Mensaje(1, cOrigen, cDestino, fecha, SistemaMensajes.getTope());
+        if (cOrigen != null && cDestino != null) {
+            Mensaje m = new Mensaje(cOrigen, cDestino, fecha, SistemaMensajes.getTope());
             SistemaMensajes.agregarInicio(m);
         } else {
             ret.resultado = Retorno.Resultado.ERROR;

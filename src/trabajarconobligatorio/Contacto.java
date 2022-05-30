@@ -17,6 +17,9 @@ public class Contacto implements Comparable<Contacto> {
         this.numeroContacto = numContacto;
         this.nombre = nombreContacto;
     }
+    public Contacto(int numContacto) {
+        this.numeroContacto = numContacto;        
+    }
 
     @Override
     public int compareTo(Contacto o) {
