@@ -27,5 +27,6 @@ Retorno ingresarPalabraDiccionario(String palabraAIngresar);
 Retorno imprimirDiccionario();
 Retorno ImprimirTextoIncorrecto();
 Retorno cantidadDeMensajes(int numContactoOrigen);
+Retorno borrarPalabraDiccionario(String palabraABorrar);
 
 }
