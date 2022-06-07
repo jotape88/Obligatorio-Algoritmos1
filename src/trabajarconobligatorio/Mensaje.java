@@ -17,7 +17,7 @@ public class Mensaje implements Comparable<Mensaje> {
     private Contacto contOrigen; //Agregado (JP)
     private Contacto contDestino; //Agregado (JP)
     private Date fecha;
-    private final Lista<Linea> listaLineas;
+    private final Lista<Linea> listaLineas = new Lista<>();
 
     public Mensaje(Contacto contOrigen, Contacto contDestino, Date fecha, int topePalabras) {
         this.numeroDeMensaje = Mensaje.nroMensajes;
@@ -25,9 +25,14 @@ public class Mensaje implements Comparable<Mensaje> {
         this.contDestino = contDestino;
         this.fecha = fecha;
         Mensaje.nroMensajes++;
-        this.listaLineas = new Lista<>();
+        //this.listaLineas = new Lista<>();
         this.listaLineas.setTope(topePalabras);
     }
+    
+    public Mensaje(int nroMensaje) {
+        this.numeroDeMensaje = Mensaje.nroMensajes;
+    }
+    
 
     public Contacto getContOrigen() {
         return contOrigen;
@@ -52,6 +57,10 @@ public class Mensaje implements Comparable<Mensaje> {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+    
+    public int getNumeroDeMensaje() {
+        return numeroDeMensaje;
+    }
 
     @Override
     public int compareTo(Mensaje o) {
@@ -59,8 +68,21 @@ public class Mensaje implements Comparable<Mensaje> {
     }
 
     @Override
-    public String toString() {
-        return "Mensaje{" + "numeroDeMensaje=" + numeroDeMensaje + ", contOrigen=" + contOrigen.toString() + ", contDestino=" + contDestino.toString() + ", fecha=" + fecha + ", listaLineas=" + listaLineas + '}';
+    public boolean equals(Object obj) {
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        Mensaje m = (Mensaje)obj;
+        return m.getNumeroDeMensaje() == this.numeroDeMensaje; 
+//        int v = (int)obj;
+//        return v == this.numeroDeMensaje; 
     }
+    
+    @Override
+    public String toString() {
+        return "Mensaje{" + "numeroDeMensaje=" + getNumeroDeMensaje() + ", contOrigen=" + contOrigen.toString() + ", contDestino=" + contDestino.toString() + ", fecha=" + fecha + ", listaLineas=" + listaLineas + '}';
+    }
+
+
 
 }

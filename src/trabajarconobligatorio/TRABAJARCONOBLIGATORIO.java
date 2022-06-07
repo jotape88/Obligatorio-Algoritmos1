@@ -29,7 +29,9 @@ public class TRABAJARCONOBLIGATORIO {
         System.out.println(obl.contactos.obtenerElemento(new Contacto(3)).getDato().toString());
        
         
-        p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se creara sistma para 3 palabras por linea");
+        p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
+        Obligatorio.SistemaMensajes.mostrar();
+        p.ver(obl.eliminarMensaje(1, 1).resultado, Retorno.Resultado.OK, "Se elimina el mensaje creado");
         Obligatorio.SistemaMensajes.mostrar();
         p.ver(obl.destruirSistemaMensajes().resultado, Retorno.Resultado.OK, " sistema eliminado");
         p.imprimirResultadosPrueba();

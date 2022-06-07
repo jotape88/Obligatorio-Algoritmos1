@@ -48,6 +48,8 @@ public interface ILista<T> {
     //post: retronar el nodo que contiene el dato n
     public Nodo obtenerElemento(T n);
 
+    public Nodo obtenerMensaje(int numMensaje);
+    
     //post: muestra la lista (realizar en forma recursiva)
     public void mostrarREC(T l);
 

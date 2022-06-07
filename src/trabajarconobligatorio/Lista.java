@@ -155,6 +155,28 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
         }
         return ret;
     }
+    
+        @Override
+    public Nodo<T> obtenerMensaje(int numMensaje) {
+        Nodo<T> ret = null;
+
+        if (!this.esVacia()) {
+            if (inicio.getDato().equals(numMensaje)) {
+                ret = inicio;
+            }
+            if (fin.getDato().equals(numMensaje)) {
+                ret = fin;
+            }
+            Nodo actual = inicio;
+            while (actual != null) {
+                if (actual.getDato().equals(numMensaje)) {
+                    ret = actual;
+                }
+                actual = actual.getSiguiente();
+            }
+        }
+        return ret;
+    }
 
     @Override
     public void agregarOrd(T n) {
