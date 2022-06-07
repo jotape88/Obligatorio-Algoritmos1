@@ -11,6 +11,7 @@ public class Obligatorio implements IObligatorio {
     static Lista<Mensaje> SistemaMensajes = null;
     //public ListaMensajes listMensajes = new ListaMensajes(); //Creado (Francisco)
     public Lista<Contacto> contactos = new Lista<Contacto>();
+    public Lista<String> diccionario = new Lista<String>();
 
     @Override
     public Retorno crearSistemaMensajes(int MAX_CANT_PALABRAS_X_LINEA) {
@@ -45,20 +46,19 @@ public class Obligatorio implements IObligatorio {
     public Retorno eliminarContacto(int numContacto) {
 
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
-//        Contacto cAux = new Contacto(numContacto, "Pirulo");
-//
-//        Contacto newContacto = contactos.obtenerPorNumero(cAux);
-//        System.out.println(newContacto.toString());
-//
-//        if (contactos.obtenerElemento(newContacto) != null) {
-////            System.out.println("No es null");
-//            contactos.borrarElemento(newContacto);
-//
-//        } else {
-////            System.out.println("Entra borrar elemento");
-//            ret.resultado = Retorno.Resultado.ERROR;
-//        }
-//
+        Contacto cAux = new Contacto(numContacto, "Pirulo");
+
+        System.out.println(cAux.toString());
+
+        if (contactos.obtenerElemento(cAux) != null) {
+//            System.out.println("No es null");
+            contactos.borrarElemento(cAux);
+
+        } else {
+//            System.out.println("Entra borrar elemento");
+            ret.resultado = Retorno.Resultado.ERROR;
+        }
+
         return ret;
     }
 
@@ -98,6 +98,7 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno imprimirTexto(int numContactoOrigen, int numMensaje) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+
         return ret;
     }
 
@@ -158,18 +159,39 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno imprimirLinea(int numContactoOrigen, int numMensaje, int posicionLinea) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+
         return ret;
     }
 
     @Override
     public Retorno ingresarPalabraDiccionario(String palabraAIngresar) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+
+        Nodo<String> newPalabra = diccionario.obtenerElemento(palabraAIngresar);
+
+        if (newPalabra == null) {
+            diccionario.agregarOrd(palabraAIngresar);
+            ret.resultado = Retorno.Resultado.OK;
+        } else {
+
+            ret.resultado = Retorno.Resultado.ERROR;
+        }
         return ret;
     }
 
     @Override
     public Retorno imprimirDiccionario() {
+
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+
+        if (diccionario.getInicio() != null) {
+            diccionario.mostrar();
+            ret.resultado = Retorno.Resultado.OK;
+        } else {
+            System.out.println("Diccionario Vacio");
+            ret.resultado = Retorno.Resultado.ERROR;
+        }
+
         return ret;
     }
 
@@ -182,7 +204,40 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno cantidadDeMensajes(int numContactoOrigen) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        int contador = 0;
+
+        Contacto paramContacto = new Contacto(numContactoOrigen, "");
+
+        Nodo<Mensaje> mensajeAct = SistemaMensajes.getInicio();
+
+        while (mensajeAct != null) {
+
+            if (mensajeAct.getDato().equals(paramContacto)) {
+                contador++;
+            }
+
+            mensajeAct = mensajeAct.getSiguiente();
+        }
+
+        ret.valorEntero = contador;
         return ret;
+    }
+
+    @Override
+    public Retorno borrarPalabraDiccionario(String palabraABorrar) {
+
+        Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+
+        Nodo palabra = diccionario.obtenerElemento(palabraABorrar);
+
+        if (palabra != null) {
+            diccionario.borrarElemento(palabraABorrar);
+        } else {
+            ret.resultado = Retorno.Resultado.ERROR;
+        }
+
+        return ret;
+
     }
 
 }
