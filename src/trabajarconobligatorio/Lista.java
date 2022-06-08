@@ -20,7 +20,7 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
         this.fin = null;
         this.cantidad = 0;
     }
-
+    
     @Override
     public boolean esVacia() {
         return this.cantidad == 0;
@@ -141,16 +141,20 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
         if (!this.esVacia()) {
             if (inicio.getDato().equals(n)) {
                 ret = inicio;
-            }
-            if (fin.getDato().equals(n)) {
-                ret = fin;
-            }
-            Nodo actual = inicio;
-            while (actual != null) {
-                if (actual.getDato().equals(n)) {
-                    ret = actual;
+            } else {
+                if (fin.getDato().equals(n)) {
+                    ret = fin;
+                } else {
+                    Nodo actual = getInicio();
+                    boolean encontre = false;
+                    while (actual != null  && !encontre) {
+                        if (actual.getDato().equals(n)) {
+                            ret = actual;
+                            encontre = true;
+                        }
+                        actual = actual.getSiguiente();
+                    }
                 }
-                actual = actual.getSiguiente();
             }
         }
         return ret;
