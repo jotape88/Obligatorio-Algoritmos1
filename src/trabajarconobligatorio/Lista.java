@@ -29,14 +29,14 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
     @Override
     public void borrarInicio() {
         if (!this.esVacia()) {
+
             if (cantidad == 1) {
-                inicio = null;
                 fin = null;
             }
-            Nodo<T> aux = inicio;
+
             inicio = getInicio().getSiguiente();
-            aux.setSiguiente(null);
             cantidad--;
+
         } else {
 
             System.out.println("Esta vacia");
@@ -46,24 +46,37 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
     @Override
     public void borrarFin() {
         if (!this.esVacia()) {
+
+            //Si tiene un solo elemento
             if (cantidad == 1) {
                 inicio = null;
                 fin = inicio;
             } else {
-                Nodo<T> borrar = fin;
-                //fin = borrar.getAnterior();
-                fin.setSiguiente(null);
-                //borrar.setAnterior(null);
+                Nodo actual = getInicio();
+                Nodo siguiente = getInicio().getSiguiente();
+
+                while (siguiente.getSiguiente() != null) {
+
+                    actual = siguiente;
+                    siguiente = siguiente.getSiguiente();
+                }
+
+                actual.setSiguiente(null);
+                fin = actual;
+
             }
+
             cantidad--;
+
         }
+
     }
 
     @Override
     public void mostrar() {
         Nodo<T> mostrar = getInicio();
         while (mostrar != null) {
-            System.out.print(mostrar.getDato().toString() + " - ");
+            System.out.print(mostrar.getDato().toString() + " - " + "\n");
             mostrar = mostrar.getSiguiente();
         }
 

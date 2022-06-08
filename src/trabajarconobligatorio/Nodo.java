@@ -4,10 +4,12 @@ public class Nodo<T> {
 
     private T dato;
     private Nodo<T> siguiente;
+    private Nodo<T> anterior;
 
     public Nodo(T dato) {
         this.dato = dato;
         this.siguiente = null;
+        this.anterior = null;
     }
 
     public T getDato() {
@@ -28,7 +30,21 @@ public class Nodo<T> {
 
     @Override
     public String toString() {
-        return "Nodo{" + "dato=" + dato.toString() + ", siguiente=" + siguiente + '}';
+        return "Nodo{" + "dato=" + dato.toString() + ", siguiente=" + getSiguiente() + '}';
+    }
+
+    /**
+     * @return the anterior
+     */
+    public Nodo<T> getAnterior() {
+        return anterior;
+    }
+
+    /**
+     * @param anterior the anterior to set
+     */
+    public void setAnterior(Nodo<T> anterior) {
+        this.anterior = anterior;
     }
 
 }

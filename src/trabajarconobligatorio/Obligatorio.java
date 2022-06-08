@@ -80,14 +80,12 @@ public class Obligatorio implements IObligatorio {
 
     @Override
     public Retorno eliminarMensaje(int numContactoOrigen, int numMensaje) {
-        Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        Retorno ret = new Retorno(Retorno.Resultado.OK);
         Contacto cAux = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
 
         Mensaje men = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();
-        //System.out.println(men.toString());
                               
         if(cAux != null && men != null) {
-            Mensaje m = new Mensaje(numMensaje);
             SistemaMensajes.borrarElemento(men);
         } else {
             ret.resultado = Retorno.Resultado.ERROR;
@@ -98,7 +96,18 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno imprimirTexto(int numContactoOrigen, int numMensaje) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
-
+//        Contacto cAux = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
+//        
+//        //Mensaje men = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();
+//
+//        if (.getInicio() != null) {
+//
+//            ret.resultado = Retorno.Resultado.OK;
+//        } else {
+//
+//            ret.resultado = Retorno.Resultado.ERROR;
+//        }
+//
         return ret;
     }
 

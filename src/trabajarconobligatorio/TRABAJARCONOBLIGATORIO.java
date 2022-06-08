@@ -30,8 +30,10 @@ public class TRABAJARCONOBLIGATORIO {
        
         
         p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
+        p.ver(obl.agregarMensaje(1, 3, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
+        p.ver(obl.agregarMensaje(2, 4, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
         Obligatorio.SistemaMensajes.mostrar();
-        p.ver(obl.eliminarMensaje(1, 1).resultado, Retorno.Resultado.OK, "Se elimina el mensaje creado");
+        p.ver(obl.eliminarMensaje(1, 1).resultado, Retorno.Resultado.OK, "Se elimina el mensaje 1");
         Obligatorio.SistemaMensajes.mostrar();
         p.ver(obl.destruirSistemaMensajes().resultado, Retorno.Resultado.OK, " sistema eliminado");
         p.imprimirResultadosPrueba();
@@ -43,7 +45,7 @@ public class TRABAJARCONOBLIGATORIO {
         p.ver(obl.agregarContacto(3, "Contacto3").resultado, Retorno.Resultado.OK, " sistema eliminado");
         p.ver(obl.agregarContacto(4, "Contacto4").resultado, Retorno.Resultado.OK, " sistema eliminado");
         obl.contactos.mostrar();
-        // System.out.println(obl.contactos.esVacia());
+        System.out.println(obl.contactos.esVacia());
         p.imprimirResultadosPrueba();
     }
 }

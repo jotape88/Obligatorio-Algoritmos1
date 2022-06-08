@@ -30,7 +30,7 @@ public class Mensaje implements Comparable<Mensaje> {
     }
     
     public Mensaje(int nroMensaje) {
-        this.numeroDeMensaje = Mensaje.nroMensajes;
+        this.numeroDeMensaje = nroMensaje;
     }
     
 
