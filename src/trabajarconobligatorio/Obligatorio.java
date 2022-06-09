@@ -215,14 +215,17 @@ public class Obligatorio implements IObligatorio {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         int contador = 0;
 
-        Contacto paramContacto = new Contacto(numContactoOrigen, "");
+//        Contacto paramContacto = new Contacto(numContactoOrigen, "");
 
         Nodo<Mensaje> mensajeAct = SistemaMensajes.getInicio();
 
         while (mensajeAct != null) {
-
-            if (mensajeAct.getDato().equals(paramContacto)) {
+            
+            int contactoActual = mensajeAct.getDato().getContOrigen().numeroContacto;
+            
+            if (contactoActual == numContactoOrigen) {
                 contador++;
+      
             }
 
             mensajeAct = mensajeAct.getSiguiente();

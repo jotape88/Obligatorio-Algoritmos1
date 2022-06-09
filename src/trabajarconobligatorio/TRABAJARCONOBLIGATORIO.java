@@ -18,7 +18,9 @@ public class TRABAJARCONOBLIGATORIO {
         Prueba p = new Prueba();
         juegodepruebaContactos(obl, p); // juego de prueba ejemplo
 
-        juegodepruebaMensajesYSistema(obl, p); // juego de prueba ejemplo  
+//        juegodepruebaMensajesYSistema(obl, p); // juego de prueba ejemplo
+        juegopruebaReporte(obl, p);
+        
 
     }
 
@@ -37,7 +39,46 @@ public class TRABAJARCONOBLIGATORIO {
         Obligatorio.SistemaMensajes.mostrar();
         p.ver(obl.destruirSistemaMensajes().resultado, Retorno.Resultado.OK, " sistema eliminado");
         p.imprimirResultadosPrueba();
+        
+        juegopruebaDiccionario(obl, p);
+        
+        
     }
+    
+    public static void juegopruebaReporte(Obligatorio obl, Prueba p){
+        obl.crearSistemaMensajes(3);
+        Date f = new Date();      
+        p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
+        p.ver(obl.agregarMensaje(1, 3, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
+        p.ver(obl.agregarMensaje(2, 4, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
+        
+        p.ver(obl.cantidadDeMensajes(1).resultado, Retorno.Resultado.OK, "Se muestra la cantidad de mensajes");
+    }
+    
+    public static void juegopruebaDiccionario(Obligatorio obl, Prueba p) {
+        
+        obl.ingresarPalabraDiccionario("Diccionario1");
+        obl.ingresarPalabraDiccionario("Diccionario2");
+        obl.ingresarPalabraDiccionario("Diccionario3");
+        
+        
+        obl.imprimirDiccionario();
+
+//        juegopruebaDiccionario(obl, p);
+//        
+//
+//        obl.agregarMensaje(1, 2, new Date());
+//        obl.agregarMensaje(2, 3, new Date());
+//        obl.agregarMensaje(1, 3, new Date());
+//        
+//    
+//        System.out.println(obl.cantidadDeMensajes(1).valorEntero);
+//        
+//        obl.eliminarMensaje(1,1);
+//        
+//        System.out.println(obl.cantidadDeMensajes(1).valorEntero); 
+    }
+    
 
     public static void juegodepruebaContactos(Obligatorio obl, Prueba p) {
         p.ver(obl.agregarContacto(1, "Contacto1").resultado, Retorno.Resultado.OK, " sistema eliminado");
