@@ -84,8 +84,8 @@ public class Obligatorio implements IObligatorio {
         Contacto cAux = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
 
         Mensaje men = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();
-                              
-        if(cAux != null && men != null) {
+
+        if (cAux != null && men != null) {
             SistemaMensajes.borrarElemento(men);
         } else {
             ret.resultado = Retorno.Resultado.ERROR;
@@ -114,6 +114,11 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno insertarLinea(int numContactoOrigen, int numMensaje) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        Nodo<Mensaje> men = SistemaMensajes.obtenerElemento(new Mensaje(numContactoOrigen));
+        if (men != null) {
+            Linea lin = new Linea(SistemaMensajes.getTope());
+            men.getDato().getListaLineas().agregarInicio(lin);
+        }
         return ret;
     }
 

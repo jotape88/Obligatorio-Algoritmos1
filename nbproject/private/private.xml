@@ -2,9 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Francisco/Desktop/ORT/3erSemestre/Algoritmos%201/Obligatorio-Algoritmos1-main/src/trabajarconobligatorio/Obligatorio.java</file>
-        </group>
         <group name="Ejercicios">
             <file>file:/C:/CODIGOS/Obligatorio%20Algoritmos/src/trabajarconobligatorio/Lista.java</file>
             <file>file:/C:/CODIGOS/Obligatorio%20Algoritmos/src/trabajarconobligatorio/Prueba.java</file>
@@ -14,6 +11,14 @@
             <file>file:/C:/CODIGOS/Obligatorio%20Algoritmos/src/trabajarconobligatorio/Obligatorio.java</file>
             <file>file:/C:/CODIGOS/Obligatorio%20Algoritmos/src/trabajarconobligatorio/Linea.java</file>
             <file>file:/C:/CODIGOS/Obligatorio%20Algoritmos/src/trabajarconobligatorio/Contacto.java</file>
+        </group>
+        <group>
+            <file>file:/C:/mauro/ort/algo/segundointento/Obligatorio/src/trabajarconobligatorio/Lista.java</file>
+            <file>file:/C:/mauro/ort/algo/segundointento/Obligatorio/src/trabajarconobligatorio/TRABAJARCONOBLIGATORIO.java</file>
+            <file>file:/C:/mauro/ort/algo/segundointento/Obligatorio/src/trabajarconobligatorio/Obligatorio.java</file>
+            <file>file:/C:/mauro/ort/algo/segundointento/Obligatorio/src/trabajarconobligatorio/Contacto.java</file>
+            <file>file:/C:/mauro/ort/algo/segundointento/Obligatorio/src/trabajarconobligatorio/Linea.java</file>
+            <file>file:/C:/mauro/ort/algo/segundointento/Obligatorio/src/trabajarconobligatorio/Mensaje.java</file>
         </group>
     </open-files>
 </project-private>
