@@ -21,46 +21,45 @@ public class TRABAJARCONOBLIGATORIO {
         //juegopruebaReporte(obl, p);
         
 
+        // juegodepruebaContactos(obl, p); // juego de prueba ejemplo
+        // juegodepruebaMensajesYSistema(obl, p); // juego de prueba ejemplo
+        // juegopruebaReporte(obl, p);
+        juegodepruebaLineas(obl, p);
     }
 
     public static void juegodepruebaMensajesYSistema(Obligatorio obl, Prueba p) {
         p.ver(obl.crearSistemaMensajes(3).resultado, Retorno.Resultado.OK, "Se creara sistma para 3 palabras por linea");
         Date f = new Date();
-        System.out.println("El tercer Contacto");
-        System.out.println(obl.contactos.obtenerElemento(new Contacto(3)).getDato().toString());
-       
-        
+
         p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
         p.ver(obl.agregarMensaje(1, 3, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
         p.ver(obl.agregarMensaje(2, 4, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
-        Obligatorio.SistemaMensajes.mostrar();
-        p.ver(obl.eliminarMensaje(1, 1).resultado, Retorno.Resultado.OK, "Se elimina el mensaje 1");
-        Obligatorio.SistemaMensajes.mostrar();
-        p.ver(obl.destruirSistemaMensajes().resultado, Retorno.Resultado.OK, " sistema eliminado");
-        p.imprimirResultadosPrueba();
-        
+//        Obligatorio.SistemaMensajes.mostrar();
+        // p.ver(obl.eliminarMensaje(1, 1).resultado, Retorno.Resultado.OK, "Se elimina el mensaje 1");
+//        Obligatorio.SistemaMensajes.mostrar();
+        // p.ver(obl.destruirSistemaMensajes().resultado, Retorno.Resultado.OK, " sistema eliminado");
+        // p.imprimirResultadosPrueba();
+
         juegopruebaDiccionario(obl, p);
-        
-        
+
     }
-    
-    public static void juegopruebaReporte(Obligatorio obl, Prueba p){
+
+    public static void juegopruebaReporte(Obligatorio obl, Prueba p) {
         obl.crearSistemaMensajes(3);
-        Date f = new Date();      
+        Date f = new Date();
         p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
         p.ver(obl.agregarMensaje(1, 3, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
         p.ver(obl.agregarMensaje(2, 4, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
-        
+
         p.ver(obl.cantidadDeMensajes(1).resultado, Retorno.Resultado.OK, "Se muestra la cantidad de mensajes");
     }
-    
+
     public static void juegopruebaDiccionario(Obligatorio obl, Prueba p) {
-        
+
         obl.ingresarPalabraDiccionario("Diccionario1");
         obl.ingresarPalabraDiccionario("Diccionario2");
         obl.ingresarPalabraDiccionario("Diccionario3");
-        
-        
+
         obl.imprimirDiccionario();
 
 //        juegopruebaDiccionario(obl, p);
@@ -77,7 +76,6 @@ public class TRABAJARCONOBLIGATORIO {
 //        
 //        System.out.println(obl.cantidadDeMensajes(1).valorEntero); 
     }
-    
 
     public static void juegodepruebaContactos(Obligatorio obl, Prueba p) {
         p.ver(obl.agregarContacto(1, "Contacto1").resultado, Retorno.Resultado.OK, " sistema eliminado");
@@ -88,4 +86,18 @@ public class TRABAJARCONOBLIGATORIO {
         System.out.println(obl.contactos.esVacia());
         p.imprimirResultadosPrueba();
     }
+
+    public static void juegodepruebaLineas(Obligatorio obl, Prueba p) {
+        System.out.println("JUEGO DE PRUEBA LINEAS");
+        p.ver(obl.crearSistemaMensajes(3).resultado, Retorno.Resultado.OK, "Se creara sistma para 3 palabras por linea");
+        Date f = new Date();
+        p.ver(obl.agregarContacto(1, "Contacto1").resultado, Retorno.Resultado.OK, "Se agrega 'Contacto1'");
+        p.ver(obl.agregarContacto(2, "Contacto2").resultado, Retorno.Resultado.OK, "Se agrega 'Contacto2'");
+        p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
+
+        p.ver(obl.insertarLinea(1, 1).resultado, Retorno.Resultado.OK, "Se agrega Linea");
+        Obligatorio.SistemaMensajes.mostrar();
+
+    }
+
 }

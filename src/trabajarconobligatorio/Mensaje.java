@@ -14,8 +14,8 @@ public class Mensaje implements Comparable<Mensaje> {
 
     static int nroMensajes = 1;
     private final int numeroDeMensaje;
-    private Contacto contOrigen; //Agregado (JP)
-    private Contacto contDestino; //Agregado (JP)
+    private Contacto contOrigen;
+    private Contacto contDestino;
     private Date fecha;
     private Lista<Linea> listaLineas = new Lista<>();
 
@@ -25,12 +25,24 @@ public class Mensaje implements Comparable<Mensaje> {
         this.contDestino = contDestino;
         this.fecha = fecha;
         Mensaje.nroMensajes++;
-        //this.listaLineas = new Lista<>();
         this.listaLineas.setTope(topePalabras);
+    }
+
+    public Lista<Linea> getListaLineas() {
+        return listaLineas;
+    }
+
+    public void setListaLineas(Lista<Linea> listaLineas) {
+        this.listaLineas = listaLineas;
     }
 
     public Mensaje(int nroMensaje) {
         this.numeroDeMensaje = nroMensaje;
+    }
+
+    public Mensaje(int nroMensaje, Contacto contOrigen) {
+        this.numeroDeMensaje = nroMensaje;
+        this.contOrigen = contOrigen;
     }
 
     public Contacto getContOrigen() {
@@ -61,14 +73,6 @@ public class Mensaje implements Comparable<Mensaje> {
         return numeroDeMensaje;
     }
 
-    public Lista<Linea> getListaLineas() {
-        return listaLineas;
-    }
-
-    public void setListaLineas(Lista<Linea> listaLineas) {
-        this.listaLineas = listaLineas;
-    }
-
     @Override
     public int compareTo(Mensaje o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -80,12 +84,24 @@ public class Mensaje implements Comparable<Mensaje> {
             return false;
         }
         Mensaje m = (Mensaje) obj;
+        
+
+        if (m.getContOrigen() != null) {
+            return m.getNumeroDeMensaje() == this.numeroDeMensaje && m.equals(m.contOrigen.numeroContacto);
+        }
+        System.out.println("this");
+        System.out.println(this.contOrigen.getNumeroContacto());
+        System.out.println("other");
+        System.out.println(m.contOrigen.getNumeroContacto());
+        System.out.println("");
         return m.getNumeroDeMensaje() == this.numeroDeMensaje;
+
     }
 
     @Override
     public String toString() {
-        return "Mensaje{" + "numeroDeMensaje=" + getNumeroDeMensaje() + ", contOrigen=" + contOrigen.toString() + ", contDestino=" + contDestino.toString() + ", fecha=" + fecha + ", listaLineas=" + listaLineas + '}';
+         return "Mensaje{" + "numeroDeMensaje=" + getNumeroDeMensaje();
+        // return "Mensaje{" + "numeroDeMensaje=" + getNumeroDeMensaje() + ", contOrigen=" + contOrigen.toString() + ", contDestino=" + contDestino.toString() + ", fecha=" + fecha + ", listaLineas=";
     }
 
 }
