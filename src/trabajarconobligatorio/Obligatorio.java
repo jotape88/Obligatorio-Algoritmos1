@@ -172,7 +172,77 @@ public class Obligatorio implements IObligatorio {
 
     @Override
     public Retorno insertarPalabraEnLinea(int numContactoOrigen, int numMensaje, int posicionLinea, int posicionPalabra, String palabraAIngresar) {
+
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+
+        int contadorLinea = 0;
+        int contadorPalabra = 0;
+        boolean posPosible = false;
+
+        if (!SistemaMensajes.esVacia()) {
+
+            Nodo nodoMensaje = SistemaMensajes.getInicio();
+
+            while (nodoMensaje != null && !posPosible) {
+
+                Mensaje esteMensaje = (Mensaje) nodoMensaje.getDato();
+
+                if (esteMensaje.getContOrigen().numeroContacto == numContactoOrigen
+                        && esteMensaje.getNumeroDeMensaje() == numMensaje) {
+
+                    Lista<Linea> lineasMensaje = esteMensaje.getListaLineas();
+
+                    if (!lineasMensaje.esVacia()) {
+
+                        Nodo nodoLinea = lineasMensaje.getInicio();
+
+                        while (nodoLinea != null && contadorLinea < posicionLinea && !posPosible) {
+
+                            if (contadorLinea == posicionLinea) {
+                                Lista<String> listaPalabras = (Lista<String>) nodoLinea.getDato();
+
+                                if (!listaPalabras.esVacia()) {
+
+                                    Nodo estaPalabra = listaPalabras.getInicio();
+
+                                    while (estaPalabra != null && contadorPalabra < posicionPalabra && !posPosible) {
+
+                                        if (contadorPalabra == posicionPalabra && (contadorPalabra < listaPalabras.getTope())) {
+                                            //controlar tope
+                                            Nodo nuevaPalabra = new Nodo(palabraAIngresar);
+                                            nuevaPalabra.setSiguiente(estaPalabra.getSiguiente());
+                                            estaPalabra.setSiguiente(nuevaPalabra);
+                                            posPosible = true;
+                                            ret.resultado = Retorno.Resultado.OK;
+                                        }
+
+                                        estaPalabra.getSiguiente();
+                                        contadorPalabra++;
+
+                                    }
+                                } else {
+
+                                }
+                            }
+
+                            nodoLinea.getSiguiente();
+
+                        }
+
+                    }
+
+                    ret.resultado = Retorno.Resultado.ERROR;
+
+                }
+
+                nodoMensaje.getSiguiente();
+            }
+
+        } else {
+
+            ret.resultado = Retorno.Resultado.ERROR;
+        }
+
         return ret;
     }
 

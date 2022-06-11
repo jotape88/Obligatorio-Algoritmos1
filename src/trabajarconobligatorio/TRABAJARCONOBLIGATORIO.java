@@ -78,14 +78,15 @@ public class TRABAJARCONOBLIGATORIO {
     }
 
     public static void juegodepruebaContactos(Obligatorio obl, Prueba p) {
-        p.ver(obl.agregarContacto(1, "Contacto1").resultado, Retorno.Resultado.OK, " sistema eliminado");
-        p.ver(obl.agregarContacto(2, "Contacto2").resultado, Retorno.Resultado.OK, " sistema eliminado");
-        p.ver(obl.agregarContacto(3, "Contacto3").resultado, Retorno.Resultado.OK, " sistema eliminado");
-        p.ver(obl.agregarContacto(4, "Contacto4").resultado, Retorno.Resultado.OK, " sistema eliminado");
+        p.ver(obl.agregarContacto(1, "Contacto1").resultado, Retorno.Resultado.OK, " Contacto Agregado");
+        obl.agregarContacto(2, "Contacto2");
+        obl.agregarContacto(3, "Contacto3");
+        obl.agregarContacto(4, "Contacto4");
         obl.contactos.mostrar();
-        System.out.println(obl.contactos.esVacia());
+        p.ver(obl.eliminarContacto(3).resultado, Retorno.Resultado.OK, " Contacto Eliminado");
+        obl.contactos.mostrar();
         p.imprimirResultadosPrueba();
-    }
+}
 
     public static void juegodepruebaLineas(Obligatorio obl, Prueba p) {
         System.out.println("JUEGO DE PRUEBA LINEAS");
