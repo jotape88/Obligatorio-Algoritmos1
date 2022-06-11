@@ -10,25 +10,28 @@ package trabajarconobligatorio;
  */
 public class Linea implements Comparable<Linea> {
 
-    /*  private Lista<Palabra> listaPalabras;*/
-    private int topePalabras;
-    private String[] palabras = new String[this.topePalabras];
+    private Lista<Palabra> listaPalabras;
+
+    public Lista<Palabra> getListaPalabras() {
+        return listaPalabras;
+    }
+
+    public void setListaPalabras(Lista<Palabra> listaPalabras) {
+        this.listaPalabras = listaPalabras;
+    }
 
     public Linea(int topePalabras) {
-        this.topePalabras = topePalabras;
-    }
-
-    public String[] getPalabras() {
-        return palabras;
-    }
-
-    public void setPalabras(String[] palabras) {
-        this.palabras = palabras;
+        this.listaPalabras.setTope(topePalabras);        
     }
 
     @Override
     public int compareTo(Linea o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String toString() {
+        return "Linea{" + "listaPalabras=" + listaPalabras.getInicio().toString() + '}';
     }
 
 }

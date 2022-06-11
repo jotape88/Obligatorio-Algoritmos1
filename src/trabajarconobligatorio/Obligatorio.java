@@ -51,11 +51,8 @@ public class Obligatorio implements IObligatorio {
         System.out.println(cAux.toString());
 
         if (contactos.obtenerElemento(cAux) != null) {
-//            System.out.println("No es null");
             contactos.borrarElemento(cAux);
-
         } else {
-//            System.out.println("Entra borrar elemento");
             ret.resultado = Retorno.Resultado.ERROR;
         }
 
@@ -82,9 +79,7 @@ public class Obligatorio implements IObligatorio {
     public Retorno eliminarMensaje(int numContactoOrigen, int numMensaje) {
         Retorno ret = new Retorno(Retorno.Resultado.OK);
         Contacto cAux = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
-
         Mensaje men = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();
-
         if (cAux != null && men != null) {
             SistemaMensajes.borrarElemento(men);
         } else {
@@ -114,10 +109,24 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno insertarLinea(int numContactoOrigen, int numMensaje) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
-        Nodo<Mensaje> men = SistemaMensajes.obtenerElemento(new Mensaje(numContactoOrigen));
-        if (men != null) {
-            Linea lin = new Linea(SistemaMensajes.getTope());
-            men.getDato().getListaLineas().agregarInicio(lin);
+        Nodo<Contacto> contOr = contactos.obtenerElemento(new Contacto(numContactoOrigen));
+        
+        System.out.println("contacto");
+        System.out.println(contOr.getDato().toString());
+        if (contOr.getDato() != null) {
+            System.out.println("aca contOr");
+            Mensaje men = new Mensaje(numMensaje, contOr.getDato());
+            System.out.println(men.toString());
+            Nodo<Mensaje> menBus;
+            menBus = SistemaMensajes.obtenerElemento(men);
+            if (menBus != null) {
+                System.out.println("aca menbus");
+                Linea linea = new Linea(SistemaMensajes.getTope());
+                Palabra pa = new Palabra();
+                pa.setDato("");
+                linea.getListaPalabras().agregarFinal(pa);
+                menBus.getDato().getListaLineas().agregarFinal(linea);
+            }
         }
         return ret;
     }
@@ -221,16 +230,15 @@ public class Obligatorio implements IObligatorio {
         int contador = 0;
 
 //        Contacto paramContacto = new Contacto(numContactoOrigen, "");
-
         Nodo<Mensaje> mensajeAct = SistemaMensajes.getInicio();
 
         while (mensajeAct != null) {
-            
+
             int contactoActual = mensajeAct.getDato().getContOrigen().numeroContacto;
-            
+
             if (contactoActual == numContactoOrigen) {
                 contador++;
-      
+
             }
 
             mensajeAct = mensajeAct.getSiguiente();
