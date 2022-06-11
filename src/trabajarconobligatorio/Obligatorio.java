@@ -65,15 +65,18 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno agregarMensaje(int numContactoOrigen, int numContactoDestino, Date fecha) {
         Retorno ret = new Retorno(Retorno.Resultado.ERROR);
-        Contacto cOrigen = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
-        Contacto cDestino = contactos.obtenerElemento(new Contacto(numContactoDestino)).getDato();
-        this.contactos.obtenerElemento(cOrigen);
-
-        if (cOrigen != null && cDestino != null) {
-            Mensaje m = new Mensaje(cOrigen, cDestino, fecha, SistemaMensajes.getTope());
-            SistemaMensajes.agregarInicio(m);
+        
+        Contacto cO = new Contacto(numContactoOrigen);
+        Contacto cD = new Contacto(numContactoDestino);
+        
+        if(contactos.obtenerElemento(cO) != null && contactos.obtenerElemento(cD) != null) {
+               Contacto cOrigen = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
+               Contacto cDestino = contactos.obtenerElemento(new Contacto(numContactoDestino)).getDato();
+               Mensaje m = new Mensaje(cOrigen, cDestino, fecha, SistemaMensajes.getTope());
+               SistemaMensajes.agregarInicio(m);
         } else {
             ret.resultado = Retorno.Resultado.ERROR;
+            System.out.println("Error al agregar mensaje, el número de contacto de origen y/o destino no pertenecen a un contacto válido");
         }
         return ret;
     }
@@ -81,14 +84,16 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno eliminarMensaje(int numContactoOrigen, int numMensaje) {
         Retorno ret = new Retorno(Retorno.Resultado.OK);
-        Contacto cAux = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
-
-        Mensaje men = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();
-
-        if (cAux != null && men != null) {
+        
+        Contacto cO = new Contacto(numContactoOrigen);
+        Mensaje m = new Mensaje(numMensaje);
+        
+        if (contactos.obtenerElemento(cO) != null && SistemaMensajes.obtenerElemento(m) != null){
+            Mensaje men = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();
             SistemaMensajes.borrarElemento(men);
         } else {
             ret.resultado = Retorno.Resultado.ERROR;
+            System.out.println("Error al eliminar el mensaje, el número de contacto de orígen y/o número de mensaje no son válidos");
         }
         return ret;
     }
@@ -96,18 +101,27 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno imprimirTexto(int numContactoOrigen, int numMensaje) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
-//        Contacto cAux = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
 //        
-//        //Mensaje men = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();
+//        Contacto cO = new Contacto(numContactoOrigen);
+//        Mensaje m = new Mensaje(numMensaje);
+//        
+//        if (contactos.obtenerElemento(cO) != null && SistemaMensajes.obtenerElemento(m) != null) {
+//            Contacto cAux = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
+//            Mensaje men = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();
+//                      
+//            while (mostrar != null) {
 //
-//        if (.getInicio() != null) {
 //
+//        }
+//            
+//            
 //            ret.resultado = Retorno.Resultado.OK;
 //        } else {
 //
 //            ret.resultado = Retorno.Resultado.ERROR;
+//            System.out.println("Error al imprimir el texto, el número de contacto de orígen y/o número de mensaje no son válidos");
 //        }
-//
+////
         return ret;
     }
 

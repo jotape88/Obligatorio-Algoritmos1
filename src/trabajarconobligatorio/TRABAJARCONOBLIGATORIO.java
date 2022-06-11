@@ -17,8 +17,8 @@ public class TRABAJARCONOBLIGATORIO {
         Prueba p = new Prueba();
         juegodepruebaContactos(obl, p); // juego de prueba ejemplo
 
-//        juegodepruebaMensajesYSistema(obl, p); // juego de prueba ejemplo
-        juegopruebaReporte(obl, p);
+        juegodepruebaMensajesYSistema(obl, p); // juego de prueba ejemplo
+        //juegopruebaReporte(obl, p);
         
 
     }
