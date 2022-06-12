@@ -76,7 +76,8 @@ public class Mensaje implements Comparable<Mensaje> {
 
     @Override
     public int compareTo(Mensaje o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
+                                                                       // Tools | Templates.
     }
 
     @Override
@@ -89,11 +90,11 @@ public class Mensaje implements Comparable<Mensaje> {
         if (m.getContOrigen() != null) {
             return m.getNumeroDeMensaje() == this.numeroDeMensaje && m.equals(m.contOrigen.numeroContacto);
         }
-//        System.out.println("this");
-//        System.out.println(this.contOrigen.getNumeroContacto());
-//        System.out.println("other");
-//        System.out.println(m.contOrigen.getNumeroContacto());
-//        System.out.println("");
+        // System.out.println("this");
+        // System.out.println(this.contOrigen.getNumeroContacto());
+        // System.out.println("other");
+        // System.out.println(m.contOrigen.getNumeroContacto());
+        // System.out.println("");
         return m.getNumeroDeMensaje() == this.numeroDeMensaje;
 
     }
@@ -106,7 +107,9 @@ public class Mensaje implements Comparable<Mensaje> {
         if (this.fecha != null) {
             fechaStr = sdf.format(this.fecha);
         }
-        return UTILS.randomColor() + "Mensaje: { numeroDeMensaje : '" + numeroDeMensaje + "', contOrigen : " + contOrigen + ", contDestino : " + contDestino + ", fecha : '" + fechaStr + "', listaLineas : '" + listaLineas.toString() + "'\n }";
+        return UTILS.randomColor() + "Mensaje: { numeroDeMensaje : '" + numeroDeMensaje + "', contOrigen : "
+                + contOrigen + ", contDestino : " + contDestino + ", fecha : '" + fechaStr + "', listaLineas : '"
+                + listaLineas.toString() + "'\n }";
     }
 
 }

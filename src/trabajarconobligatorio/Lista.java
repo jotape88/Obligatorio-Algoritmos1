@@ -87,6 +87,8 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
                 actual = actual.getSiguiente();
             }
             System.out.println(ANSI_CODE + " ]");
+        } else {
+            System.out.println("La lista esta vacia");
         }
         System.out.println(ANSI_RESET + "");
     }

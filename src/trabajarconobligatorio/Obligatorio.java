@@ -71,7 +71,9 @@ public class Obligatorio implements IObligatorio {
                Contacto cDestino = contactos.obtenerElemento(new Contacto(numContactoDestino)).getDato();
                Mensaje m = new Mensaje(cOrigen, cDestino, fecha, SistemaMensajes.getTope());
                SistemaMensajes.agregarInicio(m);
+               
         } else {
+            System.out.println("esta viniendo al else");
             ret.resultado = Retorno.Resultado.ERROR;
             //System.out.println("Error al agregar mensaje, el número de contacto de origen y/o destino no pertenecen a un contacto válido");
         }
