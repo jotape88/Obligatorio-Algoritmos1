@@ -30,7 +30,7 @@ public class Obligatorio implements IObligatorio {
 
     @Override
     public Retorno agregarContacto(int numContacto, String nomContacto) {
-        Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        Retorno ret = new Retorno(Retorno.Resultado.OK);
         Contacto newContacto = new Contacto(numContacto, nomContacto);
         if (contactos.obtenerElemento(newContacto) == null) {
             contactos.agregarInicio(newContacto);
@@ -45,10 +45,10 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno eliminarContacto(int numContacto) {
 
-        Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        Retorno ret = new Retorno(Retorno.Resultado.OK);
         Contacto cAux = new Contacto(numContacto, "Pirulo");
 
-        System.out.println(cAux.toString());
+        //System.out.println(cAux.toString());
 
         if (contactos.obtenerElemento(cAux) != null) {
             contactos.borrarElemento(cAux);
@@ -61,7 +61,7 @@ public class Obligatorio implements IObligatorio {
 
     @Override
     public Retorno agregarMensaje(int numContactoOrigen, int numContactoDestino, Date fecha) {
-        Retorno ret = new Retorno(Retorno.Resultado.ERROR);
+        Retorno ret = new Retorno(Retorno.Resultado.OK);
         
         Contacto cO = new Contacto(numContactoOrigen);
         Contacto cD = new Contacto(numContactoDestino);
@@ -73,7 +73,7 @@ public class Obligatorio implements IObligatorio {
                SistemaMensajes.agregarInicio(m);
         } else {
             ret.resultado = Retorno.Resultado.ERROR;
-            System.out.println("Error al agregar mensaje, el número de contacto de origen y/o destino no pertenecen a un contacto válido");
+            //System.out.println("Error al agregar mensaje, el número de contacto de origen y/o destino no pertenecen a un contacto válido");
         }
         return ret;
     }
@@ -89,7 +89,7 @@ public class Obligatorio implements IObligatorio {
             Contacto cAux = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
         } else {
             ret.resultado = Retorno.Resultado.ERROR;
-            System.out.println("Error al eliminar el mensaje, el número de contacto de orígen y/o número de mensaje no son válidos");
+            //System.out.println("Error al eliminar el mensaje, el número de contacto de orígen y/o número de mensaje no son válidos");
         }      
         return ret;
     }

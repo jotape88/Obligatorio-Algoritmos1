@@ -89,11 +89,11 @@ public class Mensaje implements Comparable<Mensaje> {
         if (m.getContOrigen() != null) {
             return m.getNumeroDeMensaje() == this.numeroDeMensaje && m.equals(m.contOrigen.numeroContacto);
         }
-        System.out.println("this");
-        System.out.println(this.contOrigen.getNumeroContacto());
-        System.out.println("other");
-        System.out.println(m.contOrigen.getNumeroContacto());
-        System.out.println("");
+//        System.out.println("this");
+//        System.out.println(this.contOrigen.getNumeroContacto());
+//        System.out.println("other");
+//        System.out.println(m.contOrigen.getNumeroContacto());
+//        System.out.println("");
         return m.getNumeroDeMensaje() == this.numeroDeMensaje;
 
     }
