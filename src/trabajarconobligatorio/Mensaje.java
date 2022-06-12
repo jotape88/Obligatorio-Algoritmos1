@@ -84,7 +84,6 @@ public class Mensaje implements Comparable<Mensaje> {
             return false;
         }
         Mensaje m = (Mensaje) obj;
-        
 
         if (m.getContOrigen() != null) {
             return m.getNumeroDeMensaje() == this.numeroDeMensaje && m.equals(m.contOrigen.numeroContacto);
@@ -100,8 +99,7 @@ public class Mensaje implements Comparable<Mensaje> {
 
     @Override
     public String toString() {
-         return "Mensaje{" + "numeroDeMensaje=" + getNumeroDeMensaje();
-        // return "Mensaje{" + "numeroDeMensaje=" + getNumeroDeMensaje() + ", contOrigen=" + contOrigen.toString() + ", contDestino=" + contDestino.toString() + ", fecha=" + fecha + ", listaLineas=";
+        return "Mensaje{" + "numeroDeMensaje=" + numeroDeMensaje + ", contOrigen=" + contOrigen + ", contDestino=" + contDestino + ", fecha=" + fecha + ", listaLineas=" + listaLineas.toString() + '}';
     }
 
 }

@@ -19,7 +19,6 @@ public class TRABAJARCONOBLIGATORIO {
 
         juegodepruebaMensajesYSistema(obl, p); // juego de prueba ejemplo
         //juegopruebaReporte(obl, p);
-        
 
         // juegodepruebaContactos(obl, p); // juego de prueba ejemplo
         // juegodepruebaMensajesYSistema(obl, p); // juego de prueba ejemplo
@@ -34,14 +33,13 @@ public class TRABAJARCONOBLIGATORIO {
         p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
         p.ver(obl.agregarMensaje(1, 3, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
         p.ver(obl.agregarMensaje(2, 4, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
-//        Obligatorio.SistemaMensajes.mostrar();
+        Obligatorio.SistemaMensajes.mostrar();
         // p.ver(obl.eliminarMensaje(1, 1).resultado, Retorno.Resultado.OK, "Se elimina el mensaje 1");
 //        Obligatorio.SistemaMensajes.mostrar();
         // p.ver(obl.destruirSistemaMensajes().resultado, Retorno.Resultado.OK, " sistema eliminado");
         // p.imprimirResultadosPrueba();
 
-        juegopruebaDiccionario(obl, p);
-
+        //    juegopruebaDiccionario(obl, p);
     }
 
     public static void juegopruebaReporte(Obligatorio obl, Prueba p) {
@@ -86,7 +84,7 @@ public class TRABAJARCONOBLIGATORIO {
         p.ver(obl.eliminarContacto(3).resultado, Retorno.Resultado.OK, " Contacto Eliminado");
         obl.contactos.mostrar();
         p.imprimirResultadosPrueba();
-}
+    }
 
     public static void juegodepruebaLineas(Obligatorio obl, Prueba p) {
         System.out.println("JUEGO DE PRUEBA LINEAS");

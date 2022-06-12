@@ -20,7 +20,7 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
         this.fin = null;
         this.cantidad = 0;
     }
-    
+
     @Override
     public boolean esVacia() {
         return this.cantidad == 0;
@@ -160,7 +160,7 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
                 } else {
                     Nodo actual = getInicio();
                     boolean encontre = false;
-                    while (actual != null  && !encontre) {
+                    while (actual != null && !encontre) {
                         if (actual.getDato().equals(n)) {
                             ret = actual;
                             encontre = true;
@@ -172,8 +172,8 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
         }
         return ret;
     }
-    
-        @Override
+
+    @Override
     public Nodo<T> obtenerMensaje(int numMensaje) {
         Nodo<T> ret = null;
 
@@ -218,6 +218,21 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
     @Override
     public void mostrarREC(T l) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String toString() {
+        if (this.esVacia()) {
+            return "La lista de " + this.getClass() + "s esta vacia";
+        }
+        String datosLista = "";
+        Nodo<T> actual = this.inicio;
+        while (actual.getSiguiente() != null) {
+
+            datosLista += actual.getDato().toString();
+            actual = actual.getSiguiente();
+        }
+        return datosLista;
     }
 
 }
