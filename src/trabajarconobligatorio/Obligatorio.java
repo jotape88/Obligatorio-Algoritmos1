@@ -49,7 +49,6 @@ public class Obligatorio implements IObligatorio {
         Contacto cAux = new Contacto(numContacto, "Pirulo");
 
         //System.out.println(cAux.toString());
-
         if (contactos.obtenerElemento(cAux) != null) {
             contactos.borrarElemento(cAux);
         } else {
@@ -62,16 +61,16 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno agregarMensaje(int numContactoOrigen, int numContactoDestino, Date fecha) {
         Retorno ret = new Retorno(Retorno.Resultado.OK);
-        
+
         Contacto cO = new Contacto(numContactoOrigen);
         Contacto cD = new Contacto(numContactoDestino);
-        
-        if(contactos.obtenerElemento(cO) != null && contactos.obtenerElemento(cD) != null) {
-               Contacto cOrigen = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
-               Contacto cDestino = contactos.obtenerElemento(new Contacto(numContactoDestino)).getDato();
-               Mensaje m = new Mensaje(cOrigen, cDestino, fecha, SistemaMensajes.getTope());
-               SistemaMensajes.agregarInicio(m);
-               
+
+        if (contactos.obtenerElemento(cO) != null && contactos.obtenerElemento(cD) != null) {
+            Contacto cOrigen = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
+            Contacto cDestino = contactos.obtenerElemento(new Contacto(numContactoDestino)).getDato();
+            Mensaje m = new Mensaje(cOrigen, cDestino, fecha, SistemaMensajes.getTope());
+            SistemaMensajes.agregarInicio(m);
+
         } else {
             System.out.println("esta viniendo al else");
             ret.resultado = Retorno.Resultado.ERROR;
@@ -82,17 +81,17 @@ public class Obligatorio implements IObligatorio {
 
     @Override
     public Retorno eliminarMensaje(int numContactoOrigen, int numMensaje) {
-        Retorno ret = new Retorno(Retorno.Resultado.OK);        
+        Retorno ret = new Retorno(Retorno.Resultado.OK);
         Contacto cO = new Contacto(numContactoOrigen);
         Mensaje m = new Mensaje(numMensaje);
-        
-        if (contactos.obtenerElemento(cO) != null && SistemaMensajes.obtenerElemento(m) != null){
+
+        if (contactos.obtenerElemento(cO) != null && SistemaMensajes.obtenerElemento(m) != null) {
             Mensaje men = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();
             Contacto cAux = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
         } else {
             ret.resultado = Retorno.Resultado.ERROR;
             //System.out.println("Error al eliminar el mensaje, el número de contacto de orígen y/o número de mensaje no son válidos");
-        }      
+        }
         return ret;
     }
 
@@ -127,7 +126,7 @@ public class Obligatorio implements IObligatorio {
     public Retorno insertarLinea(int numContactoOrigen, int numMensaje) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         Nodo<Contacto> contOr = contactos.obtenerElemento(new Contacto(numContactoOrigen));
-        
+
         System.out.println("contacto");
         System.out.println(contOr.getDato().toString());
         if (contOr.getDato() != null) {
@@ -157,6 +156,34 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno borrarLinea(int numContactoOrigen, int numMensaje, int posicionLinea) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        int contadorLinea = 0;
+        if (!SistemaMensajes.esVacia()) {
+            Nodo nodoMensaje = SistemaMensajes.getInicio();
+            while (nodoMensaje != null) {
+                Mensaje esteMensaje = (Mensaje) nodoMensaje.getDato();
+                if (esteMensaje.getNumeroDeMensaje() == numMensaje && esteMensaje.getContOrigen().numeroContacto == numContactoOrigen) {
+                    Lista<Linea> listaLineas = esteMensaje.getListaLineas();
+                    Nodo nodoLinea = listaLineas.getInicio();
+                    while (nodoLinea != null && contadorLinea < posicionLinea) {
+                        nodoLinea.getSiguiente();
+                    }
+                    Nodo aBorrar = nodoLinea.getSiguiente();
+                    nodoLinea.setSiguiente(aBorrar.getSiguiente());
+                    aBorrar.setSiguiente(null);
+
+                    ret.resultado = Retorno.Resultado.OK;
+
+                } else {
+                    nodoMensaje.getSiguiente();
+                }
+            }
+
+        } else {
+
+            ret.resultado = Retorno.Resultado.ERROR;
+
+        }
+
         return ret;
     }
 
