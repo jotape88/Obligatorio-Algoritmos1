@@ -4,6 +4,7 @@
  */
 package trabajarconobligatorio;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -99,7 +100,14 @@ public class Mensaje implements Comparable<Mensaje> {
 
     @Override
     public String toString() {
-        return "Mensaje{" + "numeroDeMensaje=" + numeroDeMensaje + ", contOrigen=" + contOrigen + ", contDestino=" + contDestino + ", fecha=" + fecha + ", listaLineas=" + listaLineas.toString() + '}';
+        SimpleDateFormat sdf = new SimpleDateFormat();
+        String fechaStr = "xx/xx/xxxx";
+        sdf.applyPattern("dd/MM/yyyy");
+        if (this.fecha != null) {
+            fechaStr = sdf.format(this.fecha);
+        }
+
+        return "Mensaje: { \nnumeroDeMensaje : '" + numeroDeMensaje + "', \ncontOrigen : " + contOrigen + ", \ncontDestino : " + contDestino + ", \nfecha : '" + fechaStr + "', \nlistaLineas : '" + listaLineas.toString() + "'\n }";
     }
 
 }

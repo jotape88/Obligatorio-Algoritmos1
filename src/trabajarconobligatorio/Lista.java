@@ -1,5 +1,7 @@
 package trabajarconobligatorio;
 
+import java.util.Arrays;
+
 public class Lista<T extends Comparable<T>> implements ILista<T> {
 
     private Nodo<T> inicio;
@@ -220,10 +222,23 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    /*
+    public class GFG {
+    public static void main(String args[])
+    {
+        String str = "geekss@for@geekss";
+        String[] arrOfStr = str.split("@", 2);
+  
+        for (String a : arrOfStr)
+            System.out.println(a);
+    }
+}
+    
+     */
     @Override
     public String toString() {
-        if (this.esVacia()) {
-            return "La lista de " + this.getClass() + "s esta vacia";
+        if (this.esVacia()) {                
+            return "La lista esta vacia";
         }
         String datosLista = "";
         Nodo<T> actual = this.inicio;

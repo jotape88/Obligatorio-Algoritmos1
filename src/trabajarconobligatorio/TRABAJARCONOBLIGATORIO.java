@@ -15,9 +15,9 @@ public class TRABAJARCONOBLIGATORIO {
 
         Obligatorio obl = new Obligatorio();
         Prueba p = new Prueba();
-        juegodepruebaContactos(obl, p); // juego de prueba ejemplo
+        // juegodepruebaContactos(obl, p); // juego de prueba ejemplo
 
-        juegodepruebaMensajesYSistema(obl, p); // juego de prueba ejemplo
+        // juegodepruebaMensajesYSistema(obl, p); // juego de prueba ejemplo
         //juegopruebaReporte(obl, p);
 
         // juegodepruebaContactos(obl, p); // juego de prueba ejemplo

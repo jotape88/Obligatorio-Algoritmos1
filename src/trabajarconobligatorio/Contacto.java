@@ -17,8 +17,9 @@ public class Contacto implements Comparable<Contacto> {
         this.numeroContacto = numContacto;
         this.nombre = nombreContacto;
     }
+
     public Contacto(int numContacto) {
-        this.numeroContacto = numContacto;        
+        this.numeroContacto = numContacto;
     }
 
     @Override
@@ -36,7 +37,7 @@ public class Contacto implements Comparable<Contacto> {
     }
 
     public String toString() {
-        return "Nombre:" + this.getNombre();
+        return " \n{ Nombre : '" + this.getNombre() + "' }";
     }
 
     /**
