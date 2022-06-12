@@ -37,7 +37,7 @@ public class Contacto implements Comparable<Contacto> {
     }
 
     public String toString() {
-        return " \n{ Nombre : '" + this.getNombre() + "' }";
+        return " { Nombre : '" + this.getNombre() + "' }";
     }
 
     /**

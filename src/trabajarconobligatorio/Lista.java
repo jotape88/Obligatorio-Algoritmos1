@@ -76,10 +76,15 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
 
     @Override
     public void mostrar() {
-        Nodo<T> mostrar = getInicio();
-        while (mostrar != null) {
-            System.out.print(mostrar.getDato().toString() + " - " + "\n");
-            mostrar = mostrar.getSiguiente();
+        Nodo<T> actual = getInicio();
+        if (actual != null) {
+            System.out.println("Lista de " + actual.getDato().getClass().toString().split("[.]")[1] + "s : [");
+            while (actual != null) {
+                System.out.print(actual.getDato().toString() + " - " + "\n");
+                actual = actual.getSiguiente();
+            }
+            System.out.println(" ]");    
+            
         }
 
         System.out.println("");
@@ -237,7 +242,7 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
      */
     @Override
     public String toString() {
-        if (this.esVacia()) {                
+        if (this.esVacia()) {
             return "La lista esta vacia";
         }
         String datosLista = "";

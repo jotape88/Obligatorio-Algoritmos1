@@ -93,6 +93,8 @@ public class TRABAJARCONOBLIGATORIO {
         p.ver(obl.agregarContacto(1, "Contacto1").resultado, Retorno.Resultado.OK, "Se agrega 'Contacto1'");
         p.ver(obl.agregarContacto(2, "Contacto2").resultado, Retorno.Resultado.OK, "Se agrega 'Contacto2'");
         p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
+        p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
+        p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
 
         p.ver(obl.insertarLinea(1, 1).resultado, Retorno.Resultado.OK, "Se agrega Linea");
         Obligatorio.SistemaMensajes.mostrar();
