@@ -106,8 +106,7 @@ public class Mensaje implements Comparable<Mensaje> {
         if (this.fecha != null) {
             fechaStr = sdf.format(this.fecha);
         }
-
-        return "Mensaje: { \nnumeroDeMensaje : '" + numeroDeMensaje + "', \ncontOrigen : \n\t" + contOrigen + ", \ncontDestino : \n\t" + contDestino + ", \nfecha : '" + fechaStr + "', \nlistaLineas : '" + listaLineas.toString() + "'\n }";
+        return UTILS.randomColor() + "Mensaje: { numeroDeMensaje : '" + numeroDeMensaje + "', contOrigen : " + contOrigen + ", contDestino : " + contDestino + ", fecha : '" + fechaStr + "', listaLineas : '" + listaLineas.toString() + "'\n }";
     }
 
 }
