@@ -17,4 +17,6 @@ public class UTILS {
         Random rand = new Random();
         return "\u001B[3" + rand.nextInt(7) + "m ";
     }
+    
+    // static Date generarFechasRandom()
 }
