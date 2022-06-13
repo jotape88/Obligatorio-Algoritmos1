@@ -134,10 +134,10 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
     @Override
     public void borrarElemento(T n) {
         if (!this.esVacia()) {
-            if (n.equals(inicio.getDato())) {
+            if (inicio.getDato().equals(n)) {
                 borrarInicio();
             } else {
-                if (n.equals(fin.getDato())) {
+                if (fin.getDato().equals(n)) {
                     borrarFin();
                 } else {
                     Nodo<T> aux = inicio;

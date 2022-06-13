@@ -87,9 +87,11 @@ public class Obligatorio implements IObligatorio {
         if (contactos.obtenerElemento(cO) != null && SistemaMensajes.obtenerElemento(m) != null) {
             Mensaje men = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();
             Contacto cAux = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
+            if(men.getNumeroDeMensaje() == numMensaje && cAux.getNumeroContacto() == numContactoOrigen) {
+                SistemaMensajes.borrarElemento(m);
+            }
         } else {
             ret.resultado = Retorno.Resultado.ERROR;
-            //System.out.println("Error al eliminar el mensaje, el número de contacto de orígen y/o número de mensaje no son válidos");
         }
         return ret;
     }
@@ -301,14 +303,17 @@ public class Obligatorio implements IObligatorio {
             Contacto cO = new Contacto(numContactoOrigen);
             Mensaje m = new Mensaje(numMensaje);  
             if (contactos.obtenerElemento(cO) != null && SistemaMensajes.obtenerElemento(m) != null) {
-                Mensaje msg = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();                
+                Mensaje msg = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato(); 
+                
+                
+                
                 Lista<Linea> listaLineas = msg.getListaLineas();
                 Nodo nodoLinea = listaLineas.getInicio();
                 while(nodoLinea != null && contadorLineas < posicionLinea) {
                     nodoLinea.getSiguiente();
                     contadorLineas++;
                 }
-                 System.out.println(nodoLinea.toString());
+                System.out.println(nodoLinea.toString());
             } else {
                 ret.resultado = Retorno.Resultado.ERROR;
             }
