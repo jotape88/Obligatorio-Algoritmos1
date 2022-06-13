@@ -6,6 +6,8 @@
 package trabajarconobligatorio;
 
 import java.util.Random;
+import java.util.GregorianCalendar;
+import java.util.Date;
 
 /**
  *
@@ -18,5 +20,12 @@ public class UTILS {
         return "\u001B[3" + rand.nextInt(7) + "m ";
     }
     
-    // static Date generarFechasRandom()
+    static Date generarFechasRandom(){
+        Random rand = new Random();
+        GregorianCalendar gc = new GregorianCalendar();
+        int year = 2000 + (int)(Math.random()*20);
+        int dayOfYear = rand.nextInt(gc.getActualMaximum(GregorianCalendar.DAY_OF_YEAR)) + 1;
+        gc.set(year, 0, dayOfYear);
+        return gc.getTime();   
+     }
 }

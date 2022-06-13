@@ -17,10 +17,10 @@ public class TRABAJARCONOBLIGATORIO {
         Prueba p = new Prueba();
 
         // juegodepruebaSistema(obl, p);
-        juegodepruebaContactos(obl, p);
-        juegodepruebaMensajes(obl, p);
+        //juegodepruebaContactos(obl, p);
+        //juegodepruebaMensajes(obl, p);
         // juegopruebaFucionalidades(obl, p);
-        juegopruebaDiccionario(obl, p);
+        //juegopruebaDiccionario(obl, p);
         // juegodepruebaLineas(obl, p);
         // juegopruebaReporte(obl, p);
     }
@@ -67,67 +67,38 @@ public class TRABAJARCONOBLIGATORIO {
     public static void juegodepruebaMensajes(Obligatorio obl, Prueba p) {
         obl.crearSistemaMensajes(3);
         Date f = new Date();
-        p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje para el contacto 1 como origen y el contacto 2 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(1, 3, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 1 como origen y el contacto 3 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(1, 3, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 1 como origen y el contacto 3 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(2, 4, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 2 como origen y el contacto 4 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(3, 2, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 3 como origen y el contacto 2 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(3, 9, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 3 como origen y el contacto 9 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(3, 5, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 3 como origen y el contacto 5 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(5, 6, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 5 como origen y el contacto 6 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(5, 7, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 5 como origen y el contacto 7 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(5, 8, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 5 como origen y el contacto 8 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(5, 10, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 5 como origen y el contacto 10 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(6, 4, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 6 como origen y el contacto 4 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(6, 3, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 6 como origen y el contacto 3 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(7, 4, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 7 como origen y el contacto 4 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(8, 3, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 8 como origen y el contacto 3 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(8, 9, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 8 como origen y el contacto 9 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(8, 10, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 8 como origen y el contacto 10 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(10, 1, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 10 como origen y el contacto 1 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(10, 2, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 10 como origen y el contacto 2 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(5, 1, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 5 como origen y el contacto 1 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(6, 2, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 6 como origen y el contacto 2 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(8, 7, f).resultado, Retorno.Resultado.OK,
-                "Se agrega un mensaje para el contacto 8 como origen y el contacto 7 como destino, Esperado: OK");
-        p.ver(obl.agregarMensaje(25, 41, f).resultado, Retorno.Resultado.ERROR,
-                "Se intenta agregar un mensaje para un contacto de origen 25 y un contacto destino 41, ambos inexistentes, Esperado: ERROR");
-        p.ver(obl.agregarMensaje(250, 2, f).resultado, Retorno.Resultado.ERROR,
-                "Se intenta agregar un mensaje para un contacto de origen 250 inexistente, Esperado: ERROR");
-        p.ver(obl.agregarMensaje(2, 128, f).resultado, Retorno.Resultado.ERROR,
-                "Se intenta agregar un mensaje para un contacto de destino 128 inexistente, Esperado: ERROR");
+        p.ver(obl.agregarMensaje(1, 2, UTILS.generarFechasRandom()).resultado, Retorno.Resultado.OK, "Se agrega un mensaje para el contacto 1 como origen y el contacto 2 como destino, Esperado: OK");
+        p.ver(obl.agregarMensaje(1, 3, UTILS.generarFechasRandom()).resultado, Retorno.Resultado.OK, "Se agrega un mensaje para el contacto 1 como origen y el contacto 3 como destino, Esperado: OK");
+        p.ver(obl.agregarMensaje(1, 3, UTILS.generarFechasRandom()).resultado, Retorno.Resultado.OK, "Se agrega un mensaje para el contacto 1 como origen y el contacto 3 como destino, Esperado: OK");
+        obl.agregarMensaje(2, 4, UTILS.generarFechasRandom());
+        obl.agregarMensaje(3, 2, UTILS.generarFechasRandom());
+        obl.agregarMensaje(3, 9, UTILS.generarFechasRandom());
+        obl.agregarMensaje(3, 5, UTILS.generarFechasRandom());
+        obl.agregarMensaje(5, 6, UTILS.generarFechasRandom());
+        obl.agregarMensaje(5, 7, UTILS.generarFechasRandom());
+        obl.agregarMensaje(5, 8, UTILS.generarFechasRandom());
+        obl.agregarMensaje(5, 10, UTILS.generarFechasRandom());
+        obl.agregarMensaje(6, 4,UTILS.generarFechasRandom());
+        obl.agregarMensaje(6, 3, UTILS.generarFechasRandom());
+        obl.agregarMensaje(7, 4, UTILS.generarFechasRandom());
+        obl.agregarMensaje(8, 3, UTILS.generarFechasRandom());
+        obl.agregarMensaje(8, 9, UTILS.generarFechasRandom());
+        obl.agregarMensaje(8, 10, UTILS.generarFechasRandom());
+        obl.agregarMensaje(10, 1, UTILS.generarFechasRandom());
+        obl.agregarMensaje(10, 2, UTILS.generarFechasRandom());
+        obl.agregarMensaje(5, 1, UTILS.generarFechasRandom());
+        obl.agregarMensaje(6, 2, UTILS.generarFechasRandom());
+        obl.agregarMensaje(8, 7, UTILS.generarFechasRandom());
+        p.ver(obl.agregarMensaje(25, 41, UTILS.generarFechasRandom()).resultado, Retorno.Resultado.ERROR, "Se intenta agregar un mensaje para un contacto de origen 25 y un contacto destino 41, ambos inexistentes, Esperado: ERROR");
+        p.ver(obl.agregarMensaje(250, 2, UTILS.generarFechasRandom()).resultado, Retorno.Resultado.ERROR, "Se intenta agregar un mensaje para un contacto de origen 250 inexistente, Esperado: ERROR");
+        p.ver(obl.agregarMensaje(2, 128, UTILS.generarFechasRandom()).resultado, Retorno.Resultado.ERROR, "Se intenta agregar un mensaje para un contacto de destino 128 inexistente, Esperado: ERROR");
         Obligatorio.SistemaMensajes.mostrar();
 
-        p.ver(obl.eliminarMensaje(1, 20).resultado, Retorno.Resultado.OK,
-                "Se elimina el mensaje con numero 20 y el numero de contacto de origen 1, Esperado: OK");
-        p.ver(obl.eliminarMensaje(2, 21).resultado, Retorno.Resultado.OK,
-                "Se elimina el mensaje con numero 21 y el numero de contacto de origen 2, Esperado: OK");
-        p.ver(obl.eliminarMensaje(7, 22).resultado, Retorno.Resultado.OK,
-                "Se elimina el mensaje con numero 22 y el numero de contacto de origen 7, Esperado: OK");
-        p.ver(obl.eliminarMensaje(1, 88).resultado, Retorno.Resultado.ERROR,
-                "Se intenta eliminar el mensaje con un numero de mensaje 88 inexistente, Esperado: ERROR");
-        p.ver(obl.eliminarMensaje(91, 1).resultado, Retorno.Resultado.ERROR,
-                "Se intenta eliminar el mensaje con un numero de contacto 91 inexistente, Esperado: ERROR");
+        p.ver(obl.eliminarMensaje(1, 20).resultado, Retorno.Resultado.OK, "Se elimina el mensaje con numero 20 y el numero de contacto de origen 1, Esperado: OK");
+        p.ver(obl.eliminarMensaje(2, 21).resultado, Retorno.Resultado.OK, "Se elimina el mensaje con numero 21 y el numero de contacto de origen 2, Esperado: OK");
+        p.ver(obl.eliminarMensaje(7, 22).resultado, Retorno.Resultado.OK, "Se elimina el mensaje con numero 22 y el numero de contacto de origen 7, Esperado: OK");
+        p.ver(obl.eliminarMensaje(1, 88).resultado, Retorno.Resultado.ERROR, "Se intenta eliminar el mensaje con un numero de mensaje 88 inexistente, Esperado: ERROR");
+        p.ver(obl.eliminarMensaje(91, 1).resultado, Retorno.Resultado.ERROR, "Se intenta eliminar el mensaje con un numero de contacto 91 inexistente, Esperado: ERROR");
         Obligatorio.SistemaMensajes.mostrar();
         // obl.destruirSistemaMensajes();
         // p.imprimirResultadosPrueba();
