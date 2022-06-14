@@ -65,7 +65,7 @@ public class Linea implements Comparable<Linea> {
 
     @Override
     public String toString() {
-        return "Linea " + numeroLinea + " : " + listaPalabras.toString() + "}";
+        return "Linea " + numeroLinea + " : " + listaPalabras.toString() + "}\n";
     }
 
 }

@@ -24,6 +24,7 @@ public class TRABAJARCONOBLIGATORIO {
         // juegodepruebaLineas(obl, p);
         // juegopruebaReporte(obl, p);
         juegodepruebaLineas(obl, p);
+//        juegodePruebaCantMensaje(obl, p);
     }
 
     public static void juegodepruebaSistema(Obligatorio obl, Prueba p) {
@@ -134,7 +135,7 @@ public class TRABAJARCONOBLIGATORIO {
 
     public static void juegodepruebaLineas(Obligatorio obl, Prueba p) {
         System.out.println("JUEGO DE PRUEBA LINEAS");
-        p.ver(obl.crearSistemaMensajes(3).resultado, Retorno.Resultado.OK, "Se creara sistma para 3 palabras por linea");
+        obl.crearSistemaMensajes(3);
         Date f = new Date();
         obl.agregarContacto(1, "Contacto1");
         obl.agregarContacto(2, "Contacto2");
@@ -145,8 +146,76 @@ public class TRABAJARCONOBLIGATORIO {
         Obligatorio.SistemaMensajes.mostrar();
         obl.insertarLinea(1, 1);
         obl.insertarLinea(1, 1);
+        obl.insertarLinea(1, 1);
+        obl.insertarLinea(1, 1);
+        obl.insertarLinea(1, 1);
+        obl.insertarLinea(1, 1);
+        obl.insertarLinea(1, 1);
+        obl.insertarLinea(1, 1);
         Obligatorio.SistemaMensajes.mostrar();
-//        p.ver(obl.insertarLinea(1, 1).resultado, Retorno.Resultado.OK, "Se agrega Linea");
+        obl.destruirSistemaMensajes();
+
+    }
+
+    public static void juegodePruebaCantMensaje(Obligatorio obl, Prueba p) {
+        System.out.println("Juego de Pruebas Cantidad Mensajes");
+        obl.crearSistemaMensajes(3);
+        obl.agregarContacto(1, "Micaela");
+        obl.agregarContacto(2, "Felipe");
+        obl.agregarContacto(3, "Romina");
+        obl.agregarContacto(4, "Camila");
+        obl.agregarContacto(5, "Marco");
+        obl.agregarContacto(6, "Diego");
+        Date d0 = new Date("01/25/2022");
+        Date d1 = new Date("02/28/2022");
+        Date d2 = new Date("03/03/2022");
+        Date d3 = new Date("10/07/2022");
+        Date d4 = new Date("14/07/2022");
+        System.out.println(UTILS.fechaAString(d0));
+
+        for (int i = 0; i < 3; i++) {
+            obl.agregarMensaje(1, 2, d0); // origen, destino
+            obl.agregarMensaje(2, 2, d1); // origen, destino
+            obl.agregarMensaje(3, 2, d2); // origen, destino
+            obl.agregarMensaje(4, 2, d3); // origen, destino
+            obl.agregarMensaje(5, 2, d1); // origen, destino
+            obl.agregarMensaje(6, 2, d4); // origen, destino
+        }
+        for (int i = 0; i < 4; i++) {
+            obl.agregarMensaje(1, 2, d4); // origen, destino
+            obl.agregarMensaje(2, 2, d3); // origen, destino
+            obl.agregarMensaje(3, 2, d2); // origen, destino
+            obl.agregarMensaje(4, 2, d1); // origen, destino
+            obl.agregarMensaje(5, 2, d2); // origen, destino
+            obl.agregarMensaje(6, 2, d3); // origen, destino
+            obl.agregarMensaje(1, 2, d4); // origen, destino
+            obl.agregarMensaje(2, 2, d1); // origen, destino
+            obl.agregarMensaje(3, 2, d2); // origen, destino
+            obl.agregarMensaje(4, 2, d3); // origen, destino
+
+        }
+        for (int i = 0; i < 5; i++) {
+            obl.agregarMensaje(4, 2, d2); // origen, destino
+            obl.agregarMensaje(5, 2, d0); // origen, destino            
+
+        }
+        for (int i = 0; i < 6; i++) {
+            obl.agregarMensaje(6, 2, d1); // origen, destino
+            obl.agregarMensaje(5, 2, d0); // origen, destino
+            obl.agregarMensaje(4, 2, d3); // origen, destino
+            obl.agregarMensaje(3, 2, d4); // origen, destino
+            obl.agregarMensaje(2, 2, d1); // origen, destino
+            obl.agregarMensaje(1, 2, d0); // origen, destino
+
+        }
+        for (int i = 0; i < 7; i++) {
+            obl.agregarMensaje(4, 2, d1); // origen, destino
+            obl.agregarMensaje(5, 2, d2); // origen, destino
+            obl.agregarMensaje(6, 2, d3); // origen, destino
+        }
+
+        Obligatorio.SistemaMensajes.mostrar();
+        obl.destruirSistemaMensajes();
 
     }
 

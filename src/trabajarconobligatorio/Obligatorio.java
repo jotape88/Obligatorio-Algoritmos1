@@ -122,7 +122,7 @@ public class Obligatorio implements IObligatorio {
             menB.getDato().getListaLineas().agregarInicio(l);
             for (int i = 0; i <= menB.getDato().getListaLineas().getTope(); i++) {
                 menB.getDato().getListaLineas().getInicio().getDato().getListaPalabras().agregarInicio(new Palabra());
-            }            
+            }
         }
         return ret;
     }
@@ -540,23 +540,13 @@ public class Obligatorio implements IObligatorio {
     }
 
     @Override
-    public Retorno cantidadDeMensajes(int numContactoOrigen
-    ) {
+    public Retorno cantidadDeMensajes(int numContactoOrigen) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         int contador = 0;
 
-//        Contacto paramContacto = new Contacto(numContactoOrigen, "");
         Nodo<Mensaje> mensajeAct = SistemaMensajes.getInicio();
 
         while (mensajeAct != null) {
-
-            int contactoActual = mensajeAct.getDato().getContOrigen().numeroContacto;
-
-            if (contactoActual == numContactoOrigen) {
-                contador++;
-
-            }
-
             mensajeAct = mensajeAct.getSiguiente();
         }
 
