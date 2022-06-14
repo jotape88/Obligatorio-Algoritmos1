@@ -142,8 +142,11 @@ public class TRABAJARCONOBLIGATORIO {
         p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
         p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
 
+         Obligatorio.SistemaMensajes.mostrar();
         p.ver(obl.insertarLinea(1, 1).resultado, Retorno.Resultado.OK, "Se agrega Linea");
-        // Obligatorio.SistemaMensajes.mostrar();
+        p.ver(obl.insertarLinea(1, 1).resultado, Retorno.Resultado.OK, "Se agrega Linea");
+         Obligatorio.SistemaMensajes.mostrar();
+//        p.ver(obl.insertarLinea(1, 1).resultado, Retorno.Resultado.OK, "Se agrega Linea");
 
     }
 

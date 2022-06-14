@@ -10,7 +10,7 @@ package trabajarconobligatorio;
  */
 public class Linea implements Comparable<Linea> {
 
-    private Lista<Palabra> listaPalabras;
+    private Lista<Palabra> listaPalabras = new Lista<>();
     static private int numeroLineas = 0;
 
     @Override
@@ -68,7 +68,7 @@ public class Linea implements Comparable<Linea> {
 
     @Override
     public String toString() {
-        return "Linea{" + "listaPalabras=" + listaPalabras.getInicio().toString() + '}';
+        return "Linea{" + "listaPalabras=" + listaPalabras.toString() + '}';
     }
 
 }

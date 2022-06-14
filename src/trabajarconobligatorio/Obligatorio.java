@@ -116,16 +116,12 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno insertarLinea(int numContactoOrigen, int numMensaje) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
-        Nodo<Mensaje> menB = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje));
-        System.out.println(numMensaje);
-        System.out.println("MOSTRAR MENSAJES");
-        System.out.println(menB.toString());
+        Nodo<Mensaje> menB = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje));        
         if (menB != null) {
             Linea l = new Linea();
             menB.getDato().getListaLineas().agregarInicio(l);
             System.out.println(menB.getDato().getListaLineas().toString());
-        }
-        System.out.println(menB.toString());
+        }        
         return ret;
     }
 
