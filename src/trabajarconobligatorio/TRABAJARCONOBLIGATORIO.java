@@ -17,12 +17,13 @@ public class TRABAJARCONOBLIGATORIO {
         Prueba p = new Prueba();
 
         // juegodepruebaSistema(obl, p);
-        juegodepruebaContactos(obl, p);
-        juegodepruebaMensajes(obl, p);
+        // juegodepruebaContactos(obl, p);
+        // juegodepruebaMensajes(obl, p);
         // juegopruebaFucionalidades(obl, p);
-        //juegopruebaDiccionario(obl, p);
+        // juegopruebaDiccionario(obl, p);
         // juegodepruebaLineas(obl, p);
         // juegopruebaReporte(obl, p);
+        juegopruebaLineas(obl, p);
     }
 
     public static void juegodepruebaSistema(Obligatorio obl, Prueba p) {
@@ -78,7 +79,7 @@ public class TRABAJARCONOBLIGATORIO {
         obl.agregarMensaje(5, 7, UTILS.generarFechasRandom());
         obl.agregarMensaje(5, 8, UTILS.generarFechasRandom());
         obl.agregarMensaje(5, 10, UTILS.generarFechasRandom());
-        obl.agregarMensaje(6, 4,UTILS.generarFechasRandom());
+        obl.agregarMensaje(6, 4, UTILS.generarFechasRandom());
         obl.agregarMensaje(6, 3, UTILS.generarFechasRandom());
         obl.agregarMensaje(7, 4, UTILS.generarFechasRandom());
         obl.agregarMensaje(8, 3, UTILS.generarFechasRandom());
@@ -144,6 +145,22 @@ public class TRABAJARCONOBLIGATORIO {
 
         p.ver(obl.insertarLinea(1, 1).resultado, Retorno.Resultado.OK, "Se agrega Linea");
         Obligatorio.SistemaMensajes.mostrar();
+
+    }
+
+    private static void juegopruebaLineas(Obligatorio obl, Prueba p) {
+        
+        juegopruebaDiccionario(obl,p);
+        obl.crearSistemaMensajes(3);
+        obl.agregarContacto(1, "Contacto1");
+        obl.agregarContacto(2, "Contacto2");
+        Date f = new Date();
+        obl.agregarMensaje(1, 2, f);
+        Obligatorio.SistemaMensajes.mostrar();
+        
+//        obl.insertarLinea(1, 1);
+//        obl.insertarPalabraEnLinea(1, 1, 1, 1, "Palabra1");
+//        obl.imprimirLinea(1, 1, 1);
 
     }
 

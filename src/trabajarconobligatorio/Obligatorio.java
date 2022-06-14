@@ -71,7 +71,7 @@ public class Obligatorio implements IObligatorio {
             Mensaje m = new Mensaje(cOrigen, cDestino, fecha, SistemaMensajes.getTope());
             SistemaMensajes.agregarInicio(m);
 
-        } else {            
+        } else {
             ret.resultado = Retorno.Resultado.ERROR;
             //System.out.println("Error al agregar mensaje, el número de contacto de origen y/o destino no pertenecen a un contacto válido");
         }
@@ -87,7 +87,7 @@ public class Obligatorio implements IObligatorio {
         if (contactos.obtenerElemento(cO) != null && SistemaMensajes.obtenerElemento(m) != null) {
             Mensaje men = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();
             Contacto cAux = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
-            if(men.getNumeroDeMensaje() == numMensaje && cAux.getNumeroContacto() == numContactoOrigen) {
+            if (men.getNumeroDeMensaje() == numMensaje && cAux.getNumeroContacto() == numContactoOrigen) {
                 SistemaMensajes.borrarElemento(m);
             }
         } else {
@@ -151,6 +151,57 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno insertarLineaEnPosicion(int numContactoOrigen, int numMensaje, int posicionLinea) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+
+        int contadorLinea = 0;
+
+        if (!SistemaMensajes.esVacia()) {
+
+            Nodo nodoMensaje = SistemaMensajes.getInicio();
+
+            while (nodoMensaje != null) {
+                Mensaje esteMensaje = (Mensaje) nodoMensaje.getDato();
+
+                if (esteMensaje.getNumeroDeMensaje() == numMensaje && esteMensaje.getContOrigen().numeroContacto == numContactoOrigen) {
+
+                    Lista<Linea> listaLineas = esteMensaje.getListaLineas();
+                    if (!listaLineas.esVacia()) {
+
+                        Nodo nodoLinea = listaLineas.getInicio();
+
+                        while (nodoLinea != null && contadorLinea < posicionLinea && contadorLinea < listaLineas.getTope()) {
+
+                            nodoLinea.getSiguiente();
+
+                        }
+
+                        if (contadorLinea == posicionLinea) {
+
+                            Lista<Palabra> nuevaListaPalabras = new Lista<Palabra>();
+                            Linea nuevaLinea = new Linea(Obligatorio.SistemaMensajes.getTope());
+                            Nodo nuevo = new Nodo(nuevaLinea);
+                            nuevo.setSiguiente(nodoLinea.getSiguiente());
+                            nodoLinea.setSiguiente(nuevo);
+
+                            ret.resultado = Retorno.Resultado.OK;
+
+                        } else {
+
+                            ret.resultado = Retorno.Resultado.ERROR;
+
+                        }
+
+                    } else {
+                        ret.resultado = Retorno.Resultado.ERROR;
+                    }
+                }
+
+                nodoMensaje.getSiguiente();
+            }
+
+        } else {
+            ret.resultado = Retorno.Resultado.ERROR;
+        }
+
         return ret;
     }
 
@@ -285,6 +336,80 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno borrarPalabra(int numContactoOrigen, int numMensaje, int posicionLinea, int posicionPalabra) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+
+        int contadorLinea = 0;
+        int contadorPalabra = 0;
+        boolean posPosible = false;
+
+        if (!SistemaMensajes.esVacia()) {
+
+            Nodo nodoMensaje = SistemaMensajes.getInicio();
+
+            while (nodoMensaje != null && !posPosible) {
+
+                Mensaje esteMensaje = (Mensaje) nodoMensaje.getDato();
+
+                if (esteMensaje.getContOrigen().numeroContacto == numContactoOrigen
+                        && esteMensaje.getNumeroDeMensaje() == numMensaje) {
+
+                    Lista<Linea> lineasMensaje = esteMensaje.getListaLineas();
+
+                    if (!lineasMensaje.esVacia()) {
+
+                        Nodo nodoLinea = lineasMensaje.getInicio();
+
+                        while (nodoLinea != null && contadorLinea < posicionLinea && !posPosible) {
+
+                            if (contadorLinea == posicionLinea) {
+                                Lista<String> listaPalabras = (Lista<String>) nodoLinea.getDato();
+
+                                if (!listaPalabras.esVacia()) {
+
+                                    Nodo estaPalabra = listaPalabras.getInicio();
+
+                                    while (estaPalabra != null && contadorPalabra < posicionPalabra && !posPosible) {
+
+                                        if (contadorPalabra == posicionPalabra) {
+
+                                            String palabraActual = (String) estaPalabra.getDato();
+
+                                            listaPalabras.borrarElemento(palabraActual);
+
+                                            posPosible = true;
+
+                                            ret.resultado = Retorno.Resultado.OK;
+                                        } else {
+
+                                            estaPalabra.getSiguiente();
+
+                                        }
+
+                                    }
+
+                                } else {
+
+                                    ret.resultado = Retorno.Resultado.ERROR;
+                                }
+                            }
+
+                            nodoLinea.getSiguiente();
+
+                        }
+
+                    }
+
+                    ret.resultado = Retorno.Resultado.ERROR;
+
+                }
+
+                nodoMensaje.getSiguiente();
+            }
+
+        } else {
+
+            ret.resultado = Retorno.Resultado.ERROR;
+        }
+
         return ret;
     }
 
@@ -298,18 +423,16 @@ public class Obligatorio implements IObligatorio {
     public Retorno imprimirLinea(int numContactoOrigen, int numMensaje, int posicionLinea) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         int contadorLineas = 0;
-        
-        if(!SistemaMensajes.esVacia()) {
+
+        if (!SistemaMensajes.esVacia()) {
             Contacto cO = new Contacto(numContactoOrigen);
-            Mensaje m = new Mensaje(numMensaje);  
+            Mensaje m = new Mensaje(numMensaje);
             if (contactos.obtenerElemento(cO) != null && SistemaMensajes.obtenerElemento(m) != null) {
-                Mensaje msg = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato(); 
-                
-                
-                
+                Mensaje msg = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();
+
                 Lista<Linea> listaLineas = msg.getListaLineas();
                 Nodo nodoLinea = listaLineas.getInicio();
-                while(nodoLinea != null && contadorLineas < posicionLinea) {
+                while (nodoLinea != null && contadorLineas < posicionLinea) {
                     nodoLinea.getSiguiente();
                     contadorLineas++;
                 }
@@ -318,7 +441,7 @@ public class Obligatorio implements IObligatorio {
                 ret.resultado = Retorno.Resultado.ERROR;
             }
             ret.resultado = Retorno.Resultado.ERROR;
-        }      
+        }
         return ret;
     }
 
@@ -355,13 +478,55 @@ public class Obligatorio implements IObligatorio {
     }
 
     @Override
-    public Retorno ImprimirTextoIncorrecto() {
+    public Retorno ImprimirTextoIncorrecto(int numeroContacto, int numeroMensaje) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+
+        if (!SistemaMensajes.esVacia()) {
+
+            Nodo nodoMensaje = SistemaMensajes.getInicio();
+
+            while (nodoMensaje != null) {
+
+                Mensaje esteMensaje = (Mensaje) nodoMensaje.getDato();
+
+                if (esteMensaje.getNumeroDeMensaje() == numeroMensaje && esteMensaje.getContOrigen().numeroContacto == numeroContacto) {
+
+                    Lista<Linea> listaLineas = esteMensaje.getListaLineas();
+
+                    Nodo nodoLinea = listaLineas.getInicio();
+
+                    while (nodoLinea != null) {
+
+                        Lista<String> listaPalabras = (Lista<String>) nodoLinea.getDato();
+
+                        Nodo nodoPalabra = listaPalabras.getInicio();
+
+                        while (nodoPalabra != null) {
+
+                            String palabraActual = (String) nodoPalabra.getDato();
+
+                            if (!enDiccionario(palabraActual)) {
+
+                                System.out.println(palabraActual);
+                            }
+
+                            nodoPalabra.getSiguiente();
+                        }
+
+                    }
+                }
+
+            }
+
+            ret.resultado = Retorno.Resultado.ERROR;
+        }
+
         return ret;
     }
 
     @Override
-    public Retorno cantidadDeMensajes(int numContactoOrigen) {
+    public Retorno cantidadDeMensajes(int numContactoOrigen
+    ) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         int contador = 0;
 
@@ -378,14 +543,30 @@ public class Obligatorio implements IObligatorio {
             }
 
             mensajeAct = mensajeAct.getSiguiente();
-        }        
+        }
 
         ret.valorEntero = contador;
         return ret;
     }
 
+    public Boolean enDiccionario(String palabra) {
+
+        boolean esta = false;
+
+        Nodo palabraExistente = diccionario.obtenerElemento(palabra);
+
+        if (palabraExistente != null) {
+
+            esta = true;
+
+        }
+
+        return esta;
+    }
+
     @Override
-    public Retorno borrarPalabraDiccionario(String palabraABorrar) {
+    public Retorno borrarPalabraDiccionario(String palabraABorrar
+    ) {
 
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
 
