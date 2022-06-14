@@ -12,23 +12,22 @@ import java.util.Objects;
  * @author mauro
  */
 public class Palabra implements Comparable<Palabra> {
+
     private String dato = "";
     static int posicionPalabras = 1;
-    final int posicion;
+    private int posicion = 1;
 
     public Palabra() {
         this.posicion = Palabra.posicionPalabras;
         Palabra.posicionPalabras++;
     }
 
-    public String getDato() {
-        return dato;
+    public Palabra(String dato) {
+        this.dato = dato;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        return hash;
+    public String getDato() {
+        return dato;
     }
 
     @Override
@@ -43,7 +42,7 @@ public class Palabra implements Comparable<Palabra> {
             return false;
         }
         final Palabra other = (Palabra) obj;
-        
+
         if (this.posicion != other.posicion) {
             return false;
         }

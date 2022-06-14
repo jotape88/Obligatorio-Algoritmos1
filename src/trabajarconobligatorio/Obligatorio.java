@@ -99,27 +99,18 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno imprimirTexto(int numContactoOrigen, int numMensaje) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
-//        
-//        Contacto cO = new Contacto(numContactoOrigen);
-//        Mensaje m = new Mensaje(numMensaje);
-//        
-//        if (contactos.obtenerElemento(cO) != null && SistemaMensajes.obtenerElemento(m) != null) {
-//            Contacto cAux = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
-//            Mensaje men = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();
-//                      
-//            while (mostrar != null) {
-//
-//
-//        }
-//            
-//            
-//            ret.resultado = Retorno.Resultado.OK;
-//        } else {
-//
-//            ret.resultado = Retorno.Resultado.ERROR;
-//            System.out.println("Error al imprimir el texto, el número de contacto de orígen y/o número de mensaje no son válidos");
-//        }
-////
+        Mensaje m = new Mensaje(numMensaje);
+        Nodo<Mensaje> menB = SistemaMensajes.obtenerElemento(m);
+
+        if (menB != null) {
+
+            menB.getDato().getListaLineas().mostrar();
+            ret.resultado = Retorno.Resultado.OK;
+
+        } else {
+            ret.resultado = Retorno.Resultado.ERROR;
+            System.out.println("Texto Vacio");
+        }
         return ret;
     }
 
@@ -248,6 +239,28 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno borrarOcurrenciasPalabraEnTexto(int numContactoOrigen, int numMensaje, String palabraABorrar) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        Mensaje men = new Mensaje(numMensaje);
+        Nodo<Mensaje> menB = SistemaMensajes.obtenerElemento(men);
+        if (menB.getDato() != null) {
+            if (!menB.getDato().getListaLineas().esVacia()) {
+                Nodo<Linea> actualL = menB.getDato().getListaLineas().getInicio();
+                while (actualL.getSiguiente() != null) {
+                    if (!actualL.getDato().getListaPalabras().esVacia()) {
+                        Nodo<Palabra> actualP = actualL.getDato().getListaPalabras().getInicio();
+                        while (actualP.getSiguiente() != null) {
+                            if (actualP.getDato().getDato() == palabraABorrar) {
+                                actualL.getDato().getListaPalabras().borrarElemento(actualP.getDato());
+                            }
+                            actualP = actualP.getSiguiente();
+                        }
+                    }
+                    actualL = actualL.getSiguiente();
+                }
+
+            }
+        }
+        ret.resultado = Retorno.Resultado.OK;
+
         return ret;
     }
 
@@ -416,6 +429,36 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno borrarOcurrenciasPalabraEnLinea(int numContactoOrigen, int numMensaje, int posicionLinea, String palabraABorrar) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        Mensaje men = new Mensaje(numMensaje);
+        Nodo<Mensaje> menB = SistemaMensajes.obtenerElemento(men);
+        if (menB.getDato() != null) {
+            if (!menB.getDato().getListaLineas().esVacia()) {
+                Linea l = new Linea(posicionLinea);
+                Nodo<Linea> actualL = menB.getDato().getListaLineas().getInicio();
+                boolean b = false;
+                while (actualL != null || !b) {
+                    if (actualL.getDato().getNumeroLinea() == posicionLinea) {
+
+                        if (!actualL.getDato().getListaPalabras().esVacia()) {
+                            Nodo<Palabra> actualP = actualL.getDato().getListaPalabras().getInicio();
+                            Palabra pABorrar = new Palabra(palabraABorrar);
+                            while (actualP != null) {
+                                if (actualP.getDato().getDato() == palabraABorrar) {
+                                    actualL.getDato().getListaPalabras().borrarElemento(pABorrar);
+                                }
+                                actualP = actualP.getSiguiente();
+                            }
+
+                        }
+                        b = true;
+                    }
+
+                    actualL = actualL.getSiguiente();
+                }
+
+            }
+        }
+        ret.resultado = Retorno.Resultado.OK;
         return ret;
     }
 

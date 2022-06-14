@@ -11,18 +11,55 @@ package trabajarconobligatorio;
 public class Linea implements Comparable<Linea> {
 
     private Lista<Palabra> listaPalabras;
+    static private int numeroLineas = 0;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Linea other = (Linea) obj;
+        if (this.numeroLinea != other.numeroLinea) {
+            return false;
+        }
+        return true;
+    }
+    private int numeroLinea = 0;
+
+    public Linea() {
+        this.numeroLinea = Linea.numeroLineas;
+        Linea.numeroLineas++;
+    }
+
+    
+     public Linea(int topePalabras) {
+        this.listaPalabras.setTope(topePalabras);
+    }
+
+    public int getNumeroLinea() {
+        return numeroLinea;
+    }
+
+    public void setNumeroLinea(int numeroLinea) {
+        this.numeroLinea = numeroLinea;
+    }
 
     public Lista<Palabra> getListaPalabras() {
         return listaPalabras;
+
     }
 
     public void setListaPalabras(Lista<Palabra> listaPalabras) {
         this.listaPalabras = listaPalabras;
     }
 
-    public Linea(int topePalabras) {
-        this.listaPalabras.setTope(topePalabras);        
-    }
+   
 
     @Override
     public int compareTo(Linea o) {
