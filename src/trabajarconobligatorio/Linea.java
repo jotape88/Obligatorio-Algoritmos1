@@ -37,8 +37,7 @@ public class Linea implements Comparable<Linea> {
         Linea.numeroLineas++;
     }
 
-    
-     public Linea(int topePalabras) {
+    public Linea(int topePalabras) {
         this.listaPalabras.setTope(topePalabras);
     }
 
@@ -59,8 +58,6 @@ public class Linea implements Comparable<Linea> {
         this.listaPalabras = listaPalabras;
     }
 
-   
-
     @Override
     public int compareTo(Linea o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -68,7 +65,7 @@ public class Linea implements Comparable<Linea> {
 
     @Override
     public String toString() {
-        return "Linea{" + "listaPalabras=" + listaPalabras.toString() + '}';
+        return "Linea " + numeroLinea + " : " + listaPalabras.toString() + "}";
     }
 
 }

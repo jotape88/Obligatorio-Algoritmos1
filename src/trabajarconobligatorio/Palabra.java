@@ -55,7 +55,7 @@ public class Palabra implements Comparable<Palabra> {
 
     @Override
     public String toString() {
-        return "Palabra{" + "dato=" + dato + '}';
+        return "'" + dato + "'";
     }
 
     @Override

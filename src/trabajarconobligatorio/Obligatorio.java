@@ -116,65 +116,51 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno insertarLinea(int numContactoOrigen, int numMensaje) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
-        Nodo<Mensaje> menB = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje));        
+        Nodo<Mensaje> menB = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje));
         if (menB != null) {
             Linea l = new Linea();
             menB.getDato().getListaLineas().agregarInicio(l);
-            System.out.println(menB.getDato().getListaLineas().toString());
-        }        
+            for (int i = 0; i <= menB.getDato().getListaLineas().getTope(); i++) {
+                menB.getDato().getListaLineas().getInicio().getDato().getListaPalabras().agregarInicio(new Palabra());
+            }            
+        }
         return ret;
     }
 
     @Override
     public Retorno insertarLineaEnPosicion(int numContactoOrigen, int numMensaje, int posicionLinea) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
-
         int contadorLinea = 0;
-
         if (!SistemaMensajes.esVacia()) {
-
             Nodo nodoMensaje = SistemaMensajes.getInicio();
-
             while (nodoMensaje != null) {
                 Mensaje esteMensaje = (Mensaje) nodoMensaje.getDato();
-
                 if (esteMensaje.getNumeroDeMensaje() == numMensaje && esteMensaje.getContOrigen().numeroContacto == numContactoOrigen) {
-
                     Lista<Linea> listaLineas = esteMensaje.getListaLineas();
                     if (!listaLineas.esVacia()) {
-
                         Nodo nodoLinea = listaLineas.getInicio();
-
                         while (nodoLinea != null && contadorLinea < posicionLinea && contadorLinea < listaLineas.getTope()) {
-
                             nodoLinea.getSiguiente();
 
                         }
 
                         if (contadorLinea == posicionLinea) {
-
                             Lista<Palabra> nuevaListaPalabras = new Lista<Palabra>();
                             Linea nuevaLinea = new Linea(Obligatorio.SistemaMensajes.getTope());
                             Nodo nuevo = new Nodo(nuevaLinea);
                             nuevo.setSiguiente(nodoLinea.getSiguiente());
                             nodoLinea.setSiguiente(nuevo);
-
                             ret.resultado = Retorno.Resultado.OK;
 
                         } else {
-
                             ret.resultado = Retorno.Resultado.ERROR;
-
                         }
-
                     } else {
                         ret.resultado = Retorno.Resultado.ERROR;
                     }
                 }
-
                 nodoMensaje.getSiguiente();
             }
-
         } else {
             ret.resultado = Retorno.Resultado.ERROR;
         }

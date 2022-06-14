@@ -136,16 +136,16 @@ public class TRABAJARCONOBLIGATORIO {
         System.out.println("JUEGO DE PRUEBA LINEAS");
         p.ver(obl.crearSistemaMensajes(3).resultado, Retorno.Resultado.OK, "Se creara sistma para 3 palabras por linea");
         Date f = new Date();
-        p.ver(obl.agregarContacto(1, "Contacto1").resultado, Retorno.Resultado.OK, "Se agrega 'Contacto1'");
-        p.ver(obl.agregarContacto(2, "Contacto2").resultado, Retorno.Resultado.OK, "Se agrega 'Contacto2'");
-        p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
-        p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
-        p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
+        obl.agregarContacto(1, "Contacto1");
+        obl.agregarContacto(2, "Contacto2");
+        obl.agregarMensaje(1, 2, f);
+        obl.agregarMensaje(1, 2, f);
+        obl.agregarMensaje(1, 2, f);
 
-         Obligatorio.SistemaMensajes.mostrar();
-        p.ver(obl.insertarLinea(1, 1).resultado, Retorno.Resultado.OK, "Se agrega Linea");
-        p.ver(obl.insertarLinea(1, 1).resultado, Retorno.Resultado.OK, "Se agrega Linea");
-         Obligatorio.SistemaMensajes.mostrar();
+        Obligatorio.SistemaMensajes.mostrar();
+        obl.insertarLinea(1, 1);
+        obl.insertarLinea(1, 1);
+        Obligatorio.SistemaMensajes.mostrar();
 //        p.ver(obl.insertarLinea(1, 1).resultado, Retorno.Resultado.OK, "Se agrega Linea");
 
     }
@@ -165,5 +165,4 @@ public class TRABAJARCONOBLIGATORIO {
 ////        obl.imprimirLinea(1, 1, 1);
 //
 //    }
-
 }

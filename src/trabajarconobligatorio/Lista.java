@@ -49,8 +49,6 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
     @Override
     public void borrarFin() {
         if (!this.esVacia()) {
-
-            //Si tiene un solo elemento
             if (cantidad == 1) {
                 inicio = null;
                 fin = inicio;
@@ -109,7 +107,7 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
             this.inicio = nuevo;
             this.fin = inicio;
         } else {
-            nuevo.setSiguiente(getInicio());
+            nuevo.setSiguiente(this.getInicio());
             this.inicio = nuevo;
         }
 
@@ -248,8 +246,8 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
         }
         String datosLista = "";
         Nodo<T> actual = this.inicio;
-        while (actual.getSiguiente() != null) {
-            datosLista += actual.getDato().toString();
+        while (actual != null) {
+            datosLista += actual.getDato().toString() + "-";
             actual = actual.getSiguiente();
         }
         return datosLista;
