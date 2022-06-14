@@ -440,11 +440,21 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno imprimirLinea(int numContactoOrigen, int numMensaje, int posicionLinea) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        int contadorLineas = 0;
+
         if (!SistemaMensajes.esVacia()) {
-            Mensaje men = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();
-            Contacto cAux = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
-            if (men.getNumeroDeMensaje() == numMensaje && cAux.getNumeroContacto() == numContactoOrigen) {
-                SistemaMensajes.mostrar();        
+            Contacto cO = new Contacto(numContactoOrigen);
+            Mensaje m = new Mensaje(numMensaje);
+            if (contactos.obtenerElemento(cO) != null && SistemaMensajes.obtenerElemento(m) != null) {
+                Mensaje msg = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();
+
+                Lista<Linea> listaLineas = msg.getListaLineas();
+                Nodo nodoLinea = listaLineas.getInicio();
+                while (nodoLinea != null && contadorLineas < posicionLinea) {
+                    nodoLinea.getSiguiente();
+                    contadorLineas++;
+                }
+                System.out.println(nodoLinea.getDato().toString());
             } else {
                 ret.resultado = Retorno.Resultado.ERROR;
             }
