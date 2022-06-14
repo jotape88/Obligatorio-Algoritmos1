@@ -15,10 +15,6 @@ import java.util.Date;
  */
 public class UTILS {
 
-    static String randomColor() {
-        Random rand = new Random();
-        return "\u001B[3" + rand.nextInt(7) + "m ";
-    }
     
     static Date generarFechasRandom(){
         Random rand = new Random();

@@ -37,7 +37,7 @@ public class Contacto implements Comparable<Contacto> {
     }
 
     public String toString() {
-        return UTILS.randomColor() + "{ Numero : " + this.numeroContacto + ", Nombre : '" + this.nombre + "' }";
+        return  "{ Numero : " + this.numeroContacto + ", Nombre : '" + this.nombre + "' }";
     }
 
     /**

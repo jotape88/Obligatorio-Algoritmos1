@@ -77,20 +77,18 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
 
     @Override
     public void mostrar() {
-        Nodo<T> actual = getInicio();
-        String ANSI_RESET = "\u001B[35m";
-        String ANSI_CODE = UTILS.randomColor();
+        Nodo<T> actual = getInicio();        
         if (actual != null) {
-            System.out.println(ANSI_CODE + "Lista de " + actual.getDato().getClass().toString().split("[.]")[1] + "s : [");
+            System.out.println("Lista de " + actual.getDato().getClass().toString().split("[.]")[1] + "s : [");
             while (actual != null) {
-                System.out.print(ANSI_CODE + actual.getDato().toString() + " - " + "\n");
+                System.out.print(actual.getDato().toString() + " - " + "\n");
                 actual = actual.getSiguiente();
             }
-            System.out.println(ANSI_CODE + " ]");
+            System.out.println(" ]");
         } else {
             System.out.println("La lista esta vacia");
         }
-        System.out.println(ANSI_RESET + "");
+        System.out.println("");
     }
 
     @Override
