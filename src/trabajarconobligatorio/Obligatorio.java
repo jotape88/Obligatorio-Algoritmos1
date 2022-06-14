@@ -103,7 +103,6 @@ public class Obligatorio implements IObligatorio {
         Nodo<Mensaje> menB = SistemaMensajes.obtenerElemento(m);
 
         if (menB != null) {
-
             menB.getDato().getListaLineas().mostrar();
             ret.resultado = Retorno.Resultado.OK;
 
@@ -117,25 +116,16 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno insertarLinea(int numContactoOrigen, int numMensaje) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
-        Nodo<Contacto> contOr = contactos.obtenerElemento(new Contacto(numContactoOrigen));
-
-        System.out.println("contacto");
-        System.out.println(contOr.getDato().toString());
-        if (contOr.getDato() != null) {
-            System.out.println("aca contOr");
-            Mensaje men = new Mensaje(numMensaje, contOr.getDato());
-            System.out.println(men.toString());
-            Nodo<Mensaje> menBus;
-            menBus = SistemaMensajes.obtenerElemento(men);
-            if (menBus != null) {
-                System.out.println("aca menbus");
-                Linea linea = new Linea(SistemaMensajes.getTope());
-                Palabra pa = new Palabra();
-                pa.setDato("");
-                linea.getListaPalabras().agregarFinal(pa);
-                menBus.getDato().getListaLineas().agregarFinal(linea);
-            }
+        Nodo<Mensaje> menB = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje));
+        System.out.println(numMensaje);
+        System.out.println("MOSTRAR MENSAJES");
+        System.out.println(menB.toString());
+        if (menB != null) {
+            Linea l = new Linea();
+            menB.getDato().getListaLineas().agregarInicio(l);
+            System.out.println(menB.getDato().getListaLineas().toString());
         }
+        System.out.println(menB.toString());
         return ret;
     }
 

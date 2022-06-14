@@ -30,7 +30,8 @@ public class Nodo<T> {
 
     @Override
     public String toString() {
-        return "Nodo{" + "dato=" + dato.toString() + ", siguiente=" + getSiguiente() + '}';
+        
+        return "Nodo{" + "dato =" + dato.toString() + ", siguiente=" + getSiguiente() + '}';
     }
 
     /**

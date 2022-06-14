@@ -249,7 +249,6 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
         String datosLista = "";
         Nodo<T> actual = this.inicio;
         while (actual.getSiguiente() != null) {
-
             datosLista += actual.getDato().toString();
             actual = actual.getSiguiente();
         }
