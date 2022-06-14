@@ -79,7 +79,7 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
         if (actual != null) {
             System.out.println("Lista de " + actual.getDato().getClass().toString().split("[.]")[1] + "s : [");
             while (actual != null) {
-                System.out.print(actual.getDato().toString() + " - " + "\n");
+                System.out.print(actual.getDato().toString() +  " - " + "\n");
                 actual = actual.getSiguiente();
             }
             System.out.println(" ]");

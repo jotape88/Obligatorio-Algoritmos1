@@ -68,12 +68,15 @@ public class Obligatorio implements IObligatorio {
         if (contactos.obtenerElemento(cO) != null && contactos.obtenerElemento(cD) != null) {
             Contacto cOrigen = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
             Contacto cDestino = contactos.obtenerElemento(new Contacto(numContactoDestino)).getDato();
+            if(cOrigen.getNumeroContacto() == numContactoOrigen && cDestino.getNumeroContacto() == numContactoDestino){
+                Mensaje m = new Mensaje(cOrigen, cDestino, fecha, SistemaMensajes.getTope());
+                SistemaMensajes.agregarInicio(m);
+            }
             Mensaje m = new Mensaje(cOrigen, cDestino, fecha, SistemaMensajes.getTope());
             SistemaMensajes.agregarInicio(m);
 
         } else {
             ret.resultado = Retorno.Resultado.ERROR;
-            //System.out.println("Error al agregar mensaje, el número de contacto de origen y/o destino no pertenecen a un contacto válido");
         }
         return ret;
     }
@@ -443,15 +446,7 @@ public class Obligatorio implements IObligatorio {
             Contacto cO = new Contacto(numContactoOrigen);
             Mensaje m = new Mensaje(numMensaje);
             if (contactos.obtenerElemento(cO) != null && SistemaMensajes.obtenerElemento(m) != null) {
-                Mensaje msg = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();
-
-                Lista<Linea> listaLineas = msg.getListaLineas();
-                Nodo nodoLinea = listaLineas.getInicio();
-                while (nodoLinea != null && contadorLineas < posicionLinea) {
-                    nodoLinea.getSiguiente();
-                    contadorLineas++;
-                }
-                System.out.println(nodoLinea.toString());
+                SistemaMensajes.mostrar();        
             } else {
                 ret.resultado = Retorno.Resultado.ERROR;
             }
