@@ -23,8 +23,8 @@ public class TRABAJARCONOBLIGATORIO {
         // juegopruebaDiccionario(obl, p);
         // juegodepruebaLineas(obl, p);
         // juegopruebaReporte(obl, p);
-          juegodepruebaLineas(obl, p);
-        //juegodePruebaCantMensaje(obl, p);
+         juegodepruebaLineas(obl, p);
+         //juegodePruebaCantMensaje(obl, p);
     }
 
     public static void juegodepruebaSistema(Obligatorio obl, Prueba p) {
@@ -152,8 +152,11 @@ public class TRABAJARCONOBLIGATORIO {
         obl.insertarLinea(1, 1);
         obl.insertarLinea(1, 1);
         obl.insertarLinea(1, 1);
+        obl.insertarPalabraEnLinea(1,1,1,1, "ASDEFGH");
+        obl.imprimirLinea(1, 1, 1);
+        obl.borrarPalabra(1, 1, 1, 1);
         //Obligatorio.SistemaMensajes.mostrar();
-        obl.imprimirLinea(1, 1, 7);
+        obl.imprimirLinea(1, 1, 1);
         obl.destruirSistemaMensajes();
 
     }

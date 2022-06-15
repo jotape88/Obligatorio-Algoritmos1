@@ -244,6 +244,7 @@ public class Obligatorio implements IObligatorio {
 
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
 
+        int topePalabras = SistemaMensajes.getTope();
         int contadorLinea = 0;
         int contadorPalabra = 0;
         boolean posPosible = false;
@@ -253,8 +254,6 @@ public class Obligatorio implements IObligatorio {
             Nodo nodoMensaje = SistemaMensajes.getInicio();
 
             while (nodoMensaje != null && !posPosible) {
-                
-                
 
                 Mensaje esteMensaje = (Mensaje) nodoMensaje.getDato();
 
@@ -263,43 +262,28 @@ public class Obligatorio implements IObligatorio {
 
                     if (!lineasMensaje.esVacia()) {
 
-                        System.out.println("Lista de lineas no vacia");
-
                         Nodo nodoLinea = lineasMensaje.getInicio();
-                        System.out.println(nodoLinea.getDato().toString());
-                 
-                            
-//                        while (nodoLinea != null && contadorLinea < posicionLinea && !posPosible) {
-                          while(nodoLinea != null && !posPosible && contadorLinea <= posicionLinea ){
-                            
-                            System.out.println("Entra a lista de lineas");
+
+                        while (nodoLinea != null && !posPosible && contadorLinea <= posicionLinea) {
 
                             if (contadorLinea == posicionLinea) {
-                                
-                                System.out.println("Linea no nula y dentro del rango");
-                                
+
                                 Linea lineaAux = (Linea) nodoLinea.getDato();
-                               
+
                                 Lista<Palabra> listaPalabras = lineaAux.getListaPalabras();
-                                
-                               
+
                                 if (!listaPalabras.esVacia()) {
-                                    System.out.println("Lista de palabras no vacia");
 
                                     Nodo estaPalabra = listaPalabras.getInicio();
-                                   
-                                    while (estaPalabra != null && contadorPalabra <= posicionPalabra && !posPosible) {
-                                        System.out.println("nodo palabta no vacio y dentro de rango");
 
-                                        if (contadorPalabra == posicionPalabra && contadorPalabra <= listaPalabras.getTope()) {
-                                            
-                                            System.out.println("Listo para ingresar palabra");
-                                     
-                                            //controlar tope
-                                            Nodo nuevaPalabra = new Nodo(palabraAIngresar);
-                                            nuevaPalabra.setSiguiente(estaPalabra.getSiguiente());
-                                            estaPalabra.setSiguiente(nuevaPalabra);
+                                    while (estaPalabra != null && contadorPalabra <= posicionPalabra && !posPosible) {
+
+                                        if (contadorPalabra == posicionPalabra && contadorPalabra <= topePalabras) {
+
+                                            estaPalabra.setDato(palabraAIngresar);
+
                                             posPosible = true;
+
                                             ret.resultado = Retorno.Resultado.OK;
                                         }
 
@@ -308,12 +292,12 @@ public class Obligatorio implements IObligatorio {
 
                                     }
                                 } else {
-                                    
+
                                     ret.resultado = Retorno.Resultado.ERROR;
 
                                 }
                             }
-                                
+
                             nodoLinea = nodoLinea.getSiguiente();
                             contadorLinea++;
 
@@ -335,20 +319,19 @@ public class Obligatorio implements IObligatorio {
 
             ret.resultado = Retorno.Resultado.ERROR;
         }
-
         return ret;
     }
-
+    
+    
     @Override
     public Retorno insertarPalabraYDesplazar(int numContactoOrigen, int numMensaje, int posicionLinea, int posicionPalabra, String palabraAIngresar) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         return ret;
     }
 
-    @Override
+@Override
     public Retorno borrarPalabra(int numContactoOrigen, int numMensaje, int posicionLinea, int posicionPalabra) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
-
         int contadorLinea = 0;
         int contadorPalabra = 0;
         boolean posPosible = false;
@@ -370,31 +353,32 @@ public class Obligatorio implements IObligatorio {
 
                         Nodo nodoLinea = lineasMensaje.getInicio();
 
-                        while (nodoLinea != null && contadorLinea < posicionLinea && !posPosible) {
+                        while (nodoLinea != null && contadorLinea <= posicionLinea && !posPosible) {
 
                             if (contadorLinea == posicionLinea) {
-                                Lista<String> listaPalabras = (Lista<String>) nodoLinea.getDato();
+
+                                Linea lineaAux = (Linea) nodoLinea.getDato();
+
+                                Lista<Palabra> listaPalabras = lineaAux.getListaPalabras();
 
                                 if (!listaPalabras.esVacia()) {
 
-                                    Nodo estaPalabra = listaPalabras.getInicio();
+                                    Nodo nodoPalabra = listaPalabras.getInicio();
 
-                                    while (estaPalabra != null && contadorPalabra < posicionPalabra && !posPosible) {
+                                    while (nodoPalabra != null && contadorPalabra <= posicionPalabra && !posPosible) {
 
                                         if (contadorPalabra == posicionPalabra) {
 
-                                            String palabraActual = (String) estaPalabra.getDato();
-
-                                            listaPalabras.borrarElemento(palabraActual);
+                                            nodoPalabra.setDato(" ");
 
                                             posPosible = true;
 
                                             ret.resultado = Retorno.Resultado.OK;
-                                        } else {
-
-                                            estaPalabra.getSiguiente();
 
                                         }
+                                        
+                                        nodoPalabra = nodoPalabra.getSiguiente();
+                                        contadorPalabra++;
 
                                     }
 
@@ -404,7 +388,8 @@ public class Obligatorio implements IObligatorio {
                                 }
                             }
 
-                            nodoLinea.getSiguiente();
+                            nodoLinea = nodoLinea.getSiguiente();
+                            contadorLinea++;
 
                         }
 
@@ -414,7 +399,7 @@ public class Obligatorio implements IObligatorio {
 
                 }
 
-                nodoMensaje.getSiguiente();
+                nodoMensaje = nodoMensaje.getSiguiente();
             }
 
         } else {

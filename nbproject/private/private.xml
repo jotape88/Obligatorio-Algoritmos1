@@ -2,16 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="Ejercicios">
-            <file>file:/C:/CODIGOS/Obligatorio%20Algoritmos/src/trabajarconobligatorio/Lista.java</file>
-            <file>file:/C:/CODIGOS/Obligatorio%20Algoritmos/src/trabajarconobligatorio/Prueba.java</file>
-            <file>file:/C:/CODIGOS/Obligatorio%20Algoritmos/src/trabajarconobligatorio/Retorno.java</file>
-            <file>file:/C:/CODIGOS/Obligatorio%20Algoritmos/src/trabajarconobligatorio/TRABAJARCONOBLIGATORIO.java</file>
-            <file>file:/C:/CODIGOS/Obligatorio%20Algoritmos/src/trabajarconobligatorio/Mensaje.java</file>
-            <file>file:/C:/CODIGOS/Obligatorio%20Algoritmos/src/trabajarconobligatorio/Obligatorio.java</file>
-            <file>file:/C:/CODIGOS/Obligatorio%20Algoritmos/src/trabajarconobligatorio/Linea.java</file>
-            <file>file:/C:/CODIGOS/Obligatorio%20Algoritmos/src/trabajarconobligatorio/Contacto.java</file>
-        </group>
         <group>
             <file>file:/C:/mauro/ort/algo/segundointento/Obligatorio/src/trabajarconobligatorio/Lista.java</file>
             <file>file:/C:/mauro/ort/algo/segundointento/Obligatorio/src/trabajarconobligatorio/TRABAJARCONOBLIGATORIO.java</file>
@@ -19,6 +9,22 @@
             <file>file:/C:/mauro/ort/algo/segundointento/Obligatorio/src/trabajarconobligatorio/Contacto.java</file>
             <file>file:/C:/mauro/ort/algo/segundointento/Obligatorio/src/trabajarconobligatorio/Linea.java</file>
             <file>file:/C:/mauro/ort/algo/segundointento/Obligatorio/src/trabajarconobligatorio/Mensaje.java</file>
+        </group>
+        <group name="Ejercicios">
+            <file>file:/C:/CODIGOS/Obli%20Algos/src/trabajarconobligatorio/TRABAJARCONOBLIGATORIO.java</file>
+            <file>file:/C:/CODIGOS/Obli%20Algos/src/trabajarconobligatorio/Lista.java</file>
+            <file>file:/C:/CODIGOS/Obli%20Algos/src/trabajarconobligatorio/Contacto.java</file>
+            <file>file:/C:/CODIGOS/Obli%20Algos/src/trabajarconobligatorio/Retorno.java</file>
+            <file>file:/C:/CODIGOS/Obli%20Algos/src/trabajarconobligatorio/Fila.java</file>
+            <file>file:/C:/CODIGOS/Obli%20Algos/src/trabajarconobligatorio/Celda.java</file>
+            <file>file:/C:/CODIGOS/Obli%20Algos/src/trabajarconobligatorio/Palabra.java</file>
+            <file>file:/C:/CODIGOS/Obli%20Algos/src/trabajarconobligatorio/Obligatorio.java</file>
+            <file>file:/C:/CODIGOS/Obli%20Algos/src/trabajarconobligatorio/Linea.java</file>
+            <file>file:/C:/CODIGOS/Obli%20Algos/src/trabajarconobligatorio/ILista.java</file>
+            <file>file:/C:/CODIGOS/Obli%20Algos/src/trabajarconobligatorio/Nodo.java</file>
+            <file>file:/C:/CODIGOS/Obli%20Algos/src/trabajarconobligatorio/Mensaje.java</file>
+            <file>file:/C:/CODIGOS/Obli%20Algos/src/trabajarconobligatorio/Prueba.java</file>
+            <file>file:/C:/CODIGOS/Obli%20Algos/src/trabajarconobligatorio/UTILS.java</file>
         </group>
     </open-files>
 </project-private>
