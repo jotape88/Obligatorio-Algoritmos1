@@ -122,7 +122,7 @@ public class Obligatorio implements IObligatorio {
         Nodo<Mensaje> menB = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje));
         if (menB != null) {
             Linea l = new Linea();
-            menB.getDato().getListaLineas().agregarFinal(l);
+            menB.getDato().getListaLineas().agregarInicio(l);
             for (int i = 0; i <= menB.getDato().getListaLineas().getTope(); i++) {
                 menB.getDato().getListaLineas().getInicio().getDato().getListaPalabras().agregarInicio(new Palabra());
             }
@@ -239,7 +239,7 @@ public class Obligatorio implements IObligatorio {
         return ret;
     }
 
-    @Override
+@Override
     public Retorno insertarPalabraEnLinea(int numContactoOrigen, int numMensaje, int posicionLinea, int posicionPalabra, String palabraAIngresar) {
 
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
@@ -253,30 +253,48 @@ public class Obligatorio implements IObligatorio {
             Nodo nodoMensaje = SistemaMensajes.getInicio();
 
             while (nodoMensaje != null && !posPosible) {
+                
+                
 
                 Mensaje esteMensaje = (Mensaje) nodoMensaje.getDato();
 
-                if (esteMensaje.getContOrigen().numeroContacto == numContactoOrigen
-                        && esteMensaje.getNumeroDeMensaje() == numMensaje) {
-
+                if (esteMensaje.getContOrigen().numeroContacto == numContactoOrigen && esteMensaje.getNumeroDeMensaje() == numMensaje) {
                     Lista<Linea> lineasMensaje = esteMensaje.getListaLineas();
 
                     if (!lineasMensaje.esVacia()) {
 
-                        Nodo nodoLinea = lineasMensaje.getInicio();
+                        System.out.println("Lista de lineas no vacia");
 
-                        while (nodoLinea != null && contadorLinea < posicionLinea && !posPosible) {
+                        Nodo nodoLinea = lineasMensaje.getInicio();
+                        System.out.println(nodoLinea.getDato().toString());
+                 
+                            
+//                        while (nodoLinea != null && contadorLinea < posicionLinea && !posPosible) {
+                          while(nodoLinea != null && !posPosible && contadorLinea <= posicionLinea ){
+                            
+                            System.out.println("Entra a lista de lineas");
 
                             if (contadorLinea == posicionLinea) {
-                                Lista<String> listaPalabras = (Lista<String>) nodoLinea.getDato();
-
+                                
+                                System.out.println("Linea no nula y dentro del rango");
+                                
+                                Linea lineaAux = (Linea) nodoLinea.getDato();
+                               
+                                Lista<Palabra> listaPalabras = lineaAux.getListaPalabras();
+                                
+                               
                                 if (!listaPalabras.esVacia()) {
+                                    System.out.println("Lista de palabras no vacia");
 
                                     Nodo estaPalabra = listaPalabras.getInicio();
+                                   
+                                    while (estaPalabra != null && contadorPalabra <= posicionPalabra && !posPosible) {
+                                        System.out.println("nodo palabta no vacio y dentro de rango");
 
-                                    while (estaPalabra != null && contadorPalabra < posicionPalabra && !posPosible) {
-
-                                        if (contadorPalabra == posicionPalabra && (contadorPalabra < listaPalabras.getTope())) {
+                                        if (contadorPalabra == posicionPalabra && contadorPalabra <= listaPalabras.getTope()) {
+                                            
+                                            System.out.println("Listo para ingresar palabra");
+                                     
                                             //controlar tope
                                             Nodo nuevaPalabra = new Nodo(palabraAIngresar);
                                             nuevaPalabra.setSiguiente(estaPalabra.getSiguiente());
@@ -285,26 +303,32 @@ public class Obligatorio implements IObligatorio {
                                             ret.resultado = Retorno.Resultado.OK;
                                         }
 
-                                        estaPalabra.getSiguiente();
+                                        estaPalabra = estaPalabra.getSiguiente();
                                         contadorPalabra++;
 
                                     }
                                 } else {
+                                    
+                                    ret.resultado = Retorno.Resultado.ERROR;
 
                                 }
                             }
-
-                            nodoLinea.getSiguiente();
+                                
+                            nodoLinea = nodoLinea.getSiguiente();
+                            contadorLinea++;
 
                         }
 
+                    } else {
+
+                        ret.resultado = Retorno.Resultado.ERROR;
                     }
 
                     ret.resultado = Retorno.Resultado.ERROR;
 
                 }
 
-                nodoMensaje.getSiguiente();
+                nodoMensaje = nodoMensaje.getSiguiente();
             }
 
         } else {
@@ -450,7 +474,7 @@ public class Obligatorio implements IObligatorio {
                 Nodo nodoLinea = listaLineas.getInicio();
                 boolean bandera = false;
                 int largoLineas = listaLineas.getCantidad()-1;
-                while (nodoLinea.getDato() != null && posicionLinea < largoLineas && !bandera) {
+                while (nodoLinea.getDato() != null && posicionLinea <= largoLineas && !bandera) {
                     if(contadorLineas == posicionLinea) {
                         System.out.println(nodoLinea.getDato().toString());
                         bandera = true;
