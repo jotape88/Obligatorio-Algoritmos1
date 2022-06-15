@@ -549,15 +549,37 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno cantidadDeMensajes(int numContactoOrigen) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
-        int contador = 0;
-
+        Fila f = null;
         Nodo<Mensaje> mensajeAct = SistemaMensajes.getInicio();
 
         while (mensajeAct != null) {
+            if (mensajeAct.getDato().getContOrigen().getNumeroContacto() == numContactoOrigen) {
+
+                if (f == null) {
+                    f = new Fila(mensajeAct.getDato().getContOrigen().getNombre());
+                }
+                if (f.getListaCelda().esVacia()) {
+                    Celda c = new Celda(mensajeAct.getDato().getFecha());
+                    f.getListaCelda().agregarFinal(c);
+                } else {
+                    Celda cB = new Celda(mensajeAct.getDato().getFecha());
+                    Nodo<Celda> cF = f.getListaCelda().obtenerElemento(cB);
+                    if (cF != null) {
+                        cF.getDato().setCantMensajes(cF.getDato().getCantMensajes() + 1);
+                    } else {
+                        f.getListaCelda().agregarFinal(cB);
+                    }
+                }
+//                
+//                c.setCantMensajes(c.getCantMensajes() + 1);
+//                f.getListaCelda().agregarFinal(c);
+            }
             mensajeAct = mensajeAct.getSiguiente();
         }
-
-        ret.valorEntero = contador;
+        if (f != null) {
+            System.out.println(f.toString());
+        }
+        // ret.valorEntero = contador;
         return ret;
     }
 
