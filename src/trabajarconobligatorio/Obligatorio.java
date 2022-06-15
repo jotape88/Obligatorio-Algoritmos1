@@ -122,7 +122,7 @@ public class Obligatorio implements IObligatorio {
         Nodo<Mensaje> menB = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje));
         if (menB != null) {
             Linea l = new Linea();
-            menB.getDato().getListaLineas().agregarInicio(l);
+            menB.getDato().getListaLineas().agregarFinal(l);
             for (int i = 0; i <= menB.getDato().getListaLineas().getTope(); i++) {
                 menB.getDato().getListaLineas().getInicio().getDato().getListaPalabras().agregarInicio(new Palabra());
             }
@@ -441,20 +441,24 @@ public class Obligatorio implements IObligatorio {
     public Retorno imprimirLinea(int numContactoOrigen, int numMensaje, int posicionLinea) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         int contadorLineas = 0;
-
         if (!SistemaMensajes.esVacia()) {
             Contacto cO = new Contacto(numContactoOrigen);
             Mensaje m = new Mensaje(numMensaje);
             if (contactos.obtenerElemento(cO) != null && SistemaMensajes.obtenerElemento(m) != null) {
                 Mensaje msg = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();
-
                 Lista<Linea> listaLineas = msg.getListaLineas();
                 Nodo nodoLinea = listaLineas.getInicio();
-                while (nodoLinea != null && contadorLineas < posicionLinea) {
-                    nodoLinea.getSiguiente();
-                    contadorLineas++;
+                boolean bandera = false;
+                int largoLineas = listaLineas.getCantidad()-1;
+                while (nodoLinea.getDato() != null && posicionLinea < largoLineas && !bandera) {
+                    if(contadorLineas == posicionLinea) {
+                        System.out.println(nodoLinea.getDato().toString());
+                        bandera = true;
+                    } else {
+                        nodoLinea = nodoLinea.getSiguiente();
+                        contadorLineas++;
+                    }
                 }
-                System.out.println(nodoLinea.getDato().toString());
             } else {
                 ret.resultado = Retorno.Resultado.ERROR;
             }

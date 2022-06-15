@@ -152,7 +152,8 @@ public class TRABAJARCONOBLIGATORIO {
         obl.insertarLinea(1, 1);
         obl.insertarLinea(1, 1);
         obl.insertarLinea(1, 1);
-        Obligatorio.SistemaMensajes.mostrar();
+        //Obligatorio.SistemaMensajes.mostrar();
+        obl.imprimirLinea(1, 1, 0);
         obl.destruirSistemaMensajes();
 
     }

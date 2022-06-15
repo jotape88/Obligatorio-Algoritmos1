@@ -13,6 +13,10 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
     public int getTope() {
         return tope;
     }
+    
+    public int getCantidad() {
+        return cantidad;
+    }
 
     public void setTope(int tope) {
         this.tope = tope;
