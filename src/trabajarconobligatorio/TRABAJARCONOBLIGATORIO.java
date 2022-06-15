@@ -23,8 +23,8 @@ public class TRABAJARCONOBLIGATORIO {
         // juegopruebaDiccionario(obl, p);
         // juegodepruebaLineas(obl, p);
         // juegopruebaReporte(obl, p);
-        //  juegodepruebaLineas(obl, p);
-        juegodePruebaCantMensaje(obl, p);
+          juegodepruebaLineas(obl, p);
+        //juegodePruebaCantMensaje(obl, p);
     }
 
     public static void juegodepruebaSistema(Obligatorio obl, Prueba p) {
