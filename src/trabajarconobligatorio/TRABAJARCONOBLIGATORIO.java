@@ -12,10 +12,10 @@ public class TRABAJARCONOBLIGATORIO {
         // juegodepruebaSistema(obl, p);
         // juegodepruebaContactos(obl, p);
         // juegodepruebaMensajes(obl, p);
-        // juegopruebaFucionalidades(obl, p);
+         juegopruebaFucionalidades(obl, p);
         // juegopruebaDiccionario(obl, p);
         // juegopruebaReporte(obl, p);
-        juegodepruebaLineas(obl, p);
+        //juegodepruebaLineas(obl, p);
         // juegopruebaIncersionBorradoPalabras(obl, p);
         // juegodePruebaCantMensaje(obl, p);
     }
@@ -149,39 +149,73 @@ public class TRABAJARCONOBLIGATORIO {
          p.ver(obl.imprimirTexto(1, 143).resultado, Retorno.Resultado.ERROR, "Se intentan imprimir las lineas de un mensaje inexistente con un contacto contacto existente, Esperado: ERROR");
          p.ver(obl.imprimirTexto(131, 143).resultado, Retorno.Resultado.ERROR, "Se intentan imprimir las lineas de un mensaje y contactos inexistentes, Esperado: ERROR");
 
-         p.ver(obl.borrarLinea(1, 1, 0).resultado, Retorno.Resultado.OK, "Se borra la linea 0 del mensaje 1 asociado al contacto 1, se corre la siguiente a esta posicion, Esperado: OK");
-         p.ver(obl.borrarLinea(1, 1, 0).resultado, Retorno.Resultado.OK, "Se borra la linea 0 del mensaje 1 asociado al contacto 1, se corre la siguiente a esta posicion, Esperado: OK");
-         p.ver(obl.borrarLinea(2, 2, 0).resultado, Retorno.Resultado.OK, "Se borra la linea 0 del mensaje 1 asociado al contacto 1, se corre la siguiente a esta posicion, Esperado: OK");
+         //p.ver(obl.borrarLinea(1, 1, 0).resultado, Retorno.Resultado.OK, "Se borra la linea 0 del mensaje 1 asociado al contacto 1, se corre la siguiente a esta posicion, Esperado: OK");
+         //p.ver(obl.borrarLinea(1, 1, 0).resultado, Retorno.Resultado.OK, "Se borra la linea 0 del mensaje 1 asociado al contacto 1, se corre la siguiente a esta posicion, Esperado: OK");
+        // p.ver(obl.borrarLinea(2, 2, 0).resultado, Retorno.Resultado.OK, "Se borra la linea 0 del mensaje 1 asociado al contacto 1, se corre la siguiente a esta posicion, Esperado: OK");
          //p.ver(obl.borrarLinea(25, 2, 0).resultado, Retorno.Resultado.ERROR, "Se intenta borrar una linea de un contacto inexistente,Esperado ERROR");
          //p.ver(obl.borrarLinea(2, 27, 0).resultado, Retorno.Resultado.ERROR, "Se intenta borrar una lista de un mensaje inexistente, Esperado: ERROR");
          //p.ver(obl.borrarLinea(2, 2, 88).resultado, Retorno.Resultado.ERROR, "Se intenta borrar una linea de una posicion invalida, Esperado: ERROR");
          obl.imprimirTexto(1, 1);
-
+         obl.imprimirTexto(2, 2);
+            
          
-         //obl.borrarLinea(1, 1, 0);
-//        
+//         p.ver(obl.borrarTodo(1, 1).resultado, Retorno.Resultado.OK, "Se borran todas las lineas del mensaje 1 del contacto 1, Esperado: OK");
+//         p.ver(obl.borrarTodo(2, 2).resultado, Retorno.Resultado.OK, "Se borran todas las lineas del mensaje 2 del contacto 2, Esperado: OK");         
+//         obl.imprimirTexto(1, 1);
+//         obl.imprimirTexto(2, 2);
+  
+         //obl.borrarLinea(1, 1, 0);      
 ////        obl.imprimirLinea(1, 1, 0);
-//
 //        obl.insertarPalabraEnLinea(1, 1, 1, 0, "Palabra4");
 //        obl.insertarPalabraEnLinea(1, 1, 1, 1, "Palabra5");
 //        obl.insertarPalabraEnLinea(1, 1, 1, 2, "Palabra6");
-//
 //        obl.insertarPalabraEnLinea(1, 1, 2, 0, "Palabra7");
 //        obl.insertarPalabraEnLinea(1, 1, 2, 1, "Palabra8");
 //        obl.insertarPalabraEnLinea(1, 1, 2, 2, "Palabra9");
-//
-
-
-//        
-
 //        obl.imprimirTexto(1, 1);
         
         p.imprimirResultadosPrueba();
     }
 
     public static void juegopruebaFucionalidades(Obligatorio obl, Prueba p) {
-        // p.ver(obl..resultado, Retorno.Resultado.OK, "Se intenta Imprimir texto en pantalla, Esperado: OK");
-
+        System.out.println("JUEGO DE PRUEBA FUNCIONALIDADES");
+        obl.crearSistemaMensajes(3);
+        Date f = new Date();
+        obl.agregarContacto(1, "Contacto1");
+        obl.agregarContacto(2, "Contacto2");
+        obl.agregarContacto(3, "Contacto3");
+        obl.agregarMensaje(1, 2, f);
+        obl.agregarMensaje(2, 1, f);
+        obl.agregarMensaje(3, 1, f);
+        
+        obl.insertarLinea(1, 1);
+        obl.insertarLinea(1, 1);
+        obl.insertarLinea(1, 1);
+        obl.insertarLinea(1, 1);
+        obl.insertarLinea(1, 1);
+        obl.insertarLinea(2, 2);
+        obl.insertarLinea(2, 2);
+       
+        obl.insertarPalabraEnLinea(1, 1, 0, 0, "PalabraABorrarOcurrencia");
+        obl.insertarPalabraEnLinea(1, 1, 0, 1, "PalabraABorrarOcurrencia");
+        obl.insertarPalabraEnLinea(1, 1, 0, 2, "PalabraABorrarOcurrencia");
+        obl.insertarPalabraEnLinea(1, 1, 1, 0, "PalabrX");
+        obl.insertarPalabraEnLinea(1, 1, 1, 1, "PalabraY");
+        obl.insertarPalabraEnLinea(1, 1, 1, 2, "PalabraZ");
+        obl.insertarPalabraEnLinea(1, 1, 2, 2, "PalabraYYY");
+        obl.insertarPalabraEnLinea(1, 1, 3, 3, "PalabraXXX");
+        obl.insertarPalabraEnLinea(1, 1, 4, 0, "PalabraABorrarOcurrencia");
+        obl.insertarPalabraEnLinea(2, 2, 0, 0, "PalabraABorrar");
+        obl.imprimirTexto(1, 1);
+        obl.imprimirTexto(2, 2);
+  
+        p.ver(obl.borrarOcurrenciasPalabraEnTexto(1, 1, "PalabraABorrarOcurrencia").resultado, Retorno.Resultado.OK, "Se borra la palabra 'PalabraABorrarOcurrencia' del mensaje 1 asociado al contacto 1, Esperado: OK");
+        p.ver(obl.borrarPalabra(2, 2, 0, 0).resultado, Retorno.Resultado.OK, "Se borra la palabra 'PalabraABorrar' del mensaje 2 asociado al contacto 2, Esperado: OK");
+        //p.ver(obl.borrarPalabra(1, 1, 0, 0).resultado, Retorno.Resultado.OK, "Se borra la palabra 'PalabraABorrar' del mensaje 1 asociado al contacto 1, Esperado: OK");
+        obl.imprimirTexto(1, 1);
+        obl.imprimirTexto(2, 2);
+        
+        p.imprimirResultadosPrueba();
     }
 
     public static void juegopruebaDiccionario(Obligatorio obl, Prueba p) {
