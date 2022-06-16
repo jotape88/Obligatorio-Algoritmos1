@@ -497,6 +497,7 @@ public class Obligatorio implements IObligatorio {
                     }
 
                     nodoLinea = nodoLinea.getSiguiente();
+                    contadorLinea++;
 
                 }
 
