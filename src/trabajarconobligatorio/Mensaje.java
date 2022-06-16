@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package trabajarconobligatorio;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- *
- * @author Francisco
- */
 public class Mensaje implements Comparable<Mensaje> {
 
     static int nroMensajes = 1;
@@ -76,8 +68,7 @@ public class Mensaje implements Comparable<Mensaje> {
 
     @Override
     public int compareTo(Mensaje o) {
-        throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
-                                                                       // Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");                                                                 
     }
 
     @Override

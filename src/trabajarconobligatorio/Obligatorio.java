@@ -2,14 +2,9 @@ package trabajarconobligatorio;
 
 import java.util.Date;
 
-/**
- *
- * @author Rafael
- */
 public class Obligatorio implements IObligatorio {
 
     static Lista<Mensaje> SistemaMensajes = null;
-    //public ListaMensajes listMensajes = new ListaMensajes(); //Creado (Francisco)
     public Lista<Contacto> contactos = new Lista<Contacto>();
     public Lista<String> diccionario = new Lista<String>();
 
@@ -30,11 +25,11 @@ public class Obligatorio implements IObligatorio {
 
     @Override
     public Retorno agregarContacto(int numContacto, String nomContacto) {
-        Retorno ret = new Retorno(Retorno.Resultado.OK);
+        Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         Contacto newContacto = new Contacto(numContacto, nomContacto);
         if (contactos.obtenerElemento(newContacto) == null) {
             contactos.agregarInicio(newContacto);
-
+            ret.resultado = Retorno.Resultado.OK;
         } else {
             ret.resultado = Retorno.Resultado.ERROR;
         }
@@ -44,23 +39,20 @@ public class Obligatorio implements IObligatorio {
 
     @Override
     public Retorno eliminarContacto(int numContacto) {
-
-        Retorno ret = new Retorno(Retorno.Resultado.OK);
-        Contacto cAux = new Contacto(numContacto, "Pirulo");
-
-        //System.out.println(cAux.toString());
+        Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+        Contacto cAux = new Contacto(numContacto);
         if (contactos.obtenerElemento(cAux) != null) {
             contactos.borrarElemento(cAux);
+            ret.resultado = Retorno.Resultado.OK;
         } else {
             ret.resultado = Retorno.Resultado.ERROR;
         }
-
         return ret;
     }
 
     @Override
     public Retorno agregarMensaje(int numContactoOrigen, int numContactoDestino, Date fecha) {
-        Retorno ret = new Retorno(Retorno.Resultado.OK);
+        Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
 
         Contacto cO = new Contacto(numContactoOrigen);
         Contacto cD = new Contacto(numContactoDestino);
@@ -71,10 +63,10 @@ public class Obligatorio implements IObligatorio {
             if(cOrigen.getNumeroContacto() == numContactoOrigen && cDestino.getNumeroContacto() == numContactoDestino){
                 Mensaje m = new Mensaje(cOrigen, cDestino, fecha, SistemaMensajes.getTope());
                 SistemaMensajes.agregarInicio(m);
+                ret.resultado = Retorno.Resultado.OK;
+            } else {
+                ret.resultado = Retorno.Resultado.ERROR;
             }
-            Mensaje m = new Mensaje(cOrigen, cDestino, fecha, SistemaMensajes.getTope());
-            SistemaMensajes.agregarInicio(m);
-
         } else {
             ret.resultado = Retorno.Resultado.ERROR;
         }
@@ -83,7 +75,7 @@ public class Obligatorio implements IObligatorio {
 
     @Override
     public Retorno eliminarMensaje(int numContactoOrigen, int numMensaje) {
-        Retorno ret = new Retorno(Retorno.Resultado.OK);
+        Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         Contacto cO = new Contacto(numContactoOrigen);
         Mensaje m = new Mensaje(numMensaje);
 
@@ -92,6 +84,7 @@ public class Obligatorio implements IObligatorio {
             Contacto cAux = contactos.obtenerElemento(new Contacto(numContactoOrigen)).getDato();
             if (men.getNumeroDeMensaje() == numMensaje && cAux.getNumeroContacto() == numContactoOrigen) {
                 SistemaMensajes.borrarElemento(m);
+                ret.resultado = Retorno.Resultado.OK;
             }
         } else {
             ret.resultado = Retorno.Resultado.ERROR;
@@ -126,6 +119,7 @@ public class Obligatorio implements IObligatorio {
             for (int i = 0; i <= menB.getDato().getListaLineas().getTope(); i++) {
                 menB.getDato().getListaLineas().getInicio().getDato().getListaPalabras().agregarInicio(new Palabra());
             }
+            ret.resultado = Retorno.Resultado.OK;
         }
         return ret;
     }
@@ -241,7 +235,6 @@ public class Obligatorio implements IObligatorio {
 
 @Override
     public Retorno insertarPalabraEnLinea(int numContactoOrigen, int numMensaje, int posicionLinea, int posicionPalabra, String palabraAIngresar) {
-
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
 
         int topePalabras = SistemaMensajes.getTope();
@@ -459,14 +452,19 @@ public class Obligatorio implements IObligatorio {
                 Nodo nodoLinea = listaLineas.getInicio();
                 boolean bandera = false;
                 int largoLineas = listaLineas.getCantidad()-1;
-                while (nodoLinea.getDato() != null && posicionLinea <= largoLineas && !bandera) {
-                    if(contadorLineas == posicionLinea) {
-                        System.out.println(nodoLinea.getDato().toString());
-                        bandera = true;
-                    } else {
-                        nodoLinea = nodoLinea.getSiguiente();
-                        contadorLineas++;
-                    }
+                if(posicionLinea <= largoLineas) {
+                     while (nodoLinea.getDato() != null && !bandera) {
+                        if(contadorLineas == posicionLinea) {
+                            System.out.println(nodoLinea.getDato().toString());
+                            bandera = true;
+                            ret.resultado = Retorno.Resultado.OK;
+                        } else {
+                            nodoLinea = nodoLinea.getSiguiente();
+                            contadorLineas++;
+                          }
+                        }
+                } else {
+                   ret.resultado = Retorno.Resultado.ERROR;
                 }
             } else {
                 ret.resultado = Retorno.Resultado.ERROR;

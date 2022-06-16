@@ -124,11 +124,10 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
         if (this.esVacia()) {
             agregarInicio(n);
         } else {
-
             this.fin.setSiguiente(nuevo);
             this.fin = nuevo;
+            cantidad++;
         }
-        cantidad++;
     }
 
     @Override
@@ -251,7 +250,7 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
         String datosLista = "";
         Nodo<T> actual = this.inicio;
         while (actual != null) {
-            datosLista += actual.getDato().toString() + "-";
+            datosLista += actual.getDato().toString();
             actual = actual.getSiguiente();
         }
         return datosLista;

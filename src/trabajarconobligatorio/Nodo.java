@@ -34,16 +34,10 @@ public class Nodo<T> {
         return "Nodo{" + "dato =" + dato.toString() + ", siguiente=" + getSiguiente() + '}';
     }
 
-    /**
-     * @return the anterior
-     */
     public Nodo<T> getAnterior() {
         return anterior;
     }
 
-    /**
-     * @param anterior the anterior to set
-     */
     public void setAnterior(Nodo<T> anterior) {
         this.anterior = anterior;
     }

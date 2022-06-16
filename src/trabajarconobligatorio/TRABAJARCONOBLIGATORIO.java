@@ -2,15 +2,8 @@ package trabajarconobligatorio;
 
 import java.util.Date;
 
-/**
- *
- * @author Rafael
- */
 public class TRABAJARCONOBLIGATORIO {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
 
         Obligatorio obl = new Obligatorio();
@@ -152,11 +145,16 @@ public class TRABAJARCONOBLIGATORIO {
         obl.insertarLinea(1, 1);
         obl.insertarLinea(1, 1);
         obl.insertarLinea(1, 1);
-        obl.insertarPalabraEnLinea(1,1,1,1, "ASDEFGH");
-        obl.imprimirLinea(1, 1, 1);
-        obl.borrarPalabra(1, 1, 1, 1);
+        
+        obl.insertarPalabraEnLinea(1,1,0,0, "ASDEFGH");
+        obl.insertarPalabraEnLinea(1,1,0,1, "ASDASDA");
+        obl.insertarPalabraEnLinea(1,1,0,2, "123123123");
+        obl.insertarPalabraEnLinea(1,1,0,3, "XXXXXXXX");
+        obl.imprimirLinea(1, 1, 0);
+        //obl.imprimirTexto(1, 0);
+        //obl.borrarPalabra(1, 1, 1, 1);
         //Obligatorio.SistemaMensajes.mostrar();
-        obl.imprimirLinea(1, 1, 1);
+        //obl.imprimirLinea(1, 1, 1);
         obl.destruirSistemaMensajes();
 
     }

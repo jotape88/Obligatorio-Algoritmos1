@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabajarconobligatorio;
 
 import java.util.Objects;
 
-/**
- *
- * @author mauro
- */
 public class Palabra implements Comparable<Palabra> {
 
     private String dato = "";
@@ -55,12 +46,12 @@ public class Palabra implements Comparable<Palabra> {
 
     @Override
     public String toString() {
-        return "'" + dato + "'";
+        return dato + " ";
     }
 
     @Override
     public int compareTo(Palabra o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
 }

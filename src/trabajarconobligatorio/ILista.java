@@ -1,14 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package trabajarconobligatorio;
 
-/**
- *
- * @author Francisco
- * @param <T>
- */
+
 public interface ILista<T> {
 
     //metodos de la interfaz

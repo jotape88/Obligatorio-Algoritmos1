@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabajarconobligatorio;
 
 import java.util.Date;
 import java.util.Objects;
 
-/**
- *
- * @author mauro
- */
 public class Celda implements Comparable<Celda> {
 
     private Date fecha;
@@ -54,7 +45,6 @@ public class Celda implements Comparable<Celda> {
 
     @Override
     public int compareTo(Celda o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
-
 }

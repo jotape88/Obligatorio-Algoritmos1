@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabajarconobligatorio;
 
-/**
- *
- * @author mauro
- */
 public class Fila implements Comparable<Fila>{ 
     private String nombreCliente;
     private Lista<Celda> listaCelda = new Lista<>();
@@ -40,9 +31,6 @@ public class Fila implements Comparable<Fila>{
 
     @Override
     public int compareTo(Fila o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-    
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }  
 }
