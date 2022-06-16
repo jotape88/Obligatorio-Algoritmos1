@@ -27,25 +27,6 @@ public class TRABAJARCONOBLIGATORIO {
         p.imprimirResultadosPrueba();
     }
 
-    public static void juegpruebaPalabrasDiccionario(Obligatorio obl, Prueba p) {
-
-        obl.crearSistemaMensajes(3);
-        obl.agregarContacto(1, "Contacto1");
-        obl.agregarContacto(2, "Contacto2");
-        obl.agregarMensaje(1, 2, new Date());
-        obl.insertarLinea(1, 1);
-
-        obl.insertarPalabraEnLinea(1, 1, 0, 0, "Palabra1");
-        obl.insertarPalabraEnLinea(1, 1, 0, 1, "PalabraDiccionario");
-        obl.insertarPalabraEnLinea(1, 1, 0, 2, "Palabra2");
-        obl.borrarOcurrenciasPalabraEnLinea(1, 1, 0, "Palabra1");
-
-//        obl.ingresarPalabraDiccionario("PalabraDiccionario");
-//        obl.ingresarPalabraDiccionario("Diccionario3");
-//        obl.ingresarPalabraDiccionario("Diccionario3");
-//        p.ver(obl.ImprimirTextoIncorrecto(1, 1).resultado, Retorno.Resultado.OK, "Se intenta mostrar las palabras del mensaje que no se encuentren en el diccionario");
-    }
-
     public static void juegodepruebaContactos(Obligatorio obl, Prueba p) {
         obl.crearSistemaMensajes(3);
         p.ver(obl.agregarContacto(1, "Federico").resultado, Retorno.Resultado.OK, "Se agrega un contacto con el número 1 y el nombre Federico, Esperado: OK");
@@ -117,21 +98,90 @@ public class TRABAJARCONOBLIGATORIO {
         // obl.destruirSistemaMensajes();
         // p.imprimirResultadosPrueba();
     }
+    
+    public static void juegodepruebaLineas(Obligatorio obl, Prueba p) {
+        System.out.println("JUEGO DE PRUEBA LINEAS");
+        obl.crearSistemaMensajes(3);
+        Date f = new Date();
+        obl.agregarContacto(1, "Contacto1");
+        obl.agregarContacto(2, "Contacto2");
+        obl.agregarContacto(3, "Contacto3");
+        obl.agregarMensaje(1, 2, f);
+        obl.agregarMensaje(2, 1, f);
+        obl.agregarMensaje(3, 1, f);
+
+        //Obligatorio.SistemaMensajes.mostrar();
+        p.ver(obl.insertarLinea(1, 1).resultado, Retorno.Resultado.OK, "Se inserta una linea en el numero de mensaje 1 con el numero de contacto 1, Esperado: OK");
+        p.ver(obl.insertarLinea(1, 1).resultado, Retorno.Resultado.OK, "Se inserta otra linea en el numero de mensaje 1, con el numero de contacto 1, Esperado: OK");
+        obl.insertarLinea(1, 1);
+        obl.insertarLinea(1, 1);
+        p.ver(obl.insertarLinea(2, 2).resultado, Retorno.Resultado.OK, "Se inserta una linea en el contacto 2 con el numero de mensaje 0, Esperado: OK");
+        p.ver(obl.insertarLinea(2, 2).resultado, Retorno.Resultado.OK, "Se inserta una linea en el contacto 2 con el numero de mensaje 1, Esperado: OK");
+        obl.insertarLinea(2, 2);
+        p.ver(obl.insertarLinea(3, 3).resultado, Retorno.Resultado.OK, "Se inserta una linea en el contacto 3 con el numero de mensaje 3, Esperado: OK");
+        p.ver(obl.insertarLinea(232, 1).resultado, Retorno.Resultado.ERROR, "Se inserta una linea en un contacto inexistente con el numero de mensaje 1, Esperado: ERROR");
+        p.ver(obl.insertarLinea(2, 189).resultado, Retorno.Resultado.ERROR, "Se inserta una linea en el contacto 2 con el numero de mensaje inexistente, Esperado: ERROR");
+        p.ver(obl.insertarLinea(223, 189).resultado, Retorno.Resultado.ERROR, "Se inserta una linea en un contacto inexistente con un numero de mensaje inexistente, Esperado: ERROR");
+
+        //p.ver(obl.insertarLineaEnPosicion(3, 3, 1).resultado, Retorno.Resultado.OK, "Se inserta una linea en el contacto 3, mensaje 3 en la posicion 1, Esperado: OK");
+        //p.ver(obl.insertarLineaEnPosicion(3, 3, 2).resultado, Retorno.Resultado.OK, "Se inserta una linea en el contacto 3, mensaje 3 en la posicion 2, Esperado: OK");
+        //p.ver(obl.insertarLineaEnPosicion(3, 3, 3).resultado, Retorno.Resultado.OK, "Se inserta una linea en el contacto 3, mensaje 3 en la posicion 3, Esperado: OK");
+        //p.ver(obl.insertarLineaEnPosicion(31, 3, 8).resultado, Retorno.Resultado.OK, "Se inserta una linea en el contacto 3, mensaje 3 en la posicion 8, Esperado: OK");
+        //p.ver(obl.insertarLineaEnPosicion(3, 35, 8).resultado, Retorno.Resultado.OK, "Se inserta una linea en el contacto 3, mensaje 3 en la posicion 8, Esperado: OK");
+        //p.ver(obl.insertarLineaEnPosicion(3, 3, 85).resultado, Retorno.Resultado.OK, "Se inserta una linea en el contacto 3, mensaje 3 y en una posicion no adyacente, Esperado: OK");
+
+        
+        p.ver(obl.insertarPalabraEnLinea(1, 1, 0, 0, "Palabra1").resultado, Retorno.Resultado.OK, "Se inserta 'Palabra1' en el contacto 1 con el numero de mensaje 1 en la posicion de linea 0 y de palabra 0, Esperado: OK");
+        p.ver(obl.insertarPalabraEnLinea(1, 1, 0, 1, "Palabra2").resultado, Retorno.Resultado.OK, "Se inserta 'Palabra2' en el contacto 1 con el numero de mensaje 1 en la posicion de linea 0 y de palabra 1, Esperado: OK");
+        p.ver(obl.insertarPalabraEnLinea(1, 1, 0, 2, "Palabra3").resultado, Retorno.Resultado.OK, "Se inserta 'Palabra3' en el contacto 1 con el numero de mensaje 1 en la posicion de linea 0 y de palabra 2, Esperado: OK"); 
+        p.ver(obl.insertarPalabraEnLinea(2, 2, 0, 0, "PalabraA").resultado, Retorno.Resultado.OK, "Se inserta 'PalabraA' en el contacto 2 con el numero de mensaje 2 en la posicion de linea 0 y de palabra 0, Esperado: OK"); 
+        p.ver(obl.insertarPalabraEnLinea(2, 2, 1, 0, "PalabraB").resultado, Retorno.Resultado.OK, "Se inserta 'PalabraA' en el contacto 2 con el numero de mensaje 2 en la posicion de linea 0 y de palabra 0, Esperado: OK"); 
+       // p.ver(obl.insertarPalabraEnLinea(112, 1, 0, 2, "PalabraX").resultado, Retorno.Resultado.ERROR, "Se intenta insertar 'PalabraX' en un contacto inexistente, Esperado: ERROR");
+       // p.ver(obl.insertarPalabraEnLinea(1, 322, 0, 2, "PalabraZ").resultado, Retorno.Resultado.ERROR, "Se intenta insertar 'PalabraZ' en un mensaje inexistente, Esperado: ERROR");
+        //p.ver(obl.insertarPalabraEnLinea(1, 1, 0, 15, "PalabraX").resultado, Retorno.Resultado.ERROR, "Se intenta insertar 'PalabraX' en una posicion de palabra inexistente, Esperado: ERROR");
+        //p.ver(obl.insertarPalabraEnLinea(2, 1, 23, 3, "PalabraX").resultado, Retorno.Resultado.ERROR, "Se intenta insertar 'PalabraX' en una posicion de linea inexistente, Esperado: ERROR");
+
+         p.ver(obl.imprimirTexto(1, 1).resultado, Retorno.Resultado.OK, "Se imprimen todas las lineas del mensaje 1, Esperado: OK");
+         obl.imprimirTexto(1,1);
+         obl.imprimirTexto(2,2);
+         
+         p.ver(obl.imprimirTexto(132, 1).resultado, Retorno.Resultado.ERROR, "Se intentan imprimir las lineas asociadas a un mensaje de un contacto inexistente, Esperado: ERROR");
+         p.ver(obl.imprimirTexto(1, 143).resultado, Retorno.Resultado.ERROR, "Se intentan imprimir las lineas de un mensaje inexistente con un contacto contacto existente, Esperado: ERROR");
+         p.ver(obl.imprimirTexto(131, 143).resultado, Retorno.Resultado.ERROR, "Se intentan imprimir las lineas de un mensaje y contactos inexistentes, Esperado: ERROR");
+
+         p.ver(obl.borrarLinea(1, 1, 0).resultado, Retorno.Resultado.OK, "Se borra la linea 0 del mensaje 1 asociado al contacto 1, se corre la siguiente a esta posicion, Esperado: OK");
+         p.ver(obl.borrarLinea(1, 1, 0).resultado, Retorno.Resultado.OK, "Se borra la linea 0 del mensaje 1 asociado al contacto 1, se corre la siguiente a esta posicion, Esperado: OK");
+         p.ver(obl.borrarLinea(2, 2, 0).resultado, Retorno.Resultado.OK, "Se borra la linea 0 del mensaje 1 asociado al contacto 1, se corre la siguiente a esta posicion, Esperado: OK");
+         //p.ver(obl.borrarLinea(25, 2, 0).resultado, Retorno.Resultado.ERROR, "Se intenta borrar una linea de un contacto inexistente,Esperado ERROR");
+         //p.ver(obl.borrarLinea(2, 27, 0).resultado, Retorno.Resultado.ERROR, "Se intenta borrar una lista de un mensaje inexistente, Esperado: ERROR");
+         //p.ver(obl.borrarLinea(2, 2, 88).resultado, Retorno.Resultado.ERROR, "Se intenta borrar una linea de una posicion invalida, Esperado: ERROR");
+         obl.imprimirTexto(1, 1);
+
+         
+         //obl.borrarLinea(1, 1, 0);
+//        
+////        obl.imprimirLinea(1, 1, 0);
+//
+//        obl.insertarPalabraEnLinea(1, 1, 1, 0, "Palabra4");
+//        obl.insertarPalabraEnLinea(1, 1, 1, 1, "Palabra5");
+//        obl.insertarPalabraEnLinea(1, 1, 1, 2, "Palabra6");
+//
+//        obl.insertarPalabraEnLinea(1, 1, 2, 0, "Palabra7");
+//        obl.insertarPalabraEnLinea(1, 1, 2, 1, "Palabra8");
+//        obl.insertarPalabraEnLinea(1, 1, 2, 2, "Palabra9");
+//
+
+
+//        
+
+//        obl.imprimirTexto(1, 1);
+        
+        p.imprimirResultadosPrueba();
+    }
 
     public static void juegopruebaFucionalidades(Obligatorio obl, Prueba p) {
         // p.ver(obl..resultado, Retorno.Resultado.OK, "Se intenta Imprimir texto en pantalla, Esperado: OK");
 
-    }
-
-    public static void juegopruebaReporte(Obligatorio obl, Prueba p) {
-        obl.crearSistemaMensajes(3);
-        Date f = new Date();
-        p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se agregaun mensaje");
-        p.ver(obl.agregarMensaje(1, 3, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
-        p.ver(obl.agregarMensaje(2, 4, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
-        obl.contactos.mostrar();
-        p.ver(obl.cantidadDeMensajes(1).resultado, Retorno.Resultado.OK, "Se muestra la cantidad de mensajes");
-        System.out.println(obl.cantidadDeMensajes(1).valorEntero);
     }
 
     public static void juegopruebaDiccionario(Obligatorio obl, Prueba p) {
@@ -144,43 +194,38 @@ public class TRABAJARCONOBLIGATORIO {
         p.ver(obl.borrarPalabraDiccionario("Diccionario3").resultado, Retorno.Resultado.OK, "Se borra la palabra del diccionario en caso de que exista");
         obl.imprimirDiccionario();
     }
+    
+        public static void juegpruebaPalabrasDiccionario(Obligatorio obl, Prueba p) {
 
-    public static void juegodepruebaLineas(Obligatorio obl, Prueba p) {
-        System.out.println("JUEGO DE PRUEBA LINEAS");
         obl.crearSistemaMensajes(3);
-        Date f = new Date();
         obl.agregarContacto(1, "Contacto1");
         obl.agregarContacto(2, "Contacto2");
-        obl.agregarMensaje(1, 2, f);
-
-        //Obligatorio.SistemaMensajes.mostrar();
+        obl.agregarMensaje(1, 2, new Date());
         obl.insertarLinea(1, 1);
-        obl.insertarLinea(1, 1);
-        obl.insertarLinea(1, 1);
-        
-     
 
         obl.insertarPalabraEnLinea(1, 1, 0, 0, "Palabra1");
-        obl.insertarPalabraEnLinea(1, 1, 0, 1, "Palabra2");
-        obl.insertarPalabraEnLinea(1, 1, 0, 2, "Palabra3");
-        
-//        obl.imprimirLinea(1, 1, 0);
+        obl.insertarPalabraEnLinea(1, 1, 0, 1, "PalabraDiccionario");
+        obl.insertarPalabraEnLinea(1, 1, 0, 2, "Palabra2");
+        obl.borrarOcurrenciasPalabraEnLinea(1, 1, 0, "Palabra1");
 
-        obl.insertarPalabraEnLinea(1, 1, 1, 0, "Palabra4");
-        obl.insertarPalabraEnLinea(1, 1, 1, 1, "Palabra5");
-        obl.insertarPalabraEnLinea(1, 1, 1, 2, "Palabra6");
-
-        obl.insertarPalabraEnLinea(1, 1, 2, 0, "Palabra7");
-        obl.insertarPalabraEnLinea(1, 1, 2, 1, "Palabra8");
-        obl.insertarPalabraEnLinea(1, 1, 2, 2, "Palabra9");
-
-        obl.imprimirTexto(1, 1);
-
-//        obl.borrarLinea(1, 1, 0);
-
-//        obl.imprimirTexto(1, 1);
-
+//        obl.ingresarPalabraDiccionario("PalabraDiccionario");
+//        obl.ingresarPalabraDiccionario("Diccionario3");
+//        obl.ingresarPalabraDiccionario("Diccionario3");
+//        p.ver(obl.ImprimirTextoIncorrecto(1, 1).resultado, Retorno.Resultado.OK, "Se intenta mostrar las palabras del mensaje que no se encuentren en el diccionario");
     }
+
+
+    public static void juegopruebaReporte(Obligatorio obl, Prueba p) {
+        obl.crearSistemaMensajes(3);
+        Date f = new Date();
+        p.ver(obl.agregarMensaje(1, 2, f).resultado, Retorno.Resultado.OK, "Se agregaun mensaje");
+        p.ver(obl.agregarMensaje(1, 3, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
+        p.ver(obl.agregarMensaje(2, 4, f).resultado, Retorno.Resultado.OK, "Se agrega un mensaje");
+        obl.contactos.mostrar();
+        p.ver(obl.cantidadDeMensajes(1).resultado, Retorno.Resultado.OK, "Se muestra la cantidad de mensajes");
+        System.out.println(obl.cantidadDeMensajes(1).valorEntero);
+    }
+
 
     public static void juegodePruebaCantMensaje(Obligatorio obl, Prueba p) {
         System.out.println("Juego de Pruebas Cantidad Mensajes");

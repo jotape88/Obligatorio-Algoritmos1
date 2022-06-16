@@ -1,8 +1,5 @@
 package trabajarconobligatorio;
 
-import java.util.Arrays;
-import java.util.Random;
-
 public class Lista<T extends Comparable<T>> implements ILista<T> {
 
     private Nodo<T> inicio;
@@ -146,9 +143,7 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
                     if (aux.getSiguiente() != null) {
                         Nodo<T> aBorrar = aux.getSiguiente();
                         aux.setSiguiente(aBorrar.getSiguiente());
-                        //aux.getSiguiente().setAnterior(aux);            
                         aBorrar.setSiguiente(null);
-                        //aBorrar.setAnterior(null);
                         cantidad--;
                     }
                 }
@@ -226,7 +221,7 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
 
     @Override
     public void mostrarREC(T l) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     /*
@@ -256,9 +251,6 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
         return datosLista;
     }
 
-    /**
-     * @return the fin
-     */
     public Nodo<T> getFin() {
         return fin;
     }
