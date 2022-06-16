@@ -16,8 +16,9 @@ public class TRABAJARCONOBLIGATORIO {
         // juegopruebaDiccionario(obl, p);
         // juegodepruebaLineas(obl, p);
         // juegopruebaReporte(obl, p);
-         juegodepruebaLineas(obl, p);
-         //juegodePruebaCantMensaje(obl, p);
+//        juegodepruebaLineas(obl, p);
+//        juegopruebaIncersionBorradoPalabras(obl, p);
+        //juegodePruebaCantMensaje(obl, p);
     }
 
     public static void juegodepruebaSistema(Obligatorio obl, Prueba p) {
@@ -25,6 +26,25 @@ public class TRABAJARCONOBLIGATORIO {
         Obligatorio.SistemaMensajes.mostrar();
         p.ver(obl.destruirSistemaMensajes().resultado, Retorno.Resultado.OK, "Sistema anterior eliminado");
         p.imprimirResultadosPrueba();
+    }
+
+     public static void juegpruebaPalabrasDiccionario(Obligatorio obl, Prueba p) {
+
+        obl.crearSistemaMensajes(3);
+        obl.agregarContacto(1, "Contacto1");
+        obl.agregarContacto(2, "Contacto2");
+        obl.agregarMensaje(1, 2, new Date());
+        obl.insertarLinea(1, 1);
+
+        obl.insertarPalabraEnLinea(1, 1, 0, 0, "Palabra1");
+        obl.insertarPalabraEnLinea(1, 1, 0, 1, "PalabraDiccionario");
+        obl.insertarPalabraEnLinea(1, 1, 0, 2, "Palabra2");
+        obl.borrarOcurrenciasPalabraEnLinea(1, 1, 0, "Palabra1");
+
+//        obl.ingresarPalabraDiccionario("PalabraDiccionario");
+//        obl.ingresarPalabraDiccionario("Diccionario3");
+//        obl.ingresarPalabraDiccionario("Diccionario3");
+//        p.ver(obl.ImprimirTextoIncorrecto(1, 1).resultado, Retorno.Resultado.OK, "Se intenta mostrar las palabras del mensaje que no se encuentren en el diccionario");
     }
 
     public static void juegodepruebaContactos(Obligatorio obl, Prueba p) {
@@ -117,13 +137,13 @@ public class TRABAJARCONOBLIGATORIO {
 
     public static void juegopruebaDiccionario(Obligatorio obl, Prueba p) {
 
-        obl.ingresarPalabraDiccionario("Diccionario1");
+        p.ver(obl.ingresarPalabraDiccionario("Diccionario1").resultado, Retorno.Resultado.OK, "Se ingresa una palabra de forma ordenada en el diccionario");
         obl.ingresarPalabraDiccionario("Diccionario2");
         obl.ingresarPalabraDiccionario("Diccionario3");
-
+        obl.ingresarPalabraDiccionario("Diccionario4");
+        p.ver(obl.imprimirDiccionario().resultado, Retorno.Resultado.OK, "Se muestra el diccionario en caso de no estar vacio");
+        p.ver(obl.borrarPalabraDiccionario("Diccionario3").resultado, Retorno.Resultado.OK, "Se borra la palabra del diccionario en caso de que exista");
         obl.imprimirDiccionario();
-        // juegopruebaDiccionario(obl, p);
-
     }
 
     public static void juegodepruebaLineas(Obligatorio obl, Prueba p) {
@@ -145,11 +165,11 @@ public class TRABAJARCONOBLIGATORIO {
         obl.insertarLinea(1, 1);
         obl.insertarLinea(1, 1);
         obl.insertarLinea(1, 1);
-        
-        obl.insertarPalabraEnLinea(1,1,0,0, "ASDEFGH");
-        obl.insertarPalabraEnLinea(1,1,0,1, "ASDASDA");
-        obl.insertarPalabraEnLinea(1,1,0,2, "123123123");
-        obl.insertarPalabraEnLinea(1,1,0,3, "XXXXXXXX");
+
+        obl.insertarPalabraEnLinea(1, 1, 0, 0, "ASDEFGH");
+        obl.insertarPalabraEnLinea(1, 1, 0, 1, "ASDASDA");
+        obl.insertarPalabraEnLinea(1, 1, 0, 2, "123123123");
+        obl.insertarPalabraEnLinea(1, 1, 0, 3, "XXXXXXXX");
         obl.imprimirLinea(1, 1, 0);
         //obl.imprimirTexto(1, 0);
         //obl.borrarPalabra(1, 1, 1, 1);
@@ -173,7 +193,7 @@ public class TRABAJARCONOBLIGATORIO {
         Date d1 = new Date("02/28/2022");
         Date d2 = new Date("03/03/2022");
         Date d3 = new Date("10/07/2022");
-        Date d4 = new Date("14/07/2022");        
+        Date d4 = new Date("14/07/2022");
 
         for (int i = 0; i < 3; i++) {
             obl.agregarMensaje(1, 2, d0); // origen, destino
@@ -184,8 +204,7 @@ public class TRABAJARCONOBLIGATORIO {
             obl.agregarMensaje(1, 2, d1); // origen, destino
             obl.agregarMensaje(1, 2, d4); // origen, destino
         }
-      
-        
+
         obl.cantidadDeMensajes(1);
         // Obligatorio.SistemaMensajes.mostrar();
         obl.destruirSistemaMensajes();
