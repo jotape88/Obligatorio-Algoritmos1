@@ -224,19 +224,6 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
 
-    /*
-    public class GFG {
-    public static void main(String args[])
-    {
-        String str = "geekss@for@geekss";
-        String[] arrOfStr = str.split("@", 2);
-  
-        for (String a : arrOfStr)
-            System.out.println(a);
-    }
-}
-    
-     */
     @Override
     public String toString() {
         if (this.esVacia()) {

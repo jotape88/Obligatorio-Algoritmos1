@@ -114,16 +114,6 @@ public class Obligatorio implements IObligatorio {
     @Override
     public Retorno insertarLinea(int numContactoOrigen, int numMensaje) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
-//        Nodo<Mensaje> menB = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje));
-//        if (menB != null) {
-//            Linea l = new Linea();
-//            menB.getDato().getListaLineas().agregarFinal(l);
-//            for (int i = 0; i <= menB.getDato().getListaLineas().getTope(); i++) {
-//                menB.getDato().getListaLineas().getInicio().getDato().getListaPalabras().agregarInicio(new Palabra());
-//            }
-//            ret.resultado = Retorno.Resultado.OK;
-//        }
-
         Nodo<Mensaje> nodoMensaje = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje));
         
 
@@ -238,10 +228,8 @@ public class Obligatorio implements IObligatorio {
         Mensaje m = new Mensaje(numMensaje);
         if (contactos.obtenerElemento(cO) != null && SistemaMensajes.obtenerElemento(m) != null) {
             Mensaje msg = SistemaMensajes.obtenerElemento(new Mensaje(numMensaje)).getDato();
-            Lista<Linea> listaLineas = msg.getListaLineas();
-                   
-            listaLineas.vaciar();
-            
+            Lista<Linea> listaLineas = msg.getListaLineas();              
+            listaLineas.vaciar();          
             ret.resultado = Retorno.Resultado.OK;
         } else {
             ret.resultado = Retorno.Resultado.ERROR;
@@ -279,23 +267,15 @@ public class Obligatorio implements IObligatorio {
                                 nodoPalabra.setDato(" ");
                                 ret.resultado = Retorno.Resultado.OK;
                             }
-
                             nodoPalabra = nodoPalabra.getSiguiente();
-
                         }
-
                     }
-
                     nodoLinea = nodoLinea.getSiguiente();
-
                 }
-
             } else {
                 ret.resultado = Retorno.Resultado.ERROR;
             }
-
         } else {
-
             ret.resultado = Retorno.Resultado.ERROR;
         }
 
@@ -363,7 +343,6 @@ public class Obligatorio implements IObligatorio {
 
                             nodoLinea = nodoLinea.getSiguiente();
                             contadorLinea++;
-
                         }
 
                     } else {
@@ -383,11 +362,81 @@ public class Obligatorio implements IObligatorio {
         return ret;
     }
 
-    @Override
+@Override
     public Retorno insertarPalabraYDesplazar(int numContactoOrigen, int numMensaje, int posicionLinea, int posicionPalabra, String palabraAIngresar
     ) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
+
+        int contadorLinea = 0;
+        int contadorPalabra = 0;
+        boolean bandera = false;
+        int tope = SistemaMensajes.getTope();
+
+        Mensaje men = new Mensaje(numMensaje);
+        Nodo<Mensaje> nodoMensaje = SistemaMensajes.obtenerElemento(men);
+        if (nodoMensaje != null) {
+
+            Mensaje esteMensaje = (Mensaje) nodoMensaje.getDato();
+            if (esteMensaje.getNumeroDeMensaje() == numMensaje && esteMensaje.getContOrigen().numeroContacto == numContactoOrigen) {
+                Lista<Linea> listaLineas = esteMensaje.getListaLineas();
+                if (!listaLineas.esVacia()) {
+
+                    Nodo nodoLinea = listaLineas.getInicio();
+
+                    while (nodoLinea != null && contadorLinea <= posicionLinea && !bandera) {
+
+                        if (contadorLinea == posicionLinea) {
+
+                            Linea estaLinea = (Linea) nodoLinea.getDato();
+
+                            Lista<Palabra> listaPalabras = estaLinea.getListaPalabras();
+
+                            Nodo nodoPalabra = listaPalabras.getInicio();
+
+                            while (nodoPalabra != null && contadorPalabra <= posicionPalabra && !bandera) {
+
+                                if (contadorPalabra == posicionPalabra) {
+
+                                    if (nodoPalabra.getDato() != " ") {
+
+                                        while (nodoPalabra.getSiguiente() != null && (contadorPalabra + 1) <= tope) {
+
+                                            String datoAux = (String) nodoPalabra.getDato();
+                                            nodoPalabra.getSiguiente().setDato(datoAux);
+                                            nodoPalabra.setDato(palabraAIngresar);
+                                            nodoPalabra = nodoPalabra.getSiguiente();
+
+                                            ret.resultado = Retorno.Resultado.OK;
+                                            contadorPalabra++;
+
+                                        }
+
+                                    } else {
+                                        nodoPalabra.setDato(palabraAIngresar);
+                                    }
+
+                                }
+
+                                nodoPalabra = nodoPalabra.getSiguiente();
+                                contadorPalabra++;
+                            }
+
+                        }
+
+                        nodoLinea = nodoLinea.getSiguiente();
+                        contadorLinea++;
+                    }
+                } else {
+                    ret.resultado = Retorno.Resultado.ERROR;
+                }
+            }
+            nodoMensaje.getSiguiente();
+        } else {
+            ret.resultado = Retorno.Resultado.ERROR;
+        }
+
         return ret;
+
     }
 
     @Override
@@ -569,7 +618,6 @@ public class Obligatorio implements IObligatorio {
             } else {
                 ret.resultado = Retorno.Resultado.ERROR;
             }
-            ret.resultado = Retorno.Resultado.ERROR;
         }
         return ret;
     }
