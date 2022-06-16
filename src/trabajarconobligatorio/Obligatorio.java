@@ -249,31 +249,54 @@ public class Obligatorio implements IObligatorio {
         return ret;
     }
 
-    @Override
+   @Override
     public Retorno borrarOcurrenciasPalabraEnTexto(int numContactoOrigen, int numMensaje, String palabraABorrar
     ) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
         Mensaje men = new Mensaje(numMensaje);
-        Nodo<Mensaje> menB = SistemaMensajes.obtenerElemento(men);
-        if (menB.getDato() != null) {
-            if (!menB.getDato().getListaLineas().esVacia()) {
-                Nodo<Linea> actualL = menB.getDato().getListaLineas().getInicio();
-                while (actualL.getSiguiente() != null) {
-                    if (!actualL.getDato().getListaPalabras().esVacia()) {
-                        Nodo<Palabra> actualP = actualL.getDato().getListaPalabras().getInicio();
-                        while (actualP.getSiguiente() != null) {
-                            if (actualP.getDato().getDato().equals(palabraABorrar)) {
-                                actualL.getDato().getListaPalabras().borrarElemento(actualP.getDato());
+        Nodo<Mensaje> nodoMensaje = SistemaMensajes.obtenerElemento(men);
+        if (nodoMensaje != null) {
+
+            Lista<Linea> listaLineas = nodoMensaje.getDato().getListaLineas();
+
+            if (!listaLineas.esVacia()) {
+
+                Nodo nodoLinea = listaLineas.getInicio();
+
+                while (nodoLinea != null) {
+
+                    Linea estaLinea = (Linea) nodoLinea.getDato();
+                    Lista<Palabra> listaPalabras = estaLinea.getListaPalabras();
+
+                    if (!listaPalabras.esVacia()) {
+
+                        Nodo nodoPalabra = listaPalabras.getInicio();
+
+                        while (nodoPalabra != null) {
+
+                            if (nodoPalabra.getDato().toString().equals(palabraABorrar)) {
+                                nodoPalabra.setDato(" ");
+                                ret.resultado = Retorno.Resultado.OK;
                             }
-                            actualP = actualP.getSiguiente();
+
+                            nodoPalabra = nodoPalabra.getSiguiente();
+
                         }
+
                     }
-                    actualL = actualL.getSiguiente();
+
+                    nodoLinea = nodoLinea.getSiguiente();
+
                 }
 
+            } else {
+                ret.resultado = Retorno.Resultado.ERROR;
             }
+
+        } else {
+
+            ret.resultado = Retorno.Resultado.ERROR;
         }
-        ret.resultado = Retorno.Resultado.OK;
 
         return ret;
     }
