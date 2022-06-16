@@ -13,7 +13,7 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
     public int getTope() {
         return tope;
     }
-    
+
     public int getCantidad() {
         return cantidad;
     }
@@ -79,11 +79,11 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
 
     @Override
     public void mostrar() {
-        Nodo<T> actual = getInicio();        
+        Nodo<T> actual = getInicio();
         if (actual != null) {
             System.out.println("Lista de " + actual.getDato().getClass().toString().split("[.]")[1] + "s : [");
             while (actual != null) {
-                System.out.print(actual.getDato().toString() +  " - " + "\n");
+                System.out.print(actual.getDato().toString() + " - " + "\n");
                 actual = actual.getSiguiente();
             }
             System.out.println(" ]");
@@ -124,7 +124,7 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
         if (this.esVacia()) {
             agregarInicio(n);
         } else {
-            this.fin.setSiguiente(nuevo);
+            this.getFin().setSiguiente(nuevo);
             this.fin = nuevo;
             cantidad++;
         }
@@ -136,7 +136,7 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
             if (inicio.getDato().equals(n)) {
                 borrarInicio();
             } else {
-                if (fin.getDato().equals(n)) {
+                if (getFin().getDato().equals(n)) {
                     borrarFin();
                 } else {
                     Nodo<T> aux = inicio;
@@ -164,8 +164,8 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
             if (inicio.getDato().equals(n)) {
                 ret = inicio;
             } else {
-                if (fin.getDato().equals(n)) {
-                    ret = fin;
+                if (getFin().getDato().equals(n)) {
+                    ret = getFin();
                 } else {
                     Nodo actual = getInicio();
                     boolean encontre = false;
@@ -190,8 +190,8 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
             if (inicio.getDato().equals(numMensaje)) {
                 ret = inicio;
             }
-            if (fin.getDato().equals(numMensaje)) {
-                ret = fin;
+            if (getFin().getDato().equals(numMensaje)) {
+                ret = getFin();
             }
             Nodo actual = inicio;
             while (actual != null) {
@@ -209,7 +209,7 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
         if (esVacia() || inicio.getDato().compareTo(n) > 0) {
             agregarInicio(n);
         } else {
-            if (fin.getDato().compareTo(n) < 0) {
+            if (getFin().getDato().compareTo(n) < 0) {
                 agregarFinal(n);
             } else {
                 Nodo<T> aux = inicio;
@@ -254,6 +254,13 @@ public class Lista<T extends Comparable<T>> implements ILista<T> {
             actual = actual.getSiguiente();
         }
         return datosLista;
+    }
+
+    /**
+     * @return the fin
+     */
+    public Nodo<T> getFin() {
+        return fin;
     }
 
 }

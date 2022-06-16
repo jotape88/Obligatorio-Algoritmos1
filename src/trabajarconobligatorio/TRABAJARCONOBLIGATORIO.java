@@ -14,11 +14,10 @@ public class TRABAJARCONOBLIGATORIO {
         // juegodepruebaMensajes(obl, p);
         // juegopruebaFucionalidades(obl, p);
         // juegopruebaDiccionario(obl, p);
-        // juegodepruebaLineas(obl, p);
         // juegopruebaReporte(obl, p);
-//        juegodepruebaLineas(obl, p);
-//        juegopruebaIncersionBorradoPalabras(obl, p);
-        //juegodePruebaCantMensaje(obl, p);
+        juegodepruebaLineas(obl, p);
+        // juegopruebaIncersionBorradoPalabras(obl, p);
+        // juegodePruebaCantMensaje(obl, p);
     }
 
     public static void juegodepruebaSistema(Obligatorio obl, Prueba p) {
@@ -28,7 +27,7 @@ public class TRABAJARCONOBLIGATORIO {
         p.imprimirResultadosPrueba();
     }
 
-     public static void juegpruebaPalabrasDiccionario(Obligatorio obl, Prueba p) {
+    public static void juegpruebaPalabrasDiccionario(Obligatorio obl, Prueba p) {
 
         obl.crearSistemaMensajes(3);
         obl.agregarContacto(1, "Contacto1");
@@ -153,29 +152,33 @@ public class TRABAJARCONOBLIGATORIO {
         obl.agregarContacto(1, "Contacto1");
         obl.agregarContacto(2, "Contacto2");
         obl.agregarMensaje(1, 2, f);
-        obl.agregarMensaje(1, 2, f);
-        obl.agregarMensaje(1, 2, f);
 
         //Obligatorio.SistemaMensajes.mostrar();
         obl.insertarLinea(1, 1);
         obl.insertarLinea(1, 1);
         obl.insertarLinea(1, 1);
-        obl.insertarLinea(1, 1);
-        obl.insertarLinea(1, 1);
-        obl.insertarLinea(1, 1);
-        obl.insertarLinea(1, 1);
-        obl.insertarLinea(1, 1);
+        
+     
 
-        obl.insertarPalabraEnLinea(1, 1, 0, 0, "ASDEFGH");
-        obl.insertarPalabraEnLinea(1, 1, 0, 1, "ASDASDA");
-        obl.insertarPalabraEnLinea(1, 1, 0, 2, "123123123");
-        obl.insertarPalabraEnLinea(1, 1, 0, 3, "XXXXXXXX");
-        obl.imprimirLinea(1, 1, 0);
-        //obl.imprimirTexto(1, 0);
-        //obl.borrarPalabra(1, 1, 1, 1);
-        //Obligatorio.SistemaMensajes.mostrar();
-        //obl.imprimirLinea(1, 1, 1);
-        obl.destruirSistemaMensajes();
+        obl.insertarPalabraEnLinea(1, 1, 0, 0, "Palabra1");
+        obl.insertarPalabraEnLinea(1, 1, 0, 1, "Palabra2");
+        obl.insertarPalabraEnLinea(1, 1, 0, 2, "Palabra3");
+        
+//        obl.imprimirLinea(1, 1, 0);
+
+        obl.insertarPalabraEnLinea(1, 1, 1, 0, "Palabra4");
+        obl.insertarPalabraEnLinea(1, 1, 1, 1, "Palabra5");
+        obl.insertarPalabraEnLinea(1, 1, 1, 2, "Palabra6");
+
+        obl.insertarPalabraEnLinea(1, 1, 2, 0, "Palabra7");
+        obl.insertarPalabraEnLinea(1, 1, 2, 1, "Palabra8");
+        obl.insertarPalabraEnLinea(1, 1, 2, 2, "Palabra9");
+
+        obl.imprimirTexto(1, 1);
+
+//        obl.borrarLinea(1, 1, 0);
+
+//        obl.imprimirTexto(1, 1);
 
     }
 
