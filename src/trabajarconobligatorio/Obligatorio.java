@@ -249,7 +249,8 @@ public class Obligatorio implements IObligatorio {
         return ret;
     }
 
-@Override
+
+   @Override
     public Retorno borrarOcurrenciasPalabraEnTexto(int numContactoOrigen, int numMensaje, String palabraABorrar
     ) {
         Retorno ret = new Retorno(Retorno.Resultado.NO_IMPLEMENTADA);
@@ -520,8 +521,11 @@ public class Obligatorio implements IObligatorio {
                     }
                    nodoLinea = nodoLinea.getSiguiente();
                    contadorLinea++;
-                }
 
+
+                    nodoLinea = nodoLinea.getSiguiente();
+                    contadorLinea++;
+                }
             } else {
                 bandera = true;
                 ret.resultado = Retorno.Resultado.ERROR;
